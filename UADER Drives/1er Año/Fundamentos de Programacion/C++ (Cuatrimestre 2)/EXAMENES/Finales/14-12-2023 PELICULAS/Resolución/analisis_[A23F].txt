@@ -1,0 +1,27 @@
+0.5
+NO
+22
+Que pelicula da miedo!
+Cantidad de veces que aparecen las palabras:
+miedo = 1
+terror = 0
+suspenso = 0
+*************************************
+4
+SI
+11
+Que berreta
+Cantidad de veces que aparecen las palabras:
+miedo = 0
+terror = 0
+suspenso = 0
+*************************************
+5
+SI
+14
+Da mucho miedo
+Cantidad de veces que aparecen las palabras:
+miedo = 1
+terror = 0
+suspenso = 0
+*************************************

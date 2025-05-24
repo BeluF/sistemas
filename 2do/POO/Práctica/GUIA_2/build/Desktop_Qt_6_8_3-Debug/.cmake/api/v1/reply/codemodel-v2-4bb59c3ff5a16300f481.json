@@ -1,0 +1,61 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-1fcd795eaff158de836b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "GUIA_2",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "GUIA_2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-GUIA_2-Debug-efc82ea9739e58bfcc42.json",
+					"name" : "GUIA_2",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/belu/Desktop/SISTEMAS/POO/GUIA_2/build/Desktop_Qt_6_8_3-Debug",
+		"source" : "/home/belu/Desktop/SISTEMAS/POO/GUIA_2"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

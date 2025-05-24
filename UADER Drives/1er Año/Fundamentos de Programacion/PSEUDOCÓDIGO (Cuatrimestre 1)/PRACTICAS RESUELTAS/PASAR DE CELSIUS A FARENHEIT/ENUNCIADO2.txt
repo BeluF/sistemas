@@ -1,0 +1,3 @@
+Dado una temperatura en Celsius o Farenheit, 
+determinar la misma temperatura pero en la otra 
+escala.

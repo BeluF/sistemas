@@ -1,0 +1,12 @@
+3232
+Termostato
+$200
+2
+Termo Stanley
+$20
+6
+Pileta Pelopincho
+$50
+
+
+

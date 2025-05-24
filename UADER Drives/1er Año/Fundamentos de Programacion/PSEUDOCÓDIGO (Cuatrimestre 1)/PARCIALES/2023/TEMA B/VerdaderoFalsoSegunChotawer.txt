@@ -1,0 +1,15 @@
+//pueden estar mal xq en la teoria no soy un crack
+
+1. Que un algoritmo sea finito significa que resuelve un caso especifico de un problema [F]
+no, que un algoritmo puede ser finito y general a la vez.
+
+2. En la estructura de decisión Selección Múltiple, si la o las accion/es a realizar son las mismas para valores diferentes, estos pueden agruparse separandolos por coma [V]
+
+3. En la acción Escribir, pueden colocarse las variables y/o constantes que deseen, separadas por coma. [V]
+
+4. Solo puede usarse la estructura Mientras cuando la condición se conforma mediante una variable y un valor absurdo para la misma. [F]
+no porque no tiene xq tener un valor absurdo, está conformado por una operación lógica empleando como mínimo una variable.
+
+5. Las constantes son espacios de memoria que no pueden cambiar su valor y su tipo durante todo el algoritmo [F]
+//Las constantes se escriben en la instrucción del assembly, no en memoria.
+fuente: https://stackoverflow.com/questions/21735890/where-and-how-are-constants-stored

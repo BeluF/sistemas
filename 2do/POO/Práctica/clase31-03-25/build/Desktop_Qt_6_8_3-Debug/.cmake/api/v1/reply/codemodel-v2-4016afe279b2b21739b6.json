@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-fbd0a0f2b793894a6fab.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "clase31-03-25",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "clase31-03-25::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-clase31-03-25-Debug-5e1d68227b42037ade51.json",
+					"name" : "clase31-03-25",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "clase31-03-25_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-clase31-03-25_autogen-Debug-c8bbd39c8dcbf8f11eab.json",
+					"name" : "clase31-03-25_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "clase31-03-25_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-clase31-03-25_autogen_timestamp_deps-Debug-ecc834ea526e117c485a.json",
+					"name" : "clase31-03-25_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/belu/Desktop/SISTEMAS/POO/clase31-03-25/build/Desktop_Qt_6_8_3-Debug",
+		"source" : "/home/belu/Desktop/SISTEMAS/POO/clase31-03-25"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
