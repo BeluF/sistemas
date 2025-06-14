@@ -1,3 +1,0 @@
-Explicación EJERCICIO3
-Concaternar (S1,S2) -> Une 2 cadenas, EJEM: Concaternar("Hola","Chau") = "HolaChau";
-Subcadena(VARIABLE,POSICIÓN INICIAL, POSICIÓN FINAL) -> Genera una subcadena a partir de otra, pero solo toma las posiciones que le indicamos
