@@ -1,0 +1,1 @@
+Recorrer una lista doblemente enlazada e imprimir de atrás hacia adelante.
