@@ -1,0 +1,12 @@
+1. Que un algoritmo sea definido quiere decir que cada paso debe ser enuncaido de forma clara, precisa y no debe dar lugar a ambiguedades. [V] //puede estar mal
+
+2. Solo es posible utilizar una estructura Repetir cuando sabemos la cantidad exacta de repetciones a realizar [F]
+es posible tanto sabiendo como no sabiendo.
+
+3. Una acción es primitiva si puede ser descompuesta hasta que su enunciado sea suficiente para que pueda ser ejecuta sin información adicional [F] 
+no, esa es la no primitiva.
+
+4. Una variable es un espacio en memoria que puede cambiar su valor y tipo durante todo el algoritmo [F]
+no puede cambiar su tipo, pero sí su valor
+
+5. La estructura de control de selección condicional puede resolver varias condiciones siempre y cuándo se representen en una expresión lógica válida [V]

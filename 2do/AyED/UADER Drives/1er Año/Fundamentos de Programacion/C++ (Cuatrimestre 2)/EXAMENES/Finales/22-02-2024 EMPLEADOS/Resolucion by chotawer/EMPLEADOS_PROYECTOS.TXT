@@ -1,0 +1,147 @@
+7296
+PRJDAM01
+Desarrollo de Aplicaciones Moviles  
+5418
+PRJQA001
+Quality Assurance    
+3067
+PRJDAM01
+Desarrollo de Aplicaciones Moviles  
+1854
+PRJQA002
+Quality Assurance    
+4023
+PRJDS001
+Desarrollo de software   
+9385
+PRJDIU01
+Disenio Interfaz de Usuario  
+6742
+PRJQA001
+Quality Assurance    
+5139
+PRJDAM02
+Desarrollo de Aplicaciones Moviles  
+8472
+PRJDS001
+Desarrollo de software   
+2056
+PRJDS002
+Desarrollo de software   
+6183
+PRJDIU01
+Disenio Interfaz de Usuario  
+7530
+PRJDS003
+Desarrollo de software   
+4961
+PRJQA002
+Quality Assurance    
+8203
+PRJQA001
+Quality Assurance    
+3574
+PRJDIU02
+Disenio Interfaz de Usuario  
+1092
+PRJDIU02
+Disenio Interfaz de Usuario  
+6845
+PRJDIU02
+Disenio Interfaz de Usuario  
+9274
+PRJQA001
+Quality Assurance    
+3406
+PRJQA001
+Quality Assurance    
+5728
+PRJDS001
+Desarrollo de software   
+8613
+PRJDIU01
+Disenio Interfaz de Usuario  
+2954
+PRJQA001
+Quality Assurance    
+7140
+PRJDIU01
+Disenio Interfaz de Usuario  
+6304
+PRJQA001
+Quality Assurance    
+8723
+PRJDS001
+Desarrollo de software   
+4396
+PRJDAM02
+Desarrollo de Aplicaciones Moviles  
+1857
+PRJDIU02
+Disenio Interfaz de Usuario  
+9240
+PRJDS001
+Desarrollo de software   
+5063
+PRJQA002
+Quality Assurance    
+3718
+PRJDIU02
+Disenio Interfaz de Usuario  
+8451
+PRJQA002
+Quality Assurance    
+2093
+PRJDS003
+Desarrollo de software   
+5647
+PRJQA002
+Quality Assurance    
+1309
+PRJDIU01
+Disenio Interfaz de Usuario  
+7832
+PRJDAM01
+Desarrollo de Aplicaciones Moviles  
+4701
+PRJQA001
+Quality Assurance    
+6953
+PRJDIU01
+Disenio Interfaz de Usuario  
+2815
+PRJDS001
+Desarrollo de software   
+6084
+PRJDS003
+Desarrollo de software   
+3872
+PRJDAM01
+Desarrollo de Aplicaciones Moviles  
+5490
+PRJDS002
+Desarrollo de software   
+7138
+PRJQA002
+Quality Assurance    
+3065
+PRJDIU02
+Disenio Interfaz de Usuario  
+9421
+PRJDAM02
+Desarrollo de Aplicaciones Moviles  
+1759
+PRJQA001
+Quality Assurance    
+8306
+PRJDS003
+Desarrollo de software   
+6925
+PRJDS002
+Desarrollo de software   
+1047
+PRJDAM01
+Desarrollo de Aplicaciones Moviles  
+2840
+PRJQA002
+Quality Assurance    

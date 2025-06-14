@@ -1,0 +1,192 @@
+A-
+struct nodo_lde{
+	int ID;
+	string nombre_ninio;
+	string nombre_tutor;
+	int edad;
+	double km;
+	long int telefono;
+	string salita;
+	struct nodo_lde* sgte;
+	struct nodo_lde* ant;
+}
+typdef struct nodo_lde NodoLDE;
+
+struct nodo_pila_ve{
+	string nombre_ninio;
+	string nombre_tutor;
+	int edad;
+	double km;
+	long int telefono;
+	struct nodo_pila_ve* link;
+}
+typedef struct nodo_pila_ve NPVerde;
+
+struct nodo_pila_ne{
+	string nombre_ninio;
+	string nombre_tutor;
+	int edad;
+	double km;
+	long int telefono;
+	struct nodo_pila_ve* link;
+}
+typedef struct nodo_pila_ne NPNegro;
+
+void add_LDE(NodoLDE* &LDE, string nom1, string nom2, int edad, double km, long int tel);
+
+void remove_stack_verde(NPVerde* &verde);
+
+void remove_stack_negra(NPNegra* &negra);
+
+void isEmptyStack(NPVerde* verde, NPNegra* negra);
+
+bool removeLDE(NodoLDE* &LDE, int ID){
+	NodoLDE* aux = LDE;
+	NodoLDE* ant = NULL;
+	
+	while (LDE->sgte != NULL && aux->ID != ID){
+	//SI NO LO ENCUENTRA
+	if(aux==NULL) return false;
+	}
+	
+	//SI ES EL PRIMER NODO
+	if (LDE->ant == NULL){
+		LDE=LDE->sgte;
+	}
+	//Si la lista no queda vacía
+	if(LDE != NULL) LDE->ant = NULL;
+	
+	
+
+	else{
+	ant -> sgte = aux->sgte;
+	//SI ESTA EN EL MEDIO
+	if (aux->sgte != NULL) aux->sgte->ant = ant;
+	}
+	//SI ES EL ULTIMO
+	else ant->sgte = NULL;
+	}
+	}
+	delete aux;
+	return true;
+
+}
+
+void distribuir (NodoLDE* &LDE, NPVerde* &verde, NPNegra* &negra){
+	NodoLDE* aux = LDE;
+	
+	if(edad > 2 && edad < 4){
+	//SALITA VERDE
+	NPVerde* nuevo_verde = new (NPVerde);
+	NPVerde* aux_verde = verde;
+		
+	nuevo_verde->nombre_ninio = aux->nombre_ninio;
+	nuevo_verde->nombre_tutor = aux->nombre_tutor;
+	nuevo_verde->edad = aux->edad;
+	nuevo_verde->km = aux->km;	
+	nuevo_verde->telefono = aux->telefono;
+	nuevo_verde->link=NULL
+	
+	if(isEmptyStack){
+		verde->link = nuevo_verde;
+	}
+	
+	else{
+	while(aux_verde->link != NULL){
+		aux_verde = aux_verde->link;
+		}
+	verde->link = nuevo_verde;
+	}
+	delete LDE;
+	}
+	
+	else if(edad>=4 && edad<6){
+	//SALITA NEGRA
+	NPNegro* nuevo_negro = new (NPNegro);
+	NPNegro* aux_negro = negro;
+		
+	nuevo_negro->nombre_ninio = aux->nombre_ninio;
+	nuevo_negro->nombre_tutor = aux->nombre_tutor;
+	nuevo_negro->edad = aux->edad;
+	nuevo_negro->km = aux->km;	
+	nuevo_negro->telefono = aux->telefono;
+	nuevo_negro->link=NULL
+	
+	if(isEmptyStack){
+		negro->link = nuevo_negro;
+	}
+	
+	else{
+	while(aux_negro->link != NULL){
+		aux_negro = aux_negro->link;
+		}
+	negro->link = nuevo_negro;
+	}
+	delete LDE;
+}
+
+else {
+	return;
+}
+}
+
+
+B-
+struct nodo_AB(){
+	int dato;
+	struct nodo_AB* = der;
+	struct nodo_AB* = izq;
+};
+typedef struct nodo_AB NAB;
+
+struct nodo_pila_e(){
+	NAB* = dato [MAX];
+	int tamanio;
+	int topa;
+};
+typedef struct nodo_pila_e PilaE;
+
+bool isEmptyStack(PilaE);
+void addStack(PilaE& pila, NAB* arbol, int nivel);
+void removeStack(PilaE* &pila, NAB* arbol, int altura_actual);
+
+int print(NAB* arbol){
+	NAB* aux;
+	int max_altura = 0;
+	int altura_actual;
+	PilaE pila;
+	pila.tamanio = MAX;
+	pila.tope = 0;
+	
+	if (arbol == NULL){
+		addStack(pila, arbol, 1);
+	}
+	while (!isEmptyStack(pila)){
+		removeStack(pila, aux, altura_actual);
+		if(altura_actual>max_altura){
+			max_altura = altura_actual;
+		}
+				cout << "Nivel " << max_altura << ": " << arbol->dato;
+		if(aux->der!=NULL){
+			addStack(pila, aux->der, altura_actual+1);
+		}
+		if(aux->izq!=NULL){
+			addStack(pila, aux->izq, altura_actual+1);
+		}
+	return max_altura
+	}
+}
+
+C-
+INORDEN
+6 12 15 18 21 24 30 48 54
+
+POSTORDEN
+6 15 21 18 12 48 54 30 24
+
+POR NIVELES
+24 12 30 6 18 54 15 21 48
+
+
+
+

@@ -1,0 +1,193 @@
+//ESRTUCTURAS DE DATOS LINEALES NO TRADICIONALES
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
+
+
+// DEFINICI�N DE TIPOS.
+
+struct nodo_listade
+{
+	int dato;
+	struct nodo_listase* ant;
+	struct nodo_listase* sig;
+};
+typedef struct nodo_listade NListaDE;
+
+struct nodo_listac
+{
+	int dato;
+	struct nodo_listac* link;
+};
+typedef struct nodo_listac NListaC;
+
+
+// DECLARACI�N DE FUNCIONES.
+
+void listase_mostrar (NListaDE* listade);
+void listase_agregar_final (NListaDE* &listade, int ndato);
+void listase_agregar_ordenado (NListaDE* &listade, int ndato);
+bool listase_eliminar_ocurrencia (NListaDE* &listade, int datoe);
+void listase_eliminar_ocurrencias (NListaDE* &listade, int datoe);
+
+void menu_opcion1 (NListaDE* listade);
+void menu_opcion2 (NListaDE* &listade);
+void menu_opcion3 (NListaDE* &listade);
+void menu_opcion4 (NListaDE* &listade);
+void menu_opcion5 (NListaDE* &listade);
+
+
+// DEFINICI�N DE FUNCIONES.
+
+int main (void)
+{
+//	NListaC* listac = NULL;
+	NListaDE* listade = NULL;
+	
+	int opcion = 0;
+    do {
+		cout << "************Menu de Opciones************\n";
+		cout << endl;
+		cout << "****** Lista Simplemente Enlazada ******\n";
+		cout << endl;
+		cout << "1- Mostrar.\n";
+		cout << "2- Insertar N elementos al final.\n";
+		cout << "3- Insertar N elementos ordenados.\n";
+		cout << "4- Elminar primer ocurrencia de N.\n";
+		cout << "5- Elminar todas las ocurrencias de N.\n";
+		cout << endl;
+		cout << "    0- Salir\n";
+		cout << endl;
+		cout << "                        Ingrese opcion: ";
+		cin >> opcion;
+		cout << endl;
+		cout << endl;
+		
+		switch(opcion)
+		{
+			case 1:
+				menu_opcion1 (listade);
+			break;
+			case 2:
+				menu_opcion2 (listade);
+			break;
+			case 3:
+				menu_opcion3 (listade);
+			break;
+			case 4:
+				menu_opcion4 (listade);
+			break;
+			case 5:
+				menu_opcion5 (listade);
+			break;
+		}
+	} while ( opcion != 0);
+
+	return 0;
+}
+
+
+void menu_opcion1 (NListaDE* listade)
+{
+	listase_mostrar (listade);
+}
+
+void menu_opcion2 (NListaDE* &listade)
+{
+	int nuevo_dato, cantidad;
+	
+	cout << "Cuantos datos aleatorios desea cargar?: ";
+	cin >> cantidad;
+	cout << endl;
+	cout << "Lista de datos cargados:\n";
+	cout << endl;
+	for (int i=0; i<cantidad; i++)
+	{
+		nuevo_dato = (rand () % 100) + 1;
+		listase_agregar_final (listade, nuevo_dato);
+		cout << nuevo_dato << "  ";
+	}
+	cout << endl;
+	cout << endl;
+	cout << endl;
+}
+
+void menu_opcion3 (NListaDE* &listade)
+{
+	int nuevo_dato, cantidad;
+	
+	cout << "Cuantos datos aleatorios desea cargar?: ";
+	cin >> cantidad;
+	cout << endl;
+	cout << "Lista de datos cargados:\n";
+	cout << endl;
+	for (int i=0; i<cantidad; i++)
+	{
+		nuevo_dato = (rand () % 100) + 1;
+		listase_agregar_ordenado (listade, nuevo_dato);
+		cout << nuevo_dato << "  ";
+	}
+	cout << endl;
+	cout << endl;
+	cout << endl;
+}
+
+void menu_opcion4 (NListaDE* &listade)
+{
+	int dato_eliminar;
+	bool elimino;
+
+	cout << "Que dato desea eliminar?: ";
+	cin >> dato_eliminar;
+	cout << endl;
+
+	elimino = listase_eliminar_ocurrencia (listade, dato_eliminar);
+	
+	if (elimino)
+		cout << "Fue encontrado y eliminado un dato.\n\n";
+	else
+		cout << "No fue encontrado el dato.\n\n";
+	cout << endl;
+}
+
+void menu_opcion5 (NListaDE* &listade)
+{
+	int dato_eliminar;
+	
+	cout << "Que dato desea eliminar?: ";
+	cin >> dato_eliminar;
+	
+	listase_eliminar_ocurrencias (listade, dato_eliminar);
+
+	cout << endl;
+	cout << endl;
+}
+
+
+//
+
+
+void listase_mostrar (NListaDE* listade)
+{
+	cout << endl;
+	cout << endl;
+}
+
+void listase_agregar_final (NListaDE* &listade, int ndato)
+{
+}
+
+void listase_agregar_ordenado (NListaDE* &listade, int ndato)
+{
+}
+
+bool listase_eliminar_ocurrencia (NListaDE* &listade, int datoe)
+{
+	return false;
+}
+
+void listase_eliminar_ocurrencias (NListaDE* &listade, int datoe)
+{
+	while (listase_eliminar_ocurrencia (listade, datoe));
+}
