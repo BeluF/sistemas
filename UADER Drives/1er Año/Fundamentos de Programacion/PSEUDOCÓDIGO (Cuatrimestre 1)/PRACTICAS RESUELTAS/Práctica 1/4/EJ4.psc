@@ -1,0 +1,37 @@
+Algoritmo ejercicio4
+	definir boln,bolm como entero;
+	definir valore Como Real;
+	Escribir "Servicio ESTUDIANTE:";
+	Escribir Sin Saltar "Ingrese valor del boleto -";
+	Leer valore;
+	Escribir Sin Saltar "Ingrese número del primer boleto del día -";
+	Leer boln;
+	Escribir Sin Saltar "Ingrese número del último boleto del día -";
+	Leer bolm;
+	bolm<- bolm+1;
+	Escribir "===========================================================";
+	Escribir "Total recaudado: ", valore*(bolm-boln),"$, Boletos vendidos: ", bolm-boln;
+	Escribir "===========================================================";
+	Escribir "Servicio TRABAJADOR:";
+	valore<- (50*valore)/40;
+	Escribir "Valor del boleto: ", valore,"$";
+	Escribir Sin Saltar "Ingrese número del primer boleto del día -";
+	Leer boln;
+	Escribir Sin Saltar "Ingrese número del último boleto del día -";
+	Leer bolm;
+	bolm<- bolm+1;
+	Escribir "===========================================================";
+	Escribir "Total recaudado: ", valore*(bolm-boln),"$, Boletos vendidos: ", bolm-boln;
+	Escribir "===========================================================";
+	Escribir "Servicio COMÚN:";
+	valore<-(100*valore)/50;
+	Escribir "Valor del boleto: ", valore,"$";
+	Escribir Sin Saltar "Ingrese número del primer boleto del día -";
+	Leer boln;
+	Escribir Sin Saltar "Ingrese número del último boleto del día -";
+	Leer bolm;
+	bolm<- bolm+1;
+	Escribir "===========================================================";
+	Escribir "Total recaudado: ", valore*(bolm-boln),"$, Boletos vendidos: ", bolm-boln;
+	Escribir "===========================================================";
+FinAlgoritmo

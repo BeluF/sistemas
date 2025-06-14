@@ -1,0 +1,46 @@
+
+Hoy, 12:00
+Evento de curso
+Alumno: ............................................................................................... 7 de Mayo de 2025
+
+1) (26 puntos) Un fabricante de pilas para linternas asegura que la duración de su producto tiene una distribución normal de media 80 horas de uso con una varianza de 16. Se pide:
+
+a. La probabilidad de que una pila tomada al azar dure entre 70 y 85 horas.
+
+b. A partir de qué valor de vida media de las pilas estarán dentro del 34% más alto.
+
+c. La probabilidad de que la cuarta pila seleccionada de la población sea la primera con duración entre 70 y 85 horas.
+
+d. Explicar las propiedades de la curva normal (realice los gráficos necesarios para desarrollar).
+
+2) (26 puntos) El tiempo semanal de mantenimiento de una máquina (en horas) depende de dos variables aleatorias X: ”duración de mantenimiento mecánico” y Y: ”duración de mantenimiento eléctrico”, siendo 𝑓(𝑥,𝑦)=2/3(𝑥+2𝑦); con 0≤𝑥≤1,0≤𝑦≤1
+
+la función de densidad de probabilidad conjunta de las mismas. Se pide:
+
+a. Verificar que 𝑓𝑓(𝑥𝑥,𝑦𝑦) es un función de densidad de probabilidad.
+
+b. Determinar la probabilidad que en alguna semana, el mantenimiento mecánico dure menos de 15 minutos y el mantenimiento eléctrico dure más de 30 minutos.
+
+c. Las densidades marginales de las variables aleatorias X y Y. ¿Son independientes? Justifique.
+
+d. ¿Cuál es la probabilidad de que el tiempo de mantenimiento mecánico esté 1/4 y 3/4 de hora?
+
+3) (24 puntos) A través de una encuesta se intenta estimar el tiempo promedio que los paranaenses miran series los sábados de 15 a 18 hs. Los resultados se muestran a continuación (horas):
+
+2.5 - 4.2 - 5.4 - 1.5 - 2 - 3.6 - 1.8 - 3.1.
+
+a. Calcule la media y el desvío estándar para estos datos.
+
+b. Se tienen los datos de una encuesta realizada a otros hogares de la ciudad de Santa Fe cuya media es de 3.5 con un desvío típico de 1.44 horas. ¿Qué grupo de mediciones de estas ciudades considera que tiene mayor dispersión? ¿Qué medida utiliza para responder? Fundamente.
+
+c. Asumiendo normalidad en la variable de interés, brinde una estimación por intervalo de confianza del 90% para el tiempo promedio que los paranaenses miran series entre las 15 y las 18 hs.
+
+4) (24 puntos) El 75 % de los alumnos de una Escuela llegan a clase en algún tipo de transporte y el resto a pie. Llega puntual a clase el 60 % de los que utilizan el transporte y el 90 % de los que acuden andando.
+
+a. Defina los sucesos asociados.
+
+b. ¿Cuál es la probabilidad de que un estudiante elegido al azar sea puntual?
+
+c. Si se elige al azar uno de los alumnos que ha llegado puntual a clase, ¿cuál es la probabilidad de que haya llegado a pie? d. Si se elige un alumno al azar, ¿cuál es la probabilidad de que no haya llegado puntual?
+
+e. Enuncie y demuestre los teoremas relacionados con los ítems b) y c).

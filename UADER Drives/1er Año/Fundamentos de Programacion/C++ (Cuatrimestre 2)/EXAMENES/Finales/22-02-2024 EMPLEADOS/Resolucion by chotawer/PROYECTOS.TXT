@@ -1,0 +1,36 @@
+PRJDAM01
+Proyecto Aurora
+Desarrollo de Aplicaciones Moviles  
+PRJDIU01
+Operacion Orbita
+Disenio Interfaz de Usuario  
+PRJQA001
+Proyecto Horizonte
+Quality Assurance    
+PRJDS001
+Proyecto Genesis
+Desarrollo de software   
+PRJDS002
+Proyecto Nebula
+Desarrollo de software   
+PRJDIU02
+Operacion Cosmos
+Disenio Interfaz de Usuario  
+PRJQA002
+Proyecto Alfa
+Quality Assurance    
+PRJDAM02
+Proyecto Icaro
+Desarrollo de Aplicaciones Moviles  
+PRJIAML1
+Proyecto Pulsar
+Inteligencia Artificial y Machine Learning 
+PRJDS003
+Operacion Centauro
+Desarrollo de software   
+PRJSI001
+Proyecto Beta
+Seguridad Informatica    
+PRJADBI1
+Operacion Espectra
+Analisis de Datos y Business Intelligence

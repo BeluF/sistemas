@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-7e277a52606fae3b5171.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "QT-UI-3",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "QT-UI-3::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-QT-UI-3-Debug-b176470423823aa6bd92.json",
+					"name" : "QT-UI-3",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "QT-UI-3_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-QT-UI-3_autogen-Debug-2a9b324ba2e818cdd838.json",
+					"name" : "QT-UI-3_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "QT-UI-3_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-QT-UI-3_autogen_timestamp_deps-Debug-f05f1dc45447faf00180.json",
+					"name" : "QT-UI-3_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/belu/Desktop/SISTEMAS/POO/Pr\u00e1ctica/clase-19-05-25/QT-UI-3/build/Desktop_Qt_6_8_3-Debug",
+		"source" : "/home/belu/Desktop/SISTEMAS/POO/Pr\u00e1ctica/clase-19-05-25/QT-UI-3"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
