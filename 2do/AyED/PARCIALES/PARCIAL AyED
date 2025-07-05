@@ -188,5 +188,120 @@ POR NIVELES
 24 12 30 6 18 54 15 21 48
 
 
+D-
+Inventar y programar un barrido para un árbol ternario. EL mismo, como todo barrido, debe garantizar "procesar" TODOS los nodos UNA sola vez. Proponga la estructura de datos y desarrole el programa correspondiente (caundo toca el "procesar" solo visualice el contenido del nodo en la pantalla).
+Como contenido del nodo utilice un caracter.
+Propornga de manera gráfica un ejemplo pequeño de árbol y muestre como sería la salida del programa.
+
+#define MAX = 100;
+
+struct nodo_at{
+	char dato;
+	struct nodo_at* izq;
+	struct nodo_at* medio;
+	struct nodo_at* der;
+};
+typedef struct nodo_at NAT;
+
+struct nodo_pila_e{
+	NAT* dato [MAX];
+	int tamanio;
+	int tope;	
+};
+typedef struct nodo_pila_e NPE;
+
+void addStack_inorden (NPE* pila, NAT* arbol);
+
+void isEmpy(NPE* pila);
+
+NAT* removeStack(NPE* pila);
+
+void mostrar_preorden (NAT* arbol, NPE* pila){
+	NAT* aux;
+	if(arbol != NULL){
+		addStack_inorden(pila, arbol);
+	}
+	while(!isEmpty(pila)){
+		aux = removeStack(pila);
+		cout << aux->dato;
+		if(aux->der != NULL){
+			addStack_inorden(pila, aux->der);
+		}
+		if(aux->medio != NULL){
+			addStack_inorden(pila, aux->medio);
+		}
+		if(aux->izq != NULL){
+			addStack_inorden(pila, aux->izq);
+		}
+	}
+}
+
+PREORDEN
+struct nodo_pila_e{
+	NAT* nodo;
+	int bandera;	
+};
+typedef struct nodo_pila_e NPE;
+
+void addStack_preorden (NPE* pila, NAT* arbol, int bandera);
+
+void removeStack(NPE* &pila, NAB* &arbol, int &bandera);
+
+void mostrar_inorden(NAT* arbol, NPE* pila){
+	NPE* pila = NULL;
+	
+	if (arbol != NULL){
+		addStack_preorden(pila, arbol, 1);
+	}
+	while(!isEmpty(pila)){
+		removeStack(pila, aux, bandera);
+		
+		if (bandera == 1){
+		            if (aux->der != NULL) addStack_preorden(pila, aux->der, 1);
+            		    if (aux->medio != NULL) addStack_preorden(pila, aux->medio, 1);
+            		    addStack_preorden(pila, aux, 2); // Volver a procesar después del izq
+            		    if (aux->izq != NULL) addStack_preorden(pila, aux->izq, 1);
+
+		}
+		else if (bandera == 2) {
+            cout << aux->dato << " ";
+        }
+		
+	}
+}
+
+POSTORDEN
+
+void mostrar_postorden(NAT* arbol, NPE* pila){
+	NPE* pila = NULL;
+	NAT* aux;
+	int bandera;
+	
+	if (arbol != NULL){
+		addStack_preorden(pila, arbol, 1);
+	}
+	while(!isEmpty(pila)){
+		removeStack(pila, aux, bandera);
+		
+		if (bandera == 1){
+		            if (aux->der != NULL) addStack_preorden(pila, aux->der, 1);
+            	 	    if (aux->medio != NULL) addStack_preorden(pila, aux->medio, 1);
+            		    if (aux->izq != NULL) addStack_preorden(pila, aux->izq, 1);
+            		    addStack_preorden(pila, aux, 2); // Volver a procesar después del izq
+
+		}
+		else if (bandera == 2) {
+            cout << aux->dato << " ";
+        }
+		
+	}
+}
+
+
+
+
+
+
+
 
 

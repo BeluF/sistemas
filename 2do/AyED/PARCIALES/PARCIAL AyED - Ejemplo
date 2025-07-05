@@ -1,0 +1,90 @@
+1. A. Teoría conceptual (2 pts)
+¿Cuál es la diferencia entre un árbol binario y un árbol ternario en cuanto a recorridos y representación? ¿Qué ventajas o desventajas tiene cada uno?
+En representación y recorridos el árbol ternario tiene un hijo más al que debe acceder (el del medio), pero los barridos se realizan de la misma manera donde preorden será raíz, izquierda, medio, derecha, inorden será izquierda, raíz, medio, derecha y postorden será izquierda, medio, derecha, raíz. La ventaja de los árboles binarios es que pueden generarse árboles de búsqueda, y son, en general, los más utilizados.
+
+B. Programación estructural (8 pts)
+1. (3 pts) Función insertar:
+Implementar una función void insertar(NAT* &arbol, char dato, char padre, char posicion) que inserte un nuevo nodo con el dato, como hijo izquierdo ('I'), medio ('M') o derecho ('D') del nodo con valor padre. La inserción debe buscar recursivamente al nodo con ese valor.
+
+void insertar(NAT* &arbol, char dato, char padre, char posicion){
+	
+}
+
+2. (2 pts) Función mostrar_inorden (iterativa con pila y banderas):
+Mostrar los nodos del árbol con un recorrido inorden ternario:
+izq → raíz → medio → der
+
+struct nodo_pila {
+    NAT* nodo;
+    int bandera;
+};
+typedef struct nodo_pila NP;
+
+struct nodo_at{
+	int dato;
+	struct nodo_at* izq;
+	struct nodo_at* medio;
+	struct nodo_at* der;
+};
+typedef struct nodo_at NAT;
+
+void mostrar(NAT* arbol, NP* &pila){
+	NAT* aux;
+	int bandera;
+	if (arbol != NULL) {
+		addStack(pila, arbol, 1);
+	};
+	while(!isEmptyStack(pila)){
+		removeStack(pila, aux, bandera);
+		if(bandera == 1) {
+			addStack(pila, aux, 2);	
+			if(arbol->izq != NULL) addStack(pila, aux->izq, 1);
+			if(arbol->izq != NULL) addStack(pila, aux->medio, 1);
+			if(arbol->izq != NULL) addStack(pila, aux->der, 1);
+			addStack(pila, aux, 2);
+	}
+		else if(bandera == 2){
+			cout << aux->dato << " ";
+		}
+	 }
+}
+
+3. (2 pts) Función cantidad_nodos(NAT* arbol):
+Contar cuántos nodos tiene el árbol.
+
+int cant_nodos(NAT* arbol){
+	NAT* aux;
+	int bandera, cont = 0;
+	if (arbol != NULL) {
+		addStack(pila, arbol, 1);
+	};
+	while(!isEmptyStack(pila)){
+		removeStack(pila, aux, bandera);
+		if(bandera == 1) {
+			addStack(pila, aux, 2);	
+			if(aux->izq != NULL) addStack(pila, aux->izq, 1);
+			if(aux->medio != NULL) addStack(pila, aux->medio, 1);
+			if(aux->der != NULL) addStack(pila, aux->der, 1);
+			addStack(pila, aux, 2);
+	}
+		else if(bandera == 2){
+			cont++;
+		}
+	 }
+	 return cont;
+}
+
+4. (1 pt) Función es_hoja(NAT* nodo):
+Determinar si un nodo es hoja (no tiene hijos).
+//Voy a suponer que por parámetro se pasa el nodo que quiero saber si es hoja
+bool hoja(NAT* arbol){
+	return (arbol->izq == NULL && arbol->medio == NULL && arbol->der == NULL) ? true : false;
+}
+
+
+
+
+
+
+
+
