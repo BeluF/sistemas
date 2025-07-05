@@ -1,0 +1,42 @@
+----------------------------FINAL (TEORÍA) 05/05/2025----------------------------
+
+Generales (Íteam A - 20 puntos)
+
+A1 - Defina que es un Algoritmo. Cuáles son sus características principales y deseables. (10 puntos)
+A2- Como se relaciona los conceptos de "algoritmo" y "programa". (10 puntos)
+
+EDL (Ítem B - 20 puntos)
+
+B1- Describa detalladamente las similitudes y diferencias existentes entre una estructura de datos de tipo "Cola Circular" y una estuctura de datos tipo "Cola".(10 puntos)
+B2- Defina sus estructuras de datos en C++. Declare alguna variable de los tipos definidos. (10 puntos)
+
+Árboles (Ítem C - 20 puntos)
+
+C1- Realice un "cuadro sinóptico" donde queden organizados los distintos árboles que conoce; ponga el foco sobre la jerarquía que los vinculan. (10 puntos)
+C2- Compare un árbol binario de búsqueda con un árbol AVL. Ventajas y desventajas de cada uno. (10 puntos)
+
+A1.) Algoritmo: conjunto de instrucciones claras, no ambiguas, y finitas que son ejecutadas en un orden determinado y permiten resolver un conjunto de problemas.
+A2.) Relación entre algoritmo y programa: un algoritmo puede ser un programa, pero no necesariamente. Los programas son (o deben ser) algoritmos escritos en un lenguaje entendible para la computadora.
+
+CORRECCIÓN: todo programa debe tener uno o varios algoritmos, pero un algoritmo por sí solo no es un programa.
+
+CORRECCIÓN 2: Un algoritmo es la lógica o conjunto de pasos que resuelven un problema. Un programa es la implementación de uno o varios algoritmos mediante un lenguaje de programación, incorporando estruturas de datos y control de flujo.
+
+B1.) Similitudes: ambas son estructuras de datos lineales, de acceso destructivo, que cuentan con un frente (donde se saca) y un fondo (donde se agrega). Diferencias: en las cola circulares el frente se conecta con el fondo (el último elemento referencia al primero) y se avanza en sentido de las agujas del reloj. Además, las colas se implementan con memoria dinámica y las colas circulares con arrays estáticos.
+B2.)
+
+struct Nodo {
+    int valor;
+    Nodo* sig;
+};
+Nodo* frente = NULL;
+Nodo* fondo = NULL;
+C1.)
+				ÁRBOLES
+			       /       \
+		ÁRBOLES BINARIOS	ÁRBOLES N-ARIOS
+			|
+           ÁRBOLES BINARIOS DE BÚSQUEDA
+                        |
+                       AVL
+C2.) Un AVL es exclusivamente un ABB, pero no viceversa. Ventajas del ABB sobre AVL: la inserción es mucho más sencilla ya que no debe evaluarse si es AVL ni balancearlo en caso de no serlo. Desventajas del ABB sobre el AVL: al no estar balanceado puede presentarse un árbol degenerado y se demora más en su recorrido y búsqueda. Ventajas del AVL sobre ABB: la búsqueda es mas eficiente (logaritmo base 2 de la cantidad de nodos totales). Desventajas del AVL sobre el ABB: para que la búsqueda y recorrido sea ágil y rápida al momento de insertarse los nodos debe evaluarse que se cumpla la condición de AVL (los subárboles izquierdo y derecho de todos los nodos del árbol difieren en -1, 0 o 1 en altura) y en caso de no cumplirse deben realizarse las rotaciones correspondientes (simple para I-I o D-D y doble para I-D o D-I), lo que puede conllevar, entre otras cosas, a sacar nodos y reinsertarlos al tener el árbol AVL.

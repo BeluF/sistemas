@@ -1,0 +1,153 @@
+----------------------------Examen parcial 14/06/2017----------------------------
+
+Ejercicio de estructuras de datos lineales dinámicas típicas (A)
+
+Una lista simplemente enlazada (LSE) contiene información sobre un conjunto de artículos vendidos en un local. Los datos almacenados son: codigo_articulo, rubr, descripcion y precio.
+En rubro se guarda el tipo de artículo: limpeza, comestibles, librería, etc.
+Debe realizar una función que reciba una LSE como la descripta y una pila dinámica vacía, la misma debe sacar los artículos de la LSE que corresponden al rubro "Relojería" y que tienen un precio menor a $500 y agregarlos a la pila incrementando su precio en un 15%.
+
+struct nodo_pila{
+	string codigo_articulo;
+	string rubro;
+	string descripción;
+	double precio;
+	struct nodo_pila* link;
+	
+};
+typedef struct nodo_pila NPila;
+
+struct nodo_lista{
+	string codigo_articulo;
+	string rubro;
+	string descripción;
+	double precio;
+	struct nodo_lista* link;
+	
+};
+typedef struct nodo_lista NLSE;
+
+void addStack(NPila* &pila, NLSE* LSE){
+	//Según el ejercicio la pila inicialmente está vacía
+	NPila* nuevo = new NPila;
+	nuevo->codigo_articulo = LSE->codigo_articulo;
+   	nuevo->rubro = LSE->rubro;
+	nuevo->descripcion = LSE->descripcion;
+    
+	nuevo->precio = LSE->precio + ((LSE->precio)*0.15);
+	
+	if(pila == NULL){ //Pila vacía
+		nuevo->link = NULL;
+		pila = nuevo;
+	}
+	else{
+		nuevo->link = pila;
+		pila = nuevo
+	}
+}
+
+void removeLSE(NLSE* &LSE, NLSE* anterior, NLSE* siguiente){
+	NLSE* aux = LSE;
+	
+	//Evaluar si es el primero
+	if(anterior == NULL){
+		LSE = siguiente;
+		delete aux;
+	}
+	
+	//Evaluar si es el último
+	else if(siguiente == NULL){
+		anterior->link = NULL;
+		delete aux;
+	}
+	
+	//Evaluar si está en el medio
+	else{
+		anterior->link = siguiente;
+		delete aux;
+	}
+}
+
+void Reloj (NPila* &pila, NLSE* LSE){
+	if (LSE == NULL) return; //Lista vacía
+	
+	NLSE* aux = LSE;
+	NLSE* anterior = NULL;
+	NLSE* siguiente = aux->link;
+	
+	while (aux != NULL){ //Recorrer la lista
+		if(aux->rubro == "Relojería" && aux->precio < 500.0){
+			addStack(pila, aux);
+			removeLSE(aux, anterior, siguiente);
+		}
+		else {
+			anterior = aux;
+			siguiente = aux->link;
+		}
+		aux = siguiente;
+	}
+}
+
+Ejercicio sobre árboles binarios de búsqueda (C)
+
+Realizar una función que reciba como parámetros:
+* Un árbol binario de búsqueda (ABB).
+* Un código.
+El ABB contiene nodos que utilizan como clave de búsqueda un número entero llamado código.
+Realizar una función que busque de manera eficiente el código dentro del árbol y cuente la cantidad de descendientes que hay en el árbol a partir de ese nodo.s
+
+struct nodo_arbol_b_b{
+	int codigo;
+	struct nodo_arbol_b_b* izq;
+	struct nodo_arbol_b_b* der;
+};
+typedef struct nodo_arbol_b_b ABB;
+
+int getDescendientes(ABB* arbol){
+	if(arbol == NULL) return 0;
+	
+	int cont = 1;
+	cont += getDescendientes(arbol->der) + getDescendientes(arbol->izq);
+	return cont;
+	
+}
+
+int buscar(ABB* arbol, int codigo){
+	if (arbol == NULL) return 0; //Árbol vacío
+	
+	ABB* aux = arbol;
+	
+	while (aux != NULL){
+		if(aux->codigo == codigo){
+			//Hallé el nodo
+			return getDescendientes(aux) -1;
+		}
+		else if (codigo < aux->codigo) aux = aux->izq;
+		else aux = aux->der;
+	}
+	return -1; //No encontrado
+}
+
+Ejercicio sobre árboles (D)
+
+Dado un árbol binario, hacer un algoritmo que convierta dicho árbol en un árbol completo. Las nuevas celdas deberán tener como clave un valor equivalente a la suma de las claves de sus nodos padre y hermano.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
