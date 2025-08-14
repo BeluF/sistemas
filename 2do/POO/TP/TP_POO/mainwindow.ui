@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1399</width>
+    <height>667</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LayoutDirection::LeftToRight</enum>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="13" column="22">
+     <widget class="QLCDNumber" name="lcd_dado">
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:white;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" rowspan="15">
+     <widget class="QWidget" name="boardContainer" native="true">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <layout class="QGridLayout" name="gridLayout"/>
+     </widget>
+    </item>
+    <item row="14" column="22">
+     <widget class="QPushButton" name="BotonTirarDado">
+      <property name="text">
+       <string>Tirar Dado</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="22">
+     <widget class="QWidget" name="widget" native="true">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 100);</string>
+      </property>
+      <layout class="QFormLayout" name="formLayout">
+       <item row="0" column="0">
+        <widget class="QGroupBox" name="groupBox_j1">
+         <property name="maximumSize">
+          <size>
+           <width>1000</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 800 11pt &quot;Cantarell&quot;;color: black;</string>
+         </property>
+         <property name="title">
+          <string>Jugador 1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QGroupBox" name="groupBox_j2">
+         <property name="maximumSize">
+          <size>
+           <width>1000</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 800 11pt &quot;Cantarell&quot;;color: black;</string>
+         </property>
+         <property name="title">
+          <string>Jugador 2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QGroupBox" name="groupBox_j3">
+         <property name="maximumSize">
+          <size>
+           <width>1000</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 800 11pt &quot;Cantarell&quot;;color: black;</string>
+         </property>
+         <property name="title">
+          <string>Jugador 3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QGroupBox" name="groupBox_j4">
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: black;
+font: 800 11pt &quot;Cantarell&quot;;</string>
+         </property>
+         <property name="title">
+          <string>Jugador 4</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1399</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menupausa">
+    <property name="title">
+     <string>Menú</string>
+    </property>
+   </widget>
+   <addaction name="menupausa"/>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

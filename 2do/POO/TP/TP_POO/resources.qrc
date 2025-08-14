@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/rojo.png</file>
+        <file>img/azul.png</file>
+        <file>img/verde.png</file>
+        <file>img/amarillo.png</file>
+        <file>img/fondo.jpg</file>
+        <file>img/oca.png</file>
+        <file>img/puente.png</file>
+        <file>img/posada.png</file>
+        <file>img/calavera.png</file>
+        <file>img/pozo.png</file>
+        <file>img/laberinto.png</file>
+        <file>img/carcel.png</file>
+        <file>img/meta.png</file>
+    </qresource>
+</RCC>

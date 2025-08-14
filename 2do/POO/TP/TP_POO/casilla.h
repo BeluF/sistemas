@@ -1,21 +1,21 @@
 #ifndef CASILLA_H
 #define CASILLA_H
+#include <QString>
 
-// Forward declaration para evitar dependencias circulares
 class Jugador;
 
-class Casilla {
-protected:
+// --- CLASE Casilla ---
+// Clase base que representa una casilla del tablero.
+class Casilla
+{
+private:
     int numero;
 
 public:
     Casilla(int numero);
-    virtual ~Casilla() = default; // Destructor virtual
-
-    int getNumero() const;
-
-    // Método virtual puro que será implementado por cada tipo de casilla.
-    virtual void activar(Jugador* jugador) = 0;
+    int getnumero();
+    virtual QString activarJugador(Jugador *jugador) = 0;
+    virtual ~Casilla() = default; // Agregamos destructor virtual para manejo polimórfico
 };
 
 #endif // CASILLA_H

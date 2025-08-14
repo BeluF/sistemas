@@ -1,17 +1,15 @@
-#ifndef CASILLA_OCA_H
-#define CASILLA_OCA_H
-
+#ifndef CASILLAOCA_H
+#define CASILLAOCA_H
 #include "casilla.h"
-#include "jugador.h"
+#include <QString>
 
-class CasillaOca : public Casilla {
-private:
-    int siguienteOca;
-
+class CasillaOca : public Casilla
+{
 public:
-    CasillaOca(int num, int siguiente) : Casilla(num), siguienteOca(siguiente) {}
+    CasillaOca();
+    CasillaOca(int numero);
+    QString activarJugador(Jugador* jugador);
 
-    void activar(Jugador* jugador) override;
 };
 
-#endif
+#endif // CASILLAOCA_H

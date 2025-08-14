@@ -1,7 +1,12 @@
+// --- CLASE Casilla Normal ---
+// Representa una casilla normal que no tiene efectos especiales.
 #include "casillanormal.h"
-#include <iostream>
 
-void CasillaNormal::activar(Jugador* jugador) {
-    std::cout << "Casilla " << numero << ": Sin efecto." << std::endl;
-    // No se modifica el estado del jugador
+
+CasillaNormal::CasillaNormal(int numero) : Casilla(numero) {}
+
+QString CasillaNormal::activarJugador(Jugador *jugador)
+{
+    // No tiene efecto especial
+    return "";
 }

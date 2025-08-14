@@ -1,7 +1,0 @@
-/home/belu/Desktop/SISTEMAS/AyED/Practica/build/Desktop_Qt_6_8_3-Debug/CMakeFiles/Practica.dir
-/home/belu/Desktop/SISTEMAS/AyED/Practica/build/Desktop_Qt_6_8_3-Debug/CMakeFiles/edit_cache.dir
-/home/belu/Desktop/SISTEMAS/AyED/Practica/build/Desktop_Qt_6_8_3-Debug/CMakeFiles/rebuild_cache.dir
-/home/belu/Desktop/SISTEMAS/AyED/Practica/build/Desktop_Qt_6_8_3-Debug/CMakeFiles/list_install_components.dir
-/home/belu/Desktop/SISTEMAS/AyED/Practica/build/Desktop_Qt_6_8_3-Debug/CMakeFiles/install.dir
-/home/belu/Desktop/SISTEMAS/AyED/Practica/build/Desktop_Qt_6_8_3-Debug/CMakeFiles/install/local.dir
-/home/belu/Desktop/SISTEMAS/AyED/Practica/build/Desktop_Qt_6_8_3-Debug/CMakeFiles/install/strip.dir

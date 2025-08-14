@@ -3,17 +3,17 @@
 
 #include "casilla.h"
 #include "jugador.h"
+#include "estadoJugador.h"
+#include <QString>
 
-class CasillaCastigo : public Casilla {
-private:
-    int turnosPerdidos;
-    int retorno; // -1 si no aplica
-
+class CasillaCastigo : public Casilla
+{
 public:
-    CasillaCastigo(int num, int turnos, int retornoA = -1)
-        : Casilla(num), turnosPerdidos(turnos), retorno(retornoA) {}
+    CasillaCastigo(int numero);
+    QString activarJugador(Jugador *jugador) override;
 
-    void activar(Jugador* jugador) override;
+private:
+    Jugador* jugadorAtrapadoEnPozo = nullptr;
 };
 
-#endif
+#endif // CASILLA_CASTIGO_H

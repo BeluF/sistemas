@@ -1,10 +1,11 @@
 #ifndef ESTADO_JUGADOR_H
 #define ESTADO_JUGADOR_H
 
-enum class EstadoJugador {
-    Normal,
-    Puente,
-    Castigado
+// --- ENUM EstadoJugador ---
+enum estadoJugador
+{
+    noCastigado, // Oca, Puente, Normal
+    castigado    // Posada, Pozo, Cárcel
 };
 
-#endif
+#endif // ESTADO_JUGADOR_H

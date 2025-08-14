@@ -2,11 +2,13 @@
 #define CASILLA_NORMAL_H
 
 #include "casilla.h"
+#include <QString>
 
-class CasillaNormal : public Casilla {
+class CasillaNormal : public Casilla
+{
 public:
-    CasillaNormal(int num) : Casilla(num) {}
-
-    void activar(Jugador* jugador) override;  // solo declaración
+    CasillaNormal(int numero);
+    QString activarJugador(Jugador *jugador) override;
 };
-#endif
+
+#endif // CASILLA_NORMAL_H

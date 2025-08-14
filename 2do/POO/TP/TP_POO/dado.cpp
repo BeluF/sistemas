@@ -1,14 +1,10 @@
-#include "dado.h"
-#include <cstdlib> // Para rand() y srand()
-#include <ctime>   // Para time()
+#include "dado.h" // Incluye la declaración de la clase Dado
 
-// Constructor que inicializa la semilla del generador de números aleatorios
-Dado::Dado() {
-    srand(time(nullptr));
-}
+// Constructor: Inicializa el generador con una semilla de tiempo.
+Dado::Dado() : generador(std::random_device()()), distribucion(1, 6) {}
 
-// Devuelve un número aleatorio entre 1 y 6
-//VER: Hacer con mt19937 que distribuye mejor los números
-int Dado::tirar() {
-    return 1 + (rand() % 6);
+// Método tirar(): Simula el lanzamiento del dado y retorna un número aleatorio entre 1 y 6.
+int Dado::tirar()
+{
+    return distribucion(generador);
 }
