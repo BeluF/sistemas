@@ -1,1 +1,0 @@
-Enunciado: Ingresado un número correspondiente a un mes (entre 1 y 12), haga un algoritmo que devuelva cuantos dias tiene determinado mes.

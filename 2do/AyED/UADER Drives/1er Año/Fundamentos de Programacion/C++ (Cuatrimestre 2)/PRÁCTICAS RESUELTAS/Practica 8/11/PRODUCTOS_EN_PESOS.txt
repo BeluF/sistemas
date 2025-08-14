@@ -1,9 +1,0 @@
-3232
-Termostato
-$200000
-2
-Termo Stanley
-$20000
-6
-Pileta Pelopincho
-$50000

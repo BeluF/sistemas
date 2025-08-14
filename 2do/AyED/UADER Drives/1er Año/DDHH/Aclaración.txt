@@ -1,3 +1,0 @@
-Qué significa el color de las carpetas:
-color gris: trabajo incompleto
-color azul: trabajo completo
