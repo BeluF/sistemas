@@ -1,0 +1,350 @@
+------------------------------ PARCIAL 2023 - 2024 ------------------------------
+A - (25 Puntos)
+Se tiene una Lista Doblemente Enlazada (LDE) que contiene los datos de niños aspirantes para el ingreso a un jardín de infantes. Los datos almacenados en cada nodo son:
+Nombre completo del niño, nombre completo del tutor, edad del niño, distancia de la residencia del niño a la institución en km, teléfono de contacto, salita (inicialmente el campo está en blanco).
+Debe desarrollar una función que reciba una LDE como la anterior y realice la distribución de los niños en las salas (Representada cada una por una pila).
+* Salita Verde: chicos menor de 4 y mayores de 2 que residen a más de 2km.
+* Salita Negra: chicos cuya edad es mayor o igual a 4 años y menor de 6, y que residen a más de 2km.
+Aquellos niños que no quepan en ninguna de las categorías deben permanecer en la LDE. Los niños deben ser removidos de la LDE y agregados a la pila correspondiente.
+
+#define minN = 4;
+#define maxN = 6;
+#define edadV = 3;
+#define maxDist = 2.0;
+
+struct nodo_LDE{
+	string nombreNinio;
+	string nombreTutor;
+	int edad;
+	float distancia;
+	string telefono; //Se utiliza como cadena porque C++ interpreta como nro octal los nros iniciados con 0. Además, al ser cadena pueden introducirse espacios y/o guiones. NO es recomendado el uso de char* porque si el tamaño de los teléfonos es dinámico debe gestionarse la memoria manualmente.
+	string salita;
+	struct nodo_LDE* ant;
+	struct nodo_LDE* sig;
+};
+typedef struct nodo_LDE LDE;
+
+struct nodo_pila_verde{
+	string nombreNinio; 
+	string nombreTutor;
+	int edad;
+	float distancia;
+	string telefono;
+	struct nodo_pila_verde* sig;
+};
+typedef struct nodo_pila_verde NPilaV;
+
+struct nodo_pila_negra{
+	string nombreNinio; 
+	string nombreTutor;
+	int edad;
+	float distancia;
+	string telefono;
+	struct nodo_pila_negra* sig;
+};
+typedef struct nodo_pila_negra NPilaN;
+
+bool eliminarLDE(LDE* &LDE){
+	//Evaluar si la lista no está vacía
+	if(LDE == NULL) return false;
+	
+	LDE* aux = LDE, *anterior = LDE->ant, *siguiente = LDE->sig;
+	
+	//Si el nodo a eliminar es el primero (ant apunta a null)
+	if(aux->ant == NULL){
+		//Si el nodo a eliminar es el único (sig apunta a null)
+		if(aux->sig == NULL){
+			delete LDE;
+			return true;
+		}
+		//Si no es el único
+		else{
+			LDE = LDE->sig; //LDE apunta al nodo sig al que se elimina
+			LDE->ant = NULL; //El puntero anterior tiene que ir a NULL (ahora es el 1ero)
+			delete aux;
+			return true;
+		}
+	}
+	
+	
+	//Si el nodo a eliminar es el último (sig apunta a null)
+	else if(aux->sig == NULL){
+		//No evalúo posibilidad de que sea el único nodo porque en ese caso ingresaría por el if de arriba.
+		anterior->sig = NULL;
+		delete aux;
+		return true;
+	}
+	
+	
+	//Si el nodo a eliminar es intermedio
+	else{
+		anterior->sig = aux->sig; //El anterior del nodo a eliminar debe apuntar al siguiente del nodo a eliminar
+		siguiente->ant = aux->ant; //El siguiente del nodo a aliminar debe apuntar (hacia atrás) al anterior del nodo a eliminar
+		delete aux;
+		return true;
+	}
+}
+
+void distribuirNinios(LDE* &LDE, NPilaV* &verde, NPilaN* &negra){
+	
+	if(LDE == NULL) return; //Lista vacía
+	
+	LDE* aux = LDE;
+
+	while(aux != NULL){
+	        LDE* siguiente = aux->sig;
+	if((auxV->distancia) > maxDist){
+		if((aux->edad) == (edadV)){ //Edad: 3
+		
+			//Crear el nodo
+			NPilaV* nuevoV = new NPilaV{aux->nombreNinio,
+			aux->nombreTutor, aux->edad, aux->distancia,
+			aux->telefono};
+			
+			//Agregar el nodo
+			verde = nuevoV;
+			
+			eliminarLDE(aux);
+		}
+		else if((aux->edad) >= (minN) ||(aux->edad) < (maxN)){ //Edad mayor o igual a 4 pero menor que 6.
+					
+			//Crear el nodo
+			NPilaN* nuevoN = new NPilaN{aux->nombreNinio,
+			aux->nombreTutor, aux->edad, aux->distancia,
+			aux->telefono};
+
+			//Agregar el nodo
+			negra = nuevoN;
+			
+			eliminarLDE(aux);
+		}
+		}
+
+		aux = siguiente;
+	}
+
+}
+
+
+B - (20 puntos)
+Realizar una función que reciba como parámetro una árbol binario. El mismo contiene como clave un código numérico entero.
+Desarrollar una función que muestre por pantalla los códigos del los nodos del arbol por niveles. Es es, primero muestra el nodo raíz, luego los nodos del nivel 1, luego los del nivel 2 y así sucesivamente; INDICANDO con un títuloa ntes de arrancar cada nivel.
+Aclaración: No puede utilizar funciones recursivas. No es necesario que programe las funciones para el manejo de la pila o cola (si es que las utiliza) pero si debe definir sus estructuras de datos.
+
+#define MAX 100;
+
+struct nodo_arbol_binario{
+	int clave;
+	struct nodo_arbol_binario* izq;
+	struct nodo_arbol_binario* der;
+};
+typedef struct nodo_arbol_binario NAB;
+
+struct cola_estatica{
+	NAB* clave[MAX];
+	int frente;
+	int fondo;
+	//int tamanio;
+	//int tope; //Posición a realizar la próxima inserción. Cola vacía: tope=0
+};
+typedef struct cola_estatica ColaE;
+
+void addQueue(ColaE* &cola, NAB* arbol);
+void removeQueue(ColaE* &cola, NAB* arbol);
+NAB* isEmptyQueue(ColaE* cola);
+
+int cantElemCola(ColaE* cola){
+	if(cola->fondo >= cola->frente) return (cola->fondo - cola->frente);
+	return ((MAX - cola->frente) + cola->fondo);
+}
+
+void mostrar(NAB* arbol){
+	if(arbol == NULL) return; //Árbol vacío
+	
+	ColaE* cola;
+	addQueue(cola, arbol);
+	
+	NAB* aux = NULL;
+	int i = 0;
+	while(!isEmptyQueue(cola)){
+		int count = cantElemCola(cola)
+		removeQueue(cola, arbol);
+		cout << "Nivel "<< i++ << ": ";
+		for (int j = 0; j < count; j++){
+			NAB* aux;
+			removeQueue(cola, aux);
+			cout << aux->clave << " ";
+			if(aux->izq != NULL) addQueue(cola, aux->izq);
+			if(aux->der != NULL) addQueue(cola, aux->der);
+		}
+		cout << endl;
+
+	}
+}
+
+C - (10 Puntos)
+Insertar en un árbol binario de búsqueda los siguiente valores: 24, 30, 54, 12, 6, 18, 21, 48, 15.
+Representar de manera gráfica cada uno de los estados intermedios (como queda el árbol luego de cada inserción).
+Representar la secuencia de nodos que son "visitados" en el árbol anterior siguiendo los siguientes barridos:
+* In Orden.		* Post Orden.		* Por Niveles.
+
+* +24
+24
+
+* +30
+	24
+	    \
+		30
+
+* +54
+	24
+	    \	
+		30
+	            \
+			54
+
+* +12
+	24
+     /	    \
+    12	    30
+    	      \
+		54
+
+
+* +6
+		24
+	      /	  \
+	     12	  30
+             /     \
+            6	    54
+
+
+
+* +18
+		24
+	      /	  \
+	     12	  30
+             / \    \
+            6  18   54
+		
+
+* +21		
+	        24
+	      /	  \
+	     12	  30
+             / \    \
+            6  18   54
+            	\
+            	21
+			
+* +48
+	        24
+	      /	  \
+	     12	  30
+             / \    \
+            6  18   54
+            	\   /
+            	21 48
+            	
+* +15
+	        24
+	      /	  \
+	     12	  30
+             / \    \
+            6  18   54
+               /\   /
+             15 21 48
+
+* In Orden: 6 12 15 18 21 24 30 48 54
+* Post Orden (IDR): 6 15 21 18 12 48 54 30 24
+* Por niveles: 24 12 30 6 18 54 15 21 48
+
+E - (20 puntos)
+INventar y programar un barrido para un árbol TERNARIO. EL mismo, como todo barrido, debe garantizar "procesar" TODOS los nodos UNA sola vez. Proponga la estructura de datos y desarrolle el programa correspondiente (cuando toca el "procesar" solo visualice el contenido del nodo en la pantalla).
+Como contenido del nodo utilice un carácter.
+Proponga de manera gráfica un ejemplo pequeño de árbol y muestre como sería la salida del programa.
+
+#define MAX 100;
+
+struct nodo_arbol_ternario{
+	char dato;
+	struct nodo_arbol_ternario* izq;
+	struct nodo_arbol_ternario* medio;
+	struct nodo_arbol_ternario* der;
+};
+typedef nodo_arbol_ternario NAT;
+
+struct nodo_pila_estatica{
+	NAT* dato[MAX];
+	int tamanio;
+	int tope; //Posición en que se agrega el nodo. Pila vacía: tope = 0.
+	
+};
+typedef nodo_pila_estatica NPilaE;
+
+bool isEmptyStack (NPilaE* pila){
+	return (pila->tope == 0);
+}
+
+void addStack(NPilaE* &pila, NAT* arbol){
+	if((pila->tope) == (pila->tamanio)) return; //Pila llena
+	
+	pila->dato[pila->tope++] = arbol;
+}
+
+NAT* removeStack(NPilaE* &pila){
+	if(!isEmptyStack(pila)) return pila->dato[--pila->tope];
+	return NULL;
+}
+
+void barrido(NAT* arbol, NPilaE* &pila){
+	if(arbol == NULL) return; //Árbol vacío
+	
+	addStack(pila, arbol);
+	NAT* aux = NULL;
+	while(!isEmpryStack(pila)){
+		aux = removeStack(pila);
+		cout << aux->dato << " ";
+		
+		if(aux->izq != NULL){
+			addStack(pila, aux->izq);	
+		}
+		if(aux->medio != NULL){
+			addStack(pila, aux->medio);	
+		}
+		if(aux->der != NULL){
+			addStack(pila, aux->der);	
+		}
+	}
+}
+
+Ejemplo gráfico:
+
+		A
+	      / | \
+	     B  C  D
+	    /   |   \
+	   E    F    G
+
+Salida esperada del programa (preorden->R,I,M,D): A B E C F D G
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,294 @@
+🔹 Sección A – Conceptual / Teórica (2 pts)
+(1 pt) Explique con sus palabras qué significa que una estructura esté implementada de forma dinámica. ¿Cuáles son sus ventajas y riesgos respecto a una estática?
+Significa que la memoria que ocupará la estructura se "pide" al sistema operativo en tiempo de ejecución y no de compilación. Se implementa mediante punteros. 
+Su ventaja sobre la estática es que, al no saber la máxima cantidad que admitirá nuestra estructura, no sobredimensionaremos y tomaremos memoria que no vamos a utilizar. Su desventaja es que esta memoria debe ser liberada una vez finalicemos de utilizarla porque de lo contrario podrían generarse memory leaks.
+
+
+(1 pt) ¿Qué condiciones debe cumplir una estructura para funcionar correctamente como pila y como cola? Compare ambas estructuras en cuanto al acceso a los elementos.
+Tanto la pila como la cola son estructuras de datos lineales que permiten solo tres operaciones sobre ellas: push, pop y preguntar si está vacía.
+En el caso de la pila es una estructura de datos de tipo LIFO (Last In First Out) ya que solo puede sacarse de la punta o el tope, donde se ubica el último elemento ingresado.
+En el caso de la cola es de tipo FIFO (First In First Out) y consta de dos accesos: frente y fondo donde se AGREGA por el FONDO y se SACA por el FRENTE (para acceder al primer elemento que ingresó).
+
+🔹 Sección B – Listas enlazadas (3 pts)
+Se define la siguiente estructura:
+
+struct nodo {
+    int valor;
+    nodo* sig;
+};
+typedef nodo* Lista;
+(1 pt) Escriba una función bool eliminarNodo(Lista &L, int val) que elimine el primer nodo con el valor val.
+
+bool eliminarNodo (Lista &L, int val){
+	Lista aux = L;
+	Lista anterior = NULL;
+	if (L == NULL) return false; //Lista vacía
+	
+	while (aux != NULL && aux->valor != val){
+		anterior = aux;
+		aux = aux->sig;
+	}
+	
+	if(aux->sig == NULL){ //Es el último nodo
+		anterior->sig = NULL;
+		delete aux;
+		aux=anterior;
+		return true;
+	}
+	else if(aux == L){ //Es el primer nodo
+		anterior->sig = aux->sig;
+		delete aux;
+		aux=anterior;
+		return true;
+	}
+	else{ //El nodo está en el medio
+		anterior->sig = aux->sig;
+		delete aux;
+		return true;
+	}
+}
+
+(2 pts) Escriba una función void separarParesImpares(Lista L, Lista &pares, Lista &impares) que separe los elementos en dos listas distintas (no deben crearse nodos nuevos).
+
+struct nodo_par {
+    int valor;
+    nodo* sig;
+};
+typedef nodo* ListaP;
+
+struct nodo_impar {
+    int valor;
+    nodo* sig;
+};
+typedef nodo* ListaI;
+
+void separarParesImpares (Lista L, ListaP &pares, ListaI &impares){
+	Lista aux = L, anterior = NULL;
+	ListaP auxP = pares, anteriorP = NULL;
+	ListaI auxI = impares, anteriorI = NULL;
+	if(L == NULL) return; //Lista vacía
+	
+	while (aux != NULL){ //Recorro la lista
+		if((aux->valor)%2==0){ //Par
+		if (pares == NULL){
+			auxP = aux; //"Duplico" el nodo
+			anterior->sig = aux->sig;
+			aux = aux->sig; // EL puntero de ingreso a la lista apunta al sgte
+			auxP->sig = NULL; //EN mi lista de pares el "nuevo" nodo debe apuntar a nulo.
+		} 
+		else{
+			while (auxP != NULL){
+				anteriorP = auxP;
+				auxP = auxP->sig;
+			}
+			//Encontre el ultimo nodo
+			auxP->sig = aux; //Le anexo al ultimo nodo el "nuevo" nodo.
+			anterior->sig = aux->sig;
+			
+		}
+		
+			if(pares != NULL){ //Lista de pares no vacía
+				while (auxP != NULL){
+					anteriorP = auxP;
+					auxP->sig;
+				}
+				anterior->sig = aux->sig; //Al nodo anterior del buscado lo conecto con el que le sigue al buscado
+				//Hago las nuevas asignaciones en la lista de pares
+				anterior->sig = aux;
+				aux->sig = NULL;	
+			}
+			else{//Lista de pares vacía
+				anterior->sig = aux->sig; 
+				
+				pares = aux;
+				aux->sig = NULL;
+			}
+		}
+		else{ //Impar
+			if(impares != NULL){ //Lista de impares no vacía
+				while (auxI != NULL){
+					anteriorI = auxI;
+					auxI->sig;
+				}
+				anterior->sig = aux->sig; //Al nodo anterior del buscado lo conecto con el que le sigue al buscado
+				//Hago las nuevas asignaciones en la lista de impares
+				anterior->sig = aux;
+				aux->sig = NULL;	
+			}
+			else{//Lista de impares vacía
+				anterior->sig = aux->sig; 
+				
+				impares = aux;
+				aux->sig = NULL;
+			}
+		
+		}
+		anterior = aux;
+		aux = aux->sig;
+	}
+
+}
+
+🔹 Sección C – Árbol binario de caracteres (2.5 pts)
+Dado el siguiente tipo:
+
+
+struct nodo_arbol {
+    char dato;
+    nodo_arbol* izq;
+    nodo_arbol* der;
+};
+typedef nodo_arbol AB;
+
+(1.5 pts) Escriba una función void insertar(AB &arbol, char valor) que inserte manteniendo un ABB (Árbol Binario de Búsqueda).
+
+void insertar (AB* &arbol, char valor){
+	AB* aux = arbol;
+	AB* nuevo = new (AB);
+	nuevo->dato = valor;
+	nuevo->der = NULL; nuevo->izq = NULL;
+	
+	//ÁRBOL VACÍO
+	if (arbol == NULL){
+		if(valor>aux->dato){ //Derecha
+			aux->der = nuevo;
+		}
+		else{ //Izquierda
+			aux->izq = nuevo;
+		}
+	}
+	
+	//ÁRBOL NO VACÍO
+	while(aux != NULL){
+		if(valor>aux->valor){ //Derecha
+			if(aux->der == NULL{
+				aux->der = nuevo;
+			}
+			else{
+				aux = aux->der;
+			}
+		}
+		else{ //Izquierda
+			if(aux->izq == NULL){
+				aux->izq = nuevo;
+			}
+			else{
+				aux = aux->izq;
+			}
+		}
+	}
+}
+
+(1 pt) Escriba una función int contarHojas(AB arbol) que devuelva cuántos nodos hoja tiene el árbol.
+
+struct nodo_pila_e{
+	AB* arbol;
+	struct nodo_pila_e* sgte;
+};
+typedef nodo_pila_e* NPilaE;
+
+void pushStack(NPilaE pila, AB* arbol);
+AB* popStack(NPilaE pila);
+bool isEmptyStack(pila);
+
+//Con barrido preorden
+int contarHojas(AB* arbol){
+	if (arbol == NULL) return;	
+	
+	NPilaE pila = NULL;
+	int cont = 0;
+	pushStack(pila, arbol);
+	
+	while(!isEmptyStack(pila)){
+		AB* aux = popStack(pila);
+		
+		if(aux->izq == NULL && aux->der == NULL){
+			cont++;
+		}
+		
+		else{
+			if(aux->izq != NULL){
+			aux = aux->izq;
+		}
+		
+			else {
+			aux = aux->der;
+		}
+		}
+		
+		
+		
+	}
+}
+
+🔹 Sección D – Árbol ternario + recorrido iterativo (2.5 pts)
+Dado el siguiente tipo:
+----------BIEN HECHO-----------
+struct nodo_ternario {
+    char dato;
+    nodo_ternario* izq;
+    nodo_ternario* medio;
+    nodo_ternario* der;
+};
+typedef nodo_ternario* AT;
+
+(1 pt) Proponga un ejemplo visual de árbol ternario de 6 nodos con letras (dibujado o descrito en texto).
+
+(A(B(E,F),C,D))
+
+(1.5 pts) Escriba un recorrido iterativo inorden para este árbol usando una pila y banderas (int bandera), sin recursión.
+
+struct nodo_pila_e{
+	AT arbol;
+	int bandera;
+	struct nodo_pila_e* sgte;
+};
+typedef nodo_pila_e* NPilaE;
+
+void addStack(pila, arbol, bandera);
+void removeStack(pila, bandera);
+void isEmptyStack(pila);
+
+void recorrer (AT arbol){
+	if(arbol==NULL) return; //Arbol vacío
+	
+	NPilaE pila = NULL;
+	addStack(arbol, pila, 1);
+	
+	AT aux;
+	int bandera;
+	
+	while(!isEmptyStack(pila)){
+		removeStack(pila, aux, bandera);
+		if(bandera == 1){
+		
+		addStack(pila, aux, 2);
+		
+		if(aux->izq != NULL) addStack(pila, aux->izq, 1);
+		}
+		else{
+		cout << aux->dato;
+		if(aux->medio != NULL) addStack(pila, aux->medio, 1);
+		if(aux->der != NULL) addStack(pila, aux->der, 1);		
+		}
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
