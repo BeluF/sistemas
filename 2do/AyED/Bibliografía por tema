@@ -38,3 +38,36 @@ Título: Estructura de Datos en C++
 Autor: Luis Joyanes; Ignacio Zahonero; Lucas Sánchez
 Edición: Primera Edición
 Sección: Capitulo 10, Capítulo 11 y Capítulo 12 (páginas 275 a 364)
+
+* Tema 3: Árboles
+
+Árboles. Árboles Binarios. Árboles Binarios de Búsqueda. Utilización con Algoritmos Recursivos. Barridos PRE-Orden, POST-Orden e IN-Orden. Definiciones Varias.
+
+Título: Estructura de Datos en C++
+Autor: Luis Joyanes; Ignacio Zahonero; Lucas Sánchez
+Edición: Primera Edición
+Sección: Capítulo 16 (páginas 463 a 508) con la excepción de 16.4 que no debe ser considerada.
+
+Título: Algoritmos y Estructuras de Datos
+Autor: Varios
+Edición: Facultad de Ingeniería y Ciencias Hídricas. Universidad Nacional del Litoral. Centro de Investigacion de Métodos Computacionales.
+Sección: Capítulo 3. Árboles (páginas 151 a 215) con la excepción de 3.8.6 Arboles de Huffman.
+Link: https://cimec.org.ar/~mstorti/aed/aednotes.pdf
+
+Árboles AVL. Árboles B.
+
+Título: Estructura de Datos en C++
+Autor: Luis Joyanes; Ignacio Zahonero; Lucas Sánchez
+Edición: Primera Edición
+Sección: Capítulo 17 (páginas 509 a 547)
+Aclaración: No hacemos foco sobre la programación. Solo teoría, definiciones y representación gráfica de los algoritmos.
+
+
+* Tema 4: Grafos.
+
+Definiciones. Implementación con Matriz de Adjacencia. Implementación con Lista de Adjacencia.
+
+Título: Estructura de Datos en C++
+Autor: Luis Joyanes; Ignacio Zahonero; Lucas Sánchez
+Edición: Primera Edición
+Sección: Capítulo 18 (páginas 549 a 600)
