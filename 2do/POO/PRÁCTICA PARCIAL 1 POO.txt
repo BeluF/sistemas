@@ -1,0 +1,72 @@
+/*  PRÁCTICA PARCIAL 1 POO  */
+/*  UADER software alumnado  */
+
+/*
+Ejercicio 4: Defina los siguientes conceptos fundamentales de la programación orientada a objetos (sea breve) Clase, Herencia, Objeto, Mensaje, composición.
+
+Clase: Es un bloque que contiene los atributos y métodos necesarios para crear un conjunto de objetos según un modelo predefinido.
+Herencia: Es una técnica de reutilización de código que permite jerarquizar clases, donde existe una clase padre y una(s) clase(s) hija(s) que heredan del padre los métodos y atributos.
+Objeto: Es una entidad que encapsula métodos y atributos. Es también una instancia de una clase, lo que significa que hereda las características y comportamientos definidos en esta.
+Mensaje: Es la forma en que los objetos interactúan entre sí, solicitando uno a otro que ejecute uno de sus métodos.
+Composición: Es una técnica de reutilización de código que consiste en una relación donde una clase tiene otras clases como miembros y las clases contenidas se crean y destruyen junto a la principal. La clase contenedora puede acceder a los métodos y atributos de la contenida, pero para que se de al revés, la contenedora debe ser pasada por referencia o declararse como friend.
+*/
+
+/*
+Ejercicio 5: 
+ Indique cual es la salida del siguiente algoritmo para los valores : x(17,0) , x(857,0) , x(1234,0)
+
+
+int x(int n, int t)
+
+{
+
+if (n == 0) return t;
+
+t = (t * 10) + (n % 10);
+
+return x(n / 10, t);
+
+}
+
+x(17,0): 71
+x(857,0): 758
+x(1234,0): 4321
+
+La función toma un numero n y lo devuelve invertido
+*/
+
+
+/*
+ALUMNO:
+//Curso* curso;
+int DNI;
+char* nombre;
+int cant;
+double* notas;
+
+//imaginar los getters y setters
+
+void add(double nota);
+void remove(int index);
+void replace(int index);
+int getestado();
+
+//sobrecarga de op: 
+
+CURSO:
+Alumno* al[50];
+
+void listarAlumnos();
+
+
+
+*/
+
+
+
+
+
+
+
+
+
