@@ -1,25 +1,35 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[11pt,a4paper]{article}   % Clase de documento: artículo, tamaño 11pt, papel A4
+\date{}  % quita la fecha
+
 
 % ===== Paquetes básicos =====
-\usepackage[spanish,es-noquoting]{babel} % español
-\usepackage[utf8]{inputenc}              % UTF-8
-\usepackage[T1]{fontenc}                 % acentos correctos en PDF
-\usepackage{lmodern}                     % mejor tipografía
-\usepackage{geometry}                    % márgenes
-\geometry{margin=2.5cm}
-\usepackage{amsmath,amssymb,amsthm}      % mates
-\usepackage{hyperref}                    % links clickeables
-\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
-\usepackage{enumitem}                    % listas compactas
-\setlist{itemsep=0.2em, topsep=0.2em}
+\usepackage[spanish,es-noquoting]{babel} % Soporte para español, evita comillas automáticas
+\usepackage[utf8]{inputenc}              % Entrada en UTF-8 (acentos directos)
+\usepackage[T1]{fontenc}                 % Codificación para salida en PDF (acentos correctos)
+\usepackage{lmodern}                     % Tipografía Latin Modern (mejor que la Computer Modern)
+\usepackage{geometry}                    % Márgenes personalizables
+\geometry{margin=2.5cm}                  % Márgenes de 2.5 cm
+\usepackage{amsmath,amssymb,amsthm}      % Paquetes AMS para matemáticas
+\usepackage{hyperref}                    % Hipervínculos clickeables en índice y referencias
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue} % Colores de links
+\usepackage{enumitem}                    % Control de espaciado en listas
+\setlist{itemsep=0.2em, topsep=0.2em}    % Listas más compactas
 
 % ===== Comandos útiles =====
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Pof}[1]{\mathcal{P}(#1)}    % conjunto de partes
-\newcommand{\compl}[1]{\overline{#1}}    % complemento
+\newcommand{\N}{\mathbb{N}}              % Conjunto de números naturales
+\newcommand{\Pof}[1]{\mathcal{P}(#1)}    % Conjunto de partes
+\newcommand{\compl}[1]{\overline{#1}}    % Complemento
 
-\title{Apuntes de Álgebra de Matemática Discreta}
+% ===== Tablas y colores =====
+\usepackage{array}                       % Mejor control de tablas
+\newcolumntype{C}{>{$}c<{$}}             % Columna centrada en modo matemático
+\usepackage{tcolorbox}                   % Cajas de texto bonitas
+\usepackage[table]{xcolor}               % Colores en tablas
+\usepackage{paracol}
 
+% ===== Datos del documento =====
+\title{Matemática Discreta \\[0.5em]
+\large Álgebras de Boole y Relaciones de Recurrencia}
 
 \begin{document}
 \maketitle
@@ -47,7 +57,7 @@ Más explícitamente:
 \subsection{Álgebra de Boole de conjuntos}
 
 \subsubsection{Relación de divisibilidad}
-Si $x,y\in\N$, se dice que “$x$ divide a $y$” si y sólo si:
+Si $x,y\in\N$, se dice que “$x$ divide a $y$”:
 \[
 x \mid y \;\Longleftrightarrow\; \exists\,k\in\N:\; y=kx.
 \]
@@ -63,123 +73,100 @@ donde la relación enttre sus elementos es la \textit{\textbf{divisibilidad}}.
     \item $D(n)$ es el conjunto de todos los divisores de $n$.
     \item $x \lor y = \text{mcm}(x,y)$.
     \item $x \land y = \text{mcd}(x,y)$.
-    \item $\lnot x = \frac{n}{x}$.
+    \item $\overline x = \frac{n}{x}$.
     \item $1$ es el elemento neutro para $\lor$.
     \item $n$ es el elemento neutro para $\land$.
 \end{itemize}
 
 \subsection{Propiedades}
+
+\begin{paracol}{2}
 \paragraph{Doble complemento.}
-\[
+\begin{align*}
 \compl{\compl{A}}=A, \qquad
-\lnot(\lnot)x = x
-\]
+\overline{\overline{x}} = x
+\end{align*}
+
+\switchcolumn % <-- cambia a columna 2
 
 \paragraph{Leyes de De Morgan.}
-\[
-\compl{A\cup B} = \compl{A}\cap\compl{B},\qquad
-\lnot(x\lor y) = \lnot x \land \lnot y
-\]
+\begin{align*}
+\compl{A\cup B} &= \compl{A}\cap\compl{B}, & \overline{x\lor y} &= \overline{x} \land \overline{y} \\
+\compl{A\cap B} &= \compl{A}\cup\compl{B}, & \overline{x\land y} &= \overline{x} \lor \overline{y}
+\end{align*}
 
-\[
-\compl{A\cap B} = \compl{A}\cup\compl{B},\qquad
-\lnot(x\land y) = \lnot x \lor \lnot y
-\]
+\switchcolumn % <-- cambia a columna 1
 
 \paragraph{Leyes conmutativas}
-\[
-A \cup B = B \cup A,\qquad
-x \lor y  = y \lor x
-\]
+\begin{align*}
+A \cup B &= B \cup A, & x \lor y &= y \lor x \\
+A \cap B &= B \cap A, & x \land y &= y \land x
+\end{align*}
 
-\[
-A \cap B = B \cap A, \qquad
-x \land y = y \land x
-\]
+\switchcolumn % <-- cambia a columna 2
 
 \paragraph{Leyes asociativas}
-\[
-A \cup (B \cup C) = (A \cup B) \cup C,\qquad
-x \lor (y \lor z) = (x \lor y) \lor z
-\]
+\begin{align*}
+A \cup (B \cup C) &= (A \cup B) \cup C, & x \lor (y \lor z) &= (x \lor y) \lor z \\
+A \cap (B \cap C) &= (A \cap B) \cap C, & x \land (y \land z) &= (x \land y) \land z
+\end{align*}
 
-\[
-A \cap (B \cap C) = (A \cap B) \cap C, \qquad
-x \land (y \land z) = (x \land y) \land z
-\]
-
-\paragraph{Leyes distributivas}
-\[
-A \cup (B \cap C) = (A \cup B) \cap (A \cup C),\qquad
-x \lor (y \land z) = (x \lor y) \land (x \lor z)
-\]
-
-\[
-A \cap (B \cup C) = (A \cap B) \cup (A \cap C), \qquad
-x \land (y \lor z) = (x \land y) \lor (x \land z)
-\]
+\switchcolumn % <-- cambia a columna 1
 
 \paragraph{Leyes de idempotencia}
-\[
-A \cup A = A,\qquad
-x \lor x = x
-\]
+\begin{align*}
+A \cup A &= A, & x \lor x &= x \\
+A \cap A &= A, & x \land x &= x
+\end{align*}
 
-\[
-A \cap A = A, \qquad
-x \land x = x
-\]
+\switchcolumn % <-- cambia a columna 1
 
 \paragraph{Leyes de identidad}
-\[
-A \cup \varnothing = A,\qquad
-x \lor 1 = x
-\]
+\begin{align*}
+A \cup \varnothing &= A, & x \lor 1 &= x \\
+A \cap S &= A, & x \land n &= x
+\end{align*}
 
-\[
-A \cap S = A, \qquad
-x \land n = x
-\]
+\switchcolumn % <-- cambia a columna 2
 
 \paragraph{Leyes de los inversos}
-\[
-A \cup \compl{A} = S,\qquad
-x \lor \lnot x = n
-\]
+\begin{align*}
+A \cup \compl{A} &= S, & x \lor \overline{x} &= n \\
+A \cap \compl{A} &= \varnothing, & x \land \overline{x} &= 1 \\
+A \cup \compl{A} &= S, & x \lor \overline{x} &= n \\
+A \cap \compl{A} &= \varnothing, & x \land \overline{x} &= 1
+\end{align*}
 
-\[
-A \cap \compl{A} = \varnothing, \qquad
-x \land \lnot x = 1
-\]
+\switchcolumn % <-- cambia a columna 1
 
 \paragraph{Leyes de dominación}
-\[
-A \cup S = S,\qquad
-x \lor n = n
-\]
+\begin{align*}
+A \cup S &= S, & x \lor n &= n \\
+A \cap \varnothing &= \varnothing, & x \land 1 &= 1
+\end{align*}
 
-\[
-A \cap \varnothing = \varnothing, \qquad
-x \land 1 = 1
-\]
+\switchcolumn % <-- cambia a columna 2
 
 \paragraph{Leyes de absorción}
-\[
-A \cup (A \cap B) = A,\qquad
-x \lor (x \land y) = x
-\]
+\begin{align*}
+A \cup (A \cap B) &= A, & x \lor (x \land y) &= x \\
+A \cap (A \cup B) &= A, & x \land (x \lor y) &= x
+\end{align*}
 
-\[
-A \cap (A \cup B) = A, \qquad
-x \land (x \lor y) = x
-\]
+\paragraph{Leyes distributivas}
+\begin{align*}
+A \cup (B \cap C) &= (A \cup B) \cap (A \cup C), & x \lor (y \land z) &= (x \lor y) \land (x \lor z) \\
+A \cap (B \cup C) &= (A \cap B) \cup (A \cap C), & x \land (y \lor z) &= (x \land y) \lor (x \land z)
+\end{align*}
+\end{paracol}
+
 
 \subsection{Álgebra de los interruptores}
 \paragraph{Circuito en serie.} $x \cdot y = xy$
-\paragraph{Circuito en paralelo.} $x + y = xy$
+\paragraph{Circuito en paralelo.} $x + y$
 
 \subsection{Funciones de conmutación}
-Sea $B = {0, 1}$, el conjunto de los valores booleanos.
+Sea $B = \{0, 1\}$, el conjunto de los valores booleanos.
 
 \paragraph{Suma} $$x + y = \begin{cases}
 0 & \Leftrightarrow x = 0 \boldsymbol{\land} y = 0 \\
@@ -198,9 +185,203 @@ Sea $B = {0, 1}$, el conjunto de los valores booleanos.
 
 \subsection{Funciones booleanas}
 
-Sea $n \in \mathbb{Z}^+$, $B^n = {(b_1, b_2, ..., b_n) / b_i \in\ {0, 1}, \forall i}$
+Sea $n \in \mathbb{Z}^+$, $B^n = \{(b_1, b_2, ..., b_n) / b_i \in \{0, 1\}, \forall i\}$
 ($B_n$ se forma de n-uplas de 0 o 1).
 Una función $f: B^n \rightarrow B$ se llama función booleana o \textit{\textbf{función de conmutación}}
 y su tabla contiene $2^n$ filas.
+
+$f:\; B^{3}\to B$, definida por $f(x,y,z)=xy+z$
+
+\begin{center}
+\begin{tabular}{C C C | C | C}
+\hline
+x & y & z &f(x,y,z) = xy+z \\
+\hline
+0 & 0 & 0 & 0\cdot 0 + 0 = 0 \\
+0 & 0 & 1 & 0\cdot 0 + 1 = 1 \\
+0 & 1 & 0 & 0\cdot 1 + 0 = 0 \\
+0 & 1 & 1 & 0\cdot 1 + 1 = 1 \\
+1 & 0 & 0 & 1\cdot 0 + 0 = 0 \\
+1 & 0 & 1 & 1\cdot 0 + 1 = 1 \\
+1 & 1 & 0 & 1\cdot 1 + 0 = 1 \\
+1 & 1 & 1 & 1\cdot 1 + 1 = 1 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Igualdad entre funciones booleanas}
+
+Para $n \in \mathbb{Z}^+, n\geqslant 2$, sean $f,g:\; B^n \to B$ dos funciones booleanas, entonces
+$f=g \Leftrightarrow$ las columnas de $f$ y $g$ para las mismas entradas son iguales.
+
+\subsection{Funciones booleanas complementarias}
+Para $n \in \mathbb{Z}^+, n\geqslant 2$, sea $f:\; B^n \to B$ una función booleana, entonces
+$\overline{f}(x_1, ..., x_n) = \overline{f(x_1, ..., x_n)}$ 
+
+
+\subsection{Adición y multiplicación de funciones booleanas}
+Para $n \in \mathbb{Z}^+, n\geqslant 2$, sean $f,g:\; B^n \to B$ dos funciones booleanas, entonces:
+
+\begin{itemize}
+\item $(f+g)(x_1, ..., x_n) = f(x_1, ..., x_n) + g(x_1, ..., x_n)$
+\item $(f\cdot g)(x_1, ..., x_n) = f(x_1, ..., x_n) \cdot g(x_1, ..., x_n)$
+\end{itemize}
+
+\subsection{Forma Normal Disyuntiva (FND)}
+Para $n \in \mathbb{Z}^+, n\geqslant 2$, sea $f:\; B^n \to B$ una función booleana. Entonces:
+
+\begin{enumerate}
+    \item Cada $x_i$ o $\overline{x_i}$ es un \textit{\textbf{literal}}.
+    \item $y_1y_2 \cdots y_n$ donde $y_i = x_i$ o $y_i = \overline{x_i}$ es una \textit{\textbf{conjunción fundamental}} (hay $2^n$ conjunciones fundamentales).
+    \item $f$ está en \textit{\textbf{forma normal disyuntiva}} si es suma de conjunciones fundamentales.
+\end{enumerate}
+
+Ejemplo: $f(x,y,z) = xyz + \overline{x}y\overline{z}$ está en su \textit{\textbf{FND}}.
+
+\begin{tcolorbox}[colback=yellow!5!white,colframe=yellow!75!black,title=Tipos de recurrencias]
+Toda función booleana puede expresarse como una \textit{\textbf{adición de conjunciones fundamentales}}
+y tiene su representación como una \textit{\textbf{adición de mintérminos}}.
+\end{tcolorbox}
+
+
+\subsection{Forma Normal Conjuntiva (FNC)}
+Para $n \in \mathbb{Z}^+, n\geqslant 2$, sea $f:\; B^n \to B$ una función booleana. Entonces:
+
+\begin{enumerate}
+    \item Cada $x_i$ o $\overline{x_i}$ es un \textit{\textbf{literal}}.
+    \item $y_1 + y_2 + \cdots + y_n$ donde $y_i = x_i$ o $y_i = \overline{x_i}$ es una \textit{\textbf{disyunción fundamental}}.
+    \item $f$ está en \textit{\textbf{forma normal conjuntiva}} si es producto de disyunciones fundamentales.
+\end{enumerate}
+
+Ejemplo: $f(x,y,z) = (x + y + z) (x + \overline{y} + \overline{z})$ está en su \textit{\textbf{FNC}}.
+
+\subsection{Teorema de dualidad: \texorpdfstring{$\mathrm{FND}\Leftrightarrow\mathrm{FNC}$}{FND ↔ FNC}}
+\begin{itemize}
+    \item Conjunciones fundamentales $\leftrightarrow$ Disyunciones fundamentales
+    \item La CF se busca para $f = 1 \leftrightarrow$ la DF se busca para $f = 0$
+    \item Forma normal disyuntiva $\leftrightarrow$ Forma normal conjuntiva
+    \item Adición de mintérminos $\leftrightarrow$ Multiplicación de maxtérminos
+\end{itemize}
+
+\newpage
+\section{Unidad 4: Relaciones de Recurencia}
+
+\subsection{Sucesión numérica}
+Una \textit{\textbf{sucesión numérica}} es una función $f:\; \N \to \mathbb{R} $.
+La variable se simboliza con $n$ y la imagen de $n$ se denota $f(n) = a_n$ y se llama \textit{\textbf{término general}} de la sucesión.
+
+\begin{tcolorbox}[colback=pink!5!white,colframe=pink!75!black,title=Recursividad]
+Para construir un conjunto de forma recursiva, se necesitan:
+\begin{itemize}
+    \item Un conjunto inicial (o base).
+    \item Una regla de formación (o paso recursivo).
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Relación de recurrencia}
+Una \textit{\textbf{relación de recurrencia}} es una ecuación que expresa el término general $a_n$ de una sucesión en función de uno o más términos anteriores ($a_n, a_{n-1}$, etc.).\\
+Los valores necesarios para iniciar la relación se llaman \textit{\textbf{condiciones iniciales}}.
+
+\subsection{Relaciones de recurrencia lineales}
+Una relación de recurrencia es \textit{\textbf{lineal}} si el término $a_n$ es una combinación lineal de términos anteriores más una función $g(n)$ que es independiente de los términos anteriores:
+\[
+a_n = c_1 a_{n-1} + c_2 a_{n-2} + \cdots + c_k a_{n-k} + g(n); \forall n \geqslant k
+\]
+
+\begin{tcolorbox}[colback=yellow!5!white,colframe=yellow!75!black,title=Tipos de recurrencias]
+Si $g(n) \equiv 0 $ es \textit{\textbf{homogénea}}, si no es \textit{\textbf{no homogénea}}.
+\end{tcolorbox}
+
+\subsubsection{RR lineal homogénea de orden 1}
+\[
+\begin{cases}
+a_n = d \cdot a_{n-1}, \forall n \geqslant 1 \\
+a_0 = A
+\end{cases}
+\]
+
+\begin{tcolorbox}[colback=purple!5!white,colframe=purple!75!black,title=Solución]
+Se define una función discreta cuyo dominio es el conjunto $\N$ de los enteros no negativos.
+\[
+a_n = A \cdot d^n, \forall n \geqslant 0
+\]
+\end{tcolorbox}
+
+\subsubsection{RR lineal homogénea de orden 2}
+Solución de forma $a_n = A \cdot r^n$ con $A \neq 0$ y $r \neq 0$
+\[
+\begin{cases}
+C_n \cdot a_n + C_{1{n-1}} \cdot a_{n-1} + C_{2{n-1}} \cdot a_{n-2} = 0, \forall n \geqslant 2 \\
+a_0; a_1
+\end{cases}
+\]
+
+Y su ecuación característica es:
+\[
+C_n \cdot r^2 + C_1 \cdot r + C_2 = 0
+\]
+
+\begin{tcolorbox}[colback=purple!5!white,colframe=purple!75!black,title=Caso 1: Raíces reales y distintas]
+\[
+a_n = A_1 \cdot {r_1}^n + A_2 \cdot {r_2}^n, \forall n \geqslant 0
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=purple!5!white,colframe=purple!75!black,title=Caso 2: Raíces reales e iguales]
+\[
+a_n = A_1 \cdot {r}^n + A_2 \cdot {r}^n \cdot n, \forall n \geqslant 0
+\]
+Donde se aplica el factor de corrección (el segundo término se multiplica por $n$) para que sea linealmente independiente.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=purple!5!white,colframe=purple!75!black,title=Caso 3: Raíces complejas conjugadas]
+\[
+a_n = A_1 \cdot |{z}|^n \cdot \cos (n\theta)  + A_2 \cdot |{z}|^n \cdot \sin (n\theta), \forall n \geqslant 0
+\]
+Con $|{z}| = |{r_1}| = |{r_2}|$ y $\theta = \arg(z) = \arg(r_1) = -\arg(r_2)$, en su forma polar.
+\end{tcolorbox}
+
+
+\subsubsection{RR lineal no homogéneas}
+\begin{tcolorbox}[colback=purple!5!white,colframe=purple!75!black,title=Método de los coeficientes indeterminados]
+\[
+a_n = {a_n}^{(h)} + {a_n}^{(p)}
+\]
+Donde:
+\begin{itemize}
+    \item ${a_n}^{(h)}$ es la solución de la RR \textbf{homogénea asociada}.
+    \item ${a_n}^{(p)}$ es una solución particular de la RR \textbf{no homogénea}.
+\end{itemize}
+\end{tcolorbox}
+
+\paragraph{Elegir ${a_n}^{(p)}$ según $g(n)$:}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\rowcolor{teal!30} $g(n)$ & $a_n^{(p)}$ \\
+\hline
+\multicolumn{2}{|c|}{\cellcolor{teal!15} Polinómica de grado $t$} \\
+$c$, cte & $A$, una constante \\
+$n$ & $A_1 n + A_0$, polinomio completo de grado 1 \\
+$n^2$ & $A_2 n^2 + A_1 n + A_0$, polinomio completo de grado 2 \\
+$n^3$ & $A_3 n^3 + A_2 n^2 + A_1 n + A_0$, polinomio completo de grado 3 \\
+$n^t$ & polinomio completo de grado $t$ \\
+\hline
+\multicolumn{2}{|c|}{\cellcolor{teal!15} Exponencial de base $r$} \\
+$r^n$ & $A r^n$, una constante por la misma exponencial \\
+\hline
+\multicolumn{2}{|c|}{\cellcolor{teal!15} Trigonométricas} \\
+$\sen(\theta n)$ & $A_1 \sen(\theta n) + A_2 \cos(\theta n)$ \\
+$\cos(\theta n)$ & $A_1 \sen(\theta n) + A_2 \cos(\theta n)$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{tcolorbox}[colback=yellow!5!white,colframe=yellow!75!black,title=Recordar]
+Si la forma propuesta para ${a_n}^{(p)}$ entra en conflicto con algún término de la solución de la RR homogénea asociada, se multiplica por $n^k$,
+donde $k$ es el menor entero positivo tal que la nueva forma propuesta no sea solución de la RR homogénea asociada.
+\end{tcolorbox}
+
+\fbox {\textbf{Nota:} en algún punto de la resolución (casi) siempre los términos más grandes de $n$ se anulan.}
 
 \end{document}
