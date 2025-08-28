@@ -1,0 +1,26 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Unidad 3: Álgebras de Boole}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Conjunto de partes}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Álgebra de Boole de conjuntos}{2}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Relación de divisibilidad}{2}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}Número natural libre de cuadrados}{2}{subsubsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.3}Álgebra de Boole de los divisores de n}{2}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Propiedades}{2}{subsection.1.4}%
+\contentsline {paragraph}{Doble complemento.}{2}{section*.2}%
+\contentsline {paragraph}{Leyes de De Morgan.}{2}{section*.3}%
+\contentsline {paragraph}{Leyes conmutativas}{3}{section*.4}%
+\contentsline {paragraph}{Leyes asociativas}{3}{section*.5}%
+\contentsline {paragraph}{Leyes distributivas}{3}{section*.6}%
+\contentsline {paragraph}{Leyes de idempotencia}{3}{section*.7}%
+\contentsline {paragraph}{Leyes de identidad}{3}{section*.8}%
+\contentsline {paragraph}{Leyes de los inversos}{3}{section*.9}%
+\contentsline {paragraph}{Leyes de dominación}{3}{section*.10}%
+\contentsline {paragraph}{Leyes de absorción}{3}{section*.11}%
+\contentsline {subsection}{\numberline {1.5}Álgebra de los interruptores}{3}{subsection.1.5}%
+\contentsline {paragraph}{Circuito en serie.}{3}{section*.12}%
+\contentsline {paragraph}{Circuito en paralelo.}{3}{section*.13}%
+\contentsline {subsection}{\numberline {1.6}Funciones de conmutación}{4}{subsection.1.6}%
+\contentsline {paragraph}{Suma}{4}{section*.14}%
+\contentsline {paragraph}{Producto}{4}{section*.15}%
+\contentsline {paragraph}{Negación}{4}{section*.16}%
+\contentsline {subsection}{\numberline {1.7}Funciones booleanas}{4}{subsection.1.7}%

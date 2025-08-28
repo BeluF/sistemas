@@ -1,0 +1,206 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===== Paquetes básicos =====
+\usepackage[spanish,es-noquoting]{babel} % español
+\usepackage[utf8]{inputenc}              % UTF-8
+\usepackage[T1]{fontenc}                 % acentos correctos en PDF
+\usepackage{lmodern}                     % mejor tipografía
+\usepackage{geometry}                    % márgenes
+\geometry{margin=2.5cm}
+\usepackage{amsmath,amssymb,amsthm}      % mates
+\usepackage{hyperref}                    % links clickeables
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
+\usepackage{enumitem}                    % listas compactas
+\setlist{itemsep=0.2em, topsep=0.2em}
+
+% ===== Comandos útiles =====
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Pof}[1]{\mathcal{P}(#1)}    % conjunto de partes
+\newcommand{\compl}[1]{\overline{#1}}    % complemento
+
+\title{Apuntes de Álgebra de Matemática Discreta}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+\bigskip
+\newpage
+
+\section{Unidad 3: Álgebras de Boole}
+
+\subsection{Conjunto de partes}
+Dado un conjunto $S$, el \textit{conjunto de partes} $\Pof{S}$ es el conjunto de todos los subconjuntos de $S$.
+
+Sea $S=\{a,b\}$. Entonces:
+\[
+\Pof{S}=\{\varnothing,S\}
+\quad\text{(conjunto trivial)}
+\]
+Más explícitamente:
+\[
+\Pof{S}=\{\varnothing,\{a\},\{b\},S\}.
+\]
+
+\textbf{Nota.} Todos los elementos de $\Pof{S}$ se escriben entre llaves porque son conjuntos, excepto el conjunto vacío $\varnothing$.
+
+\subsection{Álgebra de Boole de conjuntos}
+
+\subsubsection{Relación de divisibilidad}
+Si $x,y\in\N$, se dice que “$x$ divide a $y$” si y sólo si:
+\[
+x \mid y \;\Longleftrightarrow\; \exists\,k\in\N:\; y=kx.
+\]
+
+\subsubsection{Número natural libre de cuadrados}
+Un número $n\in\N$ es \textit{libre de cuadrados} si ningún cuadrado mayor que $1$ lo divide.
+
+\subsection{Álgebra de Boole de los divisores de n}
+Sea un número $n\in\N$ libre de cuadrados, entonces $(D(n), \lor, \land, \lnot, 1, n)$ es un \textit{Álgebra de Boole},
+donde la relación enttre sus elementos es la \textit{\textbf{divisibilidad}}.
+
+\begin{itemize}
+    \item $D(n)$ es el conjunto de todos los divisores de $n$.
+    \item $x \lor y = \text{mcm}(x,y)$.
+    \item $x \land y = \text{mcd}(x,y)$.
+    \item $\lnot x = \frac{n}{x}$.
+    \item $1$ es el elemento neutro para $\lor$.
+    \item $n$ es el elemento neutro para $\land$.
+\end{itemize}
+
+\subsection{Propiedades}
+\paragraph{Doble complemento.}
+\[
+\compl{\compl{A}}=A, \qquad
+\lnot(\lnot)x = x
+\]
+
+\paragraph{Leyes de De Morgan.}
+\[
+\compl{A\cup B} = \compl{A}\cap\compl{B},\qquad
+\lnot(x\lor y) = \lnot x \land \lnot y
+\]
+
+\[
+\compl{A\cap B} = \compl{A}\cup\compl{B},\qquad
+\lnot(x\land y) = \lnot x \lor \lnot y
+\]
+
+\paragraph{Leyes conmutativas}
+\[
+A \cup B = B \cup A,\qquad
+x \lor y  = y \lor x
+\]
+
+\[
+A \cap B = B \cap A, \qquad
+x \land y = y \land x
+\]
+
+\paragraph{Leyes asociativas}
+\[
+A \cup (B \cup C) = (A \cup B) \cup C,\qquad
+x \lor (y \lor z) = (x \lor y) \lor z
+\]
+
+\[
+A \cap (B \cap C) = (A \cap B) \cap C, \qquad
+x \land (y \land z) = (x \land y) \land z
+\]
+
+\paragraph{Leyes distributivas}
+\[
+A \cup (B \cap C) = (A \cup B) \cap (A \cup C),\qquad
+x \lor (y \land z) = (x \lor y) \land (x \lor z)
+\]
+
+\[
+A \cap (B \cup C) = (A \cap B) \cup (A \cap C), \qquad
+x \land (y \lor z) = (x \land y) \lor (x \land z)
+\]
+
+\paragraph{Leyes de idempotencia}
+\[
+A \cup A = A,\qquad
+x \lor x = x
+\]
+
+\[
+A \cap A = A, \qquad
+x \land x = x
+\]
+
+\paragraph{Leyes de identidad}
+\[
+A \cup \varnothing = A,\qquad
+x \lor 1 = x
+\]
+
+\[
+A \cap S = A, \qquad
+x \land n = x
+\]
+
+\paragraph{Leyes de los inversos}
+\[
+A \cup \compl{A} = S,\qquad
+x \lor \lnot x = n
+\]
+
+\[
+A \cap \compl{A} = \varnothing, \qquad
+x \land \lnot x = 1
+\]
+
+\paragraph{Leyes de dominación}
+\[
+A \cup S = S,\qquad
+x \lor n = n
+\]
+
+\[
+A \cap \varnothing = \varnothing, \qquad
+x \land 1 = 1
+\]
+
+\paragraph{Leyes de absorción}
+\[
+A \cup (A \cap B) = A,\qquad
+x \lor (x \land y) = x
+\]
+
+\[
+A \cap (A \cup B) = A, \qquad
+x \land (x \lor y) = x
+\]
+
+\subsection{Álgebra de los interruptores}
+\paragraph{Circuito en serie.} $x \cdot y = xy$
+\paragraph{Circuito en paralelo.} $x + y = xy$
+
+\subsection{Funciones de conmutación}
+Sea $B = {0, 1}$, el conjunto de los valores booleanos.
+
+\paragraph{Suma} $$x + y = \begin{cases}
+0 & \Leftrightarrow x = 0 \boldsymbol{\land} y = 0 \\
+1 & \Leftrightarrow x = 1 \lor y = 1
+\end{cases}$$
+
+\paragraph{Producto} $$x \cdot y = \begin{cases}
+0 & \Leftrightarrow x = 0 \lor y = 0 \\
+1 & \Leftrightarrow x = 1 \boldsymbol{\land} y = 1
+\end{cases}$$
+
+\paragraph{Negación} $$\overline{x} = \begin{cases}
+0 & \Leftrightarrow x = 1 \\
+1 & \Leftrightarrow x = 0
+\end{cases}$$
+
+\subsection{Funciones booleanas}
+
+Sea $n \in \mathbb{Z}^+$, $B^n = {(b_1, b_2, ..., b_n) / b_i \in\ {0, 1}, \forall i}$
+($B_n$ se forma de n-uplas de 0 o 1).
+Una función $f: B^n \rightarrow B$ se llama función booleana o \textit{\textbf{función de conmutación}}
+y su tabla contiene $2^n$ filas.
+
+\end{document}
