@@ -1,0 +1,119 @@
+struct NGrafo{
+	int idNodo;
+	NArco* listaA;
+	NGrafo* link;
+};
+
+struct NArco{
+	int idArco;
+	NGrafo* destino;
+	NArco* link;
+};
+
+bool existID(NGrafo* listaN, int idNodo){
+	while (listaN != NULL){
+		if(listaN->idNodo == idNodo){
+			return true;
+		}
+		listaN = listaN->link;
+	}
+	return false;
+}
+
+void add_NGrafo(NGrafo* &listaN, int idNodo){
+	if(!existID(idNodo)){
+		NGrafo *aux = new NGrafo;
+		aux->idNodo = idNodo;
+		aux->link = listaN;
+		aux->listaA = null;
+		listaN = aux;
+
+	}
+}
+
+void add_NArco(NArco* &listaN, int idOrigen, int idDestino, int idArco){
+	NGrafo* pNodoOrigen = listaN;
+	NGrafo* pNodoDestino = listaN;
+	
+	while(pNodoOrigen != NULL && pNodoOrigen->id_nodo != idOrigen){
+		pNodoOrigen = pNodoOrigen->link;
+	}
+	
+	while(pNodoDestino != NULL && pNodoDestino->id_nodo != idDestino){
+		pNodoDestino = pNodoDestino->link;
+	}
+	
+	if(pNodoOrigen == NULL || pNodoDestino == NULL){
+		return; //No se encontraron
+	}
+	
+	NArco* aux = new NArco;
+	aux->idArco = idArco;
+	aux->destino = pNodoDestino;
+	aux->link = pNodoOrigen->listaArco;
+	pNodoOrigen->listaArco = aux;
+}
+
+//Cantidad de arcos en una matriz de adyacencia
+
+for (int fila[] : matriz){
+	for (int elem : fila){
+		if(elem == 1){
+			cont++;
+		}
+	}
+}
+
+//Dado un nodo, obtener los adyacentes desde su matriz
+
+NGrafo Grafo[6];
+NGrafo nodo;
+int index = 0;
+
+for (int i = 0; i < 5; i++){
+	//Right
+	if(matriz[index][i] == 1) 
+		cout << "Nodo adyacente " << i << " :" << lista[i] << endl;
+	//Left
+	if(matriz[i][index] == 1) 
+		cout << "Nodo adyacente " << i << " :" << lista[i] << endl;
+}
+
+//Maximal de un grafo
+int cont = 0;
+int tam = 6;
+
+for(int fila[] : matriz){
+	for(elem : fila){
+		cont++;
+	}
+	if (cont == tam){
+		cout << "El elemento " << elem << " es parte del conjunto Maximal del grafo." << endl; 
+	}
+}
+
+//Minimal de un grafo
+
+int cont = 0;
+int tam = 6;
+
+for(int i = 0; i < 6; i++){
+	for(int j = 0; j < 6; j++){
+		cont++;
+	}
+	if (cont == tam){
+		cout << "El elemento " << lista[j][i] << " es parte del conjunto Minimal del grafo." << endl; 
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
