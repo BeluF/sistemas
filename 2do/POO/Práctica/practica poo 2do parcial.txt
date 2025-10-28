@@ -1,0 +1,892 @@
+La empresa Agenda SA, lo contrata para desarrollar su nuevo calendario. En dicho calendario se pueden guardar diferentes tareas con el objetivo de recordar al usuario una tarea dada.
+
+Las tareas tienen los siguientes datos:
+char [200] descripción
+char [8] fecha // formato yyyymmdd
+char[6] hora // formato hhmmss 
+int duracion // en minutos 
+char tipo //N, R, A
+
+Las tareas tienen diferentes tipos:
+Normales, las cuales notifican que se debe realizar la tarea imprimiendo en consola un mensaje.
+Repetitivas, las cuales notifican con un mensaje en consola que crean otra tarea para el día siguiente.
+Archivo de texto, al llegar a la hora y fecha, se guarda en un archivo de texto la línea “se ejecutó : descripción” dónde descripción es la descripción de la tarea.
+
+(30) Realice el diseño de la solución e implemente las clases. Conteste: ¿Se puede utilizar polimorfismo, cual es la ventaja o desventaja?
+(25) Realice un procedimiento que permita guardar las tareas en archivo binario.
+(30) Realice las siguientes métodos utilizando STL:
+Obtener la o las tareas con mayor duración.
+Obtener el día que tiene más tareas.
+Obtener las tareas que se superponen.
+(15) Explique:
+¿Por qué son necesarios los template en los lenguajes de tipado estático?
+¿Por qué C++ utiliza punteros para implementar el polimorfismo?
+
+Libre: La empresa lo vuelve a contratar dado que necesita un tipo de tarea que contenga muchas tareas. Realice el diseño de las clases y de los archivos binarios para guardarlo.
+
+--------------------------------------------------------------------------
+
+Agenda que tiene Tareas.
+Tareas que pueden ser Normales, Repetitivas o Archivos de texto.
+
+ Tarea: clase abstracta, padre de Normales, Repetitivas o Archivos de texto 
+ 
+ TAREA						AGENDA (clase gestora)	
+-------					       ------------------------
+char descripcion [200]				vector<Tarea*> tareas;
+char fecha [8]				       ------------------------
+char hora [6]					void addTarea();
+int duracion //en min				void leerTarea();
+char tipo //N, R, A
+--------------------
+virtual void notificar () = 0;
+
+ Normales		Repetitivas		ArchivosTxt
+----------	       -------------	       -------------
+void notificar()       void notificar()	       void notificar()
+
+--------------------------------------------------------------------------
+
+class Tarea {
+private:
+	char descripcion [200];
+	char fecha [8];
+	char hora [6];
+	int duracion; //en min
+	char tipo; //N, R, A
+
+public:
+	virtual Tarea * notificar () = 0;
+}
+
+class Normales : public Tarea {
+public:
+	Tarea * notificar () override {
+		cout << this -> descripcion << endl;
+		return null;
+	}
+}
+
+class Repetitivas : public Tarea {
+public:
+	Tarea * notificar() override {
+		cout << this -> descripcion << endl;
+		
+		Tarea* t = new Tarea(
+			this->descripcion,
+			//gestionar fecha c/librería p/sumar un día
+			this->hora, this->duracion, 'R');
+		
+		cout << "Se creó una nueva tarea para mañana" << endl;
+		return t;
+	}
+}
+
+class ArchivoTxt : public Tarea {
+public:
+	Tarea * notificar () override {
+		ofstream tareaTxt("tareaSalida.txt", ios::app);
+		if (!tareaTxt.is_open()) return;
+		
+		tareaTxt << "Se ejecutó: " << this -> descripcion << endl;
+		
+		tareaTxt.close();
+		return null;
+	}
+}
+
+struct tareaStr {
+	char descripcion [200];
+	char fecha [8];
+	char hora [6];
+	int duracion; //en min
+	char tipo; //N, R, A
+};
+
+class Agenda {
+private:
+	vector<Tarea*> tareas; //Puntero p/polimorfismo
+
+public:
+	void addTarea(Tarea* t){
+		if(t != null) tareas.push_back(t);
+	}
+	
+	void leerTarea(){
+		
+	}
+	
+	void guardarBin() {
+		tareaStr tareaSave;
+		
+		for (auto t : tareas){
+			strcpy(tareaSave.descripcion, t->descripcion);
+			strcpy(tareaSave.fecha, t->fecha);
+			strcpy(tareaSave.hora, t->hora);
+			tareaSave.duracion = t->duracion;
+			tareaSave.tipo = t->tipo;
+		}
+				
+		ofstream salidaTxt ("tareaSalida.dat", ios::binary);
+		if(!salidaTxt.is_open()) return;
+		
+		salidaTxt.write(char*)&tareaSave, sizeof(tareaStr));		
+		salidaTxt.close();
+	}
+	
+	Tarea* tareaMayorDuracion{
+		tareas.sort(tareas.begin(), tareas.end(), 
+			[] (Tarea* t1, Tarea* t2)-> bool
+			{return t1->getDuracion > t2->getDuracion});
+		auto max = tareas[0];
+		vector<Tarea*> tareasMayD;
+		copyif(tareas.begin(), tareas.end(), tareasMayD,
+			[] (Tarea* t1)-> bool
+				{return t1 == max});
+		return tareasMayD;
+	}
+	
+	void diaMasAtareado(){
+		map<string, int> contador;
+		for (auto t : tareas){
+			string fecha = t->getFecha();
+			contador[fecha]++;
+		}
+		
+		auto max = max_element(contador.begin(), contador.end(),
+			[] (pair<string, int> p1, pair<string, int> p2
+				->bool {return a.second < b.second; }));
+		cout << max->second;
+	}
+	
+	void tareasSuperpuestas() {
+		for (auto i = tareas.cbegin(); i != tareas.cend(); ++i){
+			for (auto j = tareas.cbegin(); j != tareas.cend(); ++j){
+				if(i != j){
+					if(tareas[i] -> fecha == tareas [j] -> fecha){
+						cout << "Las tareas " << tareas[i] -> descripcion << " y " << tareas[j] -> descripcion << "se solapan" << endl;
+					}	
+				}
+			}			
+		}
+	}
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+La bicicletería Oro Verde lo contrata para diseñar y desarrollar su sistema de control de precios. Dado que la bicicletería tiene un servicio de armado de bicicletas, donde permite que dado un conjunto de partes armar una bicicleta personalizada cuyo precio es la suma del precio de las partes. A la vez, la bicicletería vende partes, las cuales tienen un número, una descripción (char 200) y un precio. Y las bicicletas armadas tienen un número y una descripción (char 200) y el precio esta dado por la suma de las partes.
+
+Por último, la bicicletería tiene ofertas las cuales son un conjunto de partes y/o bicicletas y su precio esta dado por la suma de los elementos que lo componen menos un 20%.
+
+(30) Realice el diseño de la solución e implemente las clases. Conteste: ¿Se puede utilizar polimorfismo, cual es la ventaja o desventaja?
+
+(25) Realice un procedimiento que permita guardar en archivos de binarios las entidades.
+
+(15) Guardar en un archivo de texto todas las ofertas, se debe listar elementos que la componen (separado por coma) y el precio total. Para esto sobreescriba el operador <<
+
+(30) Realice las siguientes métodos utilizando stl :
+
+Obtener la o las bicicletas más caras.
+Obtener la parte más utilizada en las bicicletas.
+Obtener la bicicleta que tiene más componentes.
+
+Libre: La empresa lo vuelve a contratar dado que necesita que se tengan en cuenta otros costos, por ejemplo la mano de obra (esta dado por un porcentaje), los impuestos (es siempre 21%) y costos fijos (un monto fijo). ¿Que cambio le haría al diseño? y ¿como guardería los datos?
+
+---------------------------------------------------------------------------------------------------------------------------------------
+ Item
+-------------------------------
+int ID;
+char descripcion [200];
+double precio;
+-------------------------------
+virtual double getPrecio() = 0;
+-------------------------------
+
+ Parte
+-------
+
+ Bicicleta
+-----------
+vector<Parte*>
+
+ Oferta
+---------
+int dcto;
+---------
+
+ Gestora
+--------------------------
+vector<Parte*>
+vector<Bicicleta*>
+vector<Oferta>
+--------------------------
+ void BiciMasCara()
+ void ParteMasUsada()
+ void BiciConMasPartes()
+--------------------------
+
+class Item{
+private:
+	int ID;
+	char descripcion [200];
+	double precio;
+public:
+	virtual double getPrecio() = 0;
+}
+
+class Parte : public Item{
+public:
+	double getPrecio() { return precio; }
+}	
+
+class Bicicleta : public Item{
+private:
+	vector<Parte*> partes;
+
+public:
+	double getPrecio(){
+		return acummulate(partes.begin(), partes.end(), 0.0,
+			[](double acc, Parte* p){
+				return acc + p->getPrecio()});
+	}
+}
+
+class Oferta{
+private:
+	vector<Item*> items;
+	int dcto = 0.20;
+public:
+	double getPrecio(){
+		return acummulate(items.begin(), items.end(), 0.0,
+			[](double acc, Item* i){
+				return acc + i->getPrecio()});
+	}
+
+}
+
+struct itemStruct{
+	int ID;
+	char descripcion [200];
+	double precio;
+};
+
+class Gestora{
+private:
+	vector <Parte*> partes;
+	vector <Bicicleta*> bicis;
+	vector <Oferta> oferta;
+
+	
+public:
+	void guardarPartesBin(){	
+		ofstream binOut("partes.dat", ios::binary, ios::app);
+		if(!binOut.is_open()) return
+		
+		for(auto p : partes){
+			itemStruct iS;
+			iS.id = p->id;
+			strcpy(iS.descripcion, p->descripcion)
+			iS.precio, p->precio;
+		
+			binOut.write((char*)&iS, sizeof(itemStruct));
+		}
+		
+		binOut.close();
+	}
+	
+	void guardarBicisBin(){	
+		ofstream binOut("bicis.dat", ios::binary, ios::app);
+		if(!binOut.is_open()) return
+		
+		for(auto b : bicis){
+			itemStruct iS;
+			iS.id = b->id;
+			strcpy(iS.descripcion, b->descripcion)
+			iS.precio, b->precio;
+		
+			binOut.write((char*)&iS, sizeof(itemStruct));
+		}
+		
+		binOut.close();
+	}
+	
+	void guardarOfertas(){
+		ofstream txtOut("ofertas.txt", ios::app);
+		if(!txtOut.is_open()) return
+		
+		for(auto o : ofertas){
+		
+			for (auto i : o.items){
+				txtOut << i->getPrecio();
+			}
+			txtOut << ",";
+			txtOut << o.getPrecio();
+		}
+		
+		txtOut.close();
+	}
+	
+	void bicisMasCaras(){
+		bicis.sort(b.begin(), b.end(),
+			[] (Bicicleta *b1, Bicicleta *b2) -> bool
+				{return b1 > b2;}
+		double max = *max_element(bicis.begin(), bicis.end());
+		for (auto b : bicis) {
+			if(b -> precio == max) {
+				cout << b -> idBici << " es de las bicicletas más caras";
+			}
+
+		}
+	}
+	
+	void parteMasUsada(){
+		map<Parte*, int> contador;
+		
+		for(auto b : bicis){
+			Parte* p = b->partes;
+			contador [p]++;
+		}
+		
+		auto it = max_element(contador.begin(), contador.end(), []
+			(pair<Parte*, int> a, pair<Parte*, int> b{
+			return a.second < b.second });
+
+		cout << "Parte mC!s usada: " << it->second;
+	}
+	
+	void biciMasComp(){
+		auto it = max_element(bici.begin(), bici.end(), [] (const Bicicleta* a, Bicicleta* b) {
+			return a -> partes.size() < b -> partes.size()
+		});
+		cout << "Bici con mas componentes: " << (*it)->idBici;
+	}
+}
+
+-----------------------------------------------------------------------------------------------------------------------
+PARCIAL 2 - 2019
+
+struct archBin
+{
+	char url [20];
+	int tiempoPermanencia; //seg
+	char origen
+};
+
+
+class Visita{
+private:
+	char url [20];
+	int tiempoPermanencia;
+	char origen;
+	int ptjeFijo;
+public:
+	int puntaje(){
+		return ptjeFijo * tiempoPermanencia
+	}
+}
+
+class Buscador : public Visita {
+private:
+	int ptjeFijo = 10;
+}
+
+class Directo : public Visita {
+private:
+	int ptjeFijo = 15;
+}
+
+class Otro : public Visita{
+private:
+	int ptjeFijo = 1;
+}
+
+class GestorVisitas {
+public:
+    static Visita* crearVisita(char origen) {
+        switch (origen) {
+            case 'B': return new Busqueda();
+            case 'D': return new Directo();
+            case 'O': return new Otro();
+            default:  return nullptr; 
+        }
+    }
+};
+
+
+class SitioWeb {
+private:
+	vector<Visita*> visitas;
+public:
+	void agregarVisita(Visita* v){
+		visitas.push_back(v);
+	}
+	
+	char getTipoVisita(){
+		visitas->getTipo();
+	}
+	
+	int getPtjeTotal(){
+		return acummulate(visitas.begin(), visitas.end(), 0,
+		[] (int acc, Visita* v) {return acc + v->getPuntaje(); })
+	}
+}
+
+class Gestora {
+private:
+	vector<SitioWeb> sitios;
+public:
+	void leerArchBin(){
+		ifstream visitasBin("archivo.dat", ios::binary);
+		if(!visitasBin.is_open()) return;
+		
+		archBin linea;
+		while (visitasBin.read((char *) &linea, sizeof(archBin))){
+			Visita* v = new
+				GestorVisitas::crearVisita(linea.origen);
+			v->setURL(string(linea.url));
+			v->setTiempoPermanencia(linea.tiempoPermanencia);
+			v->setOrigen(linea.origen);
+			
+			for (auto s : sitios){
+				if (s.getURL() == linea.url){
+					s.agregarVisita(v);
+				}
+			}
+		}
+	}
+	
+	void escribirArchTxt() {
+		ofstream txtOut("salida.txt", ios::app);
+		if(!txtOut.is_open()) return;
+		
+		for (auto s : sitios){
+			txtOut << s.getUrl << " ... "
+				<< s.getPtjeTotal() << endl;
+		}
+	}
+	
+	void Mayores5(){
+		sort(sitios.begin(), sitios.end(),
+			[] (SitioWeb s1, SitioWeb s2) -> bool{
+				return s1.getPtjeTotal() >
+					s2.getPtjeTotal();
+			}
+		for (auto i = sitios.begin(); i != (sitios.begin() + 5);
+			++i){
+				cout << *i << endl;
+			}
+	}
+	
+	vector<SitioWeb> accedidoDirecto() {
+		SitioWeb sitiosDirectos;
+		for (auto s : sitios){
+			if(s.getTipoVisita() == 'D'){
+				sitiosDirectos.push_back(s);
+			}
+			
+		}
+		return sitiosDirectos
+	}
+}
+
+------------------------------------------------------------------------------------------------------------------------------
+
+PARCIAL 2 - 2022
+
+Una empresa lo contrata para realizar un sistema que mantenga el valor de sus bienes y permita calcular la amortización de los mismos. Dicha empresa cuenta con un archivo binario donde se encuentran todos los bienes y su valor.
+
+codigo: int 
+tipo: char //T terreno, C común, M mueble
+
+LOs bienes pueden ser:
+	T: Terrenos, los cuales no amortizan, es decir el proceso de amortización no debería restar valor al bien.
+	C: Comunes, los cuales pierden un 5% su valor por mes.
+	M: Muebles, los cuales pierden un 2% si valen menos de 10 000 pesos y un 2.2% su valen más.
+	
+Una vez al mes se corre un proceso de amortización que actualiza el valor de los bienes.
+
+1. (22) Realice el diseño y programe las clases que permitan calcular el proceso de amortización.
+
+2. (20) Escriba un archivo de texto que permita saber el valor de los bienes luego de corrido el proceso de amortización con este formato: "código .......... valor".
+
+3.(22) Realice las siguientes funciones utilizando STL:
+	* Que obtenga el o los bienes con mayor valor.
+	* Que obtenga el valor total de todos los bienes discriminados por tipo.
+
+
+
+struct archBin {
+	int codigo;
+	char tipo;
+	double valor;
+};
+
+class Bien {
+private:
+	int codigo;
+	char tipo;
+	double valor;
+	int perdida;
+
+public:	
+	virtual void setPerdida(int valorPerdida){
+		this->perdida = valorPerdida;
+	}
+	
+	virtual void amortizar(){
+		double nuevoValor;
+		nuevoValor = this->valor - (this->valor * perdida);
+		setPerdida(nuevoValor);	
+	}
+}
+
+class Terreno : public Bien {
+private:
+	float valorPerdida = 0;	
+}
+
+class Comun : public Bien {
+	float valorPerdida = 0.05;
+}
+
+class Mueble : public Bien {
+private:
+	float menor10 = 0.02;
+	float mayor10 = 0.022;
+	float valorMin = 10000;
+
+public:
+	void setPerdida(int valor){
+		if(valor<valorMin){
+			perdida = menor10;
+		}
+		else{
+			perdida = mayor10;
+		}
+	}
+}
+
+class BienFactory {
+public:
+	Bien* crearBien(char tipo){
+		switch(tipo){
+			case 'T': return new Terreno();
+			case 'C': return new Comun();
+			case 'M': return new Mueble();
+		}
+	} 
+	
+}
+
+class Gestora {
+private:
+	vector<Bien> bienes;
+public:
+	void leerArchBin() {
+		archBin archivo;
+		ifstream bienes ("bienes.dat", ios::binary);
+		if(!bienes.is_open()) return;
+		
+		while(bienes.read((char*)&archivo, sizeof(archBin))){
+			Bien nuevoBien = BienFactory::
+				crearBien(archivo.tipo);
+			nuevoBien->setCodigo(archivo.codigo);
+			nuevoBien->setValor(archivo.valor);
+			
+			bienes.push_back(nuevoBien);
+		}
+		
+		bienes.close();
+	}
+	
+	void escribirArchTxt(){
+		ofstream bienesSalida("bienesSalida.txt", ios::app);
+		if(!bienesSalida.is_open()) return;
+		
+		for(auto b : bienes){
+			bienesSalida << b->getCodigo() << " ......... "
+				<< b->getValor() << endl;
+		}
+		
+		bienesSalida.close();
+	}
+	
+	vector<Bien*> bienesMayorValor() {
+		vector<Bien*> bienesMayorValor;
+		sort(bienes.begin(), bienes.end(), [] (Bien* b1, Bien* b2)
+				-> bool {return b1->getValor()
+					> b2->getValor();});
+		double valorMax = bienes[0]->getValor();
+		for(auto b : bienes){
+			if(b->getValor() == valorMax){
+				bienesMayorValor.push_back(b);
+			}
+		}
+		
+		return bienesMayorValor;
+	}
+	
+	void valorPorTipo() {
+		map<char, int> contador;
+		
+		for(auto b : bienes){
+			char tipo = b->getTipo();
+			contador[tipo]++;
+		}
+		
+		for(auto par : contador){
+			cout << par.first << ": "
+				<< par.second << endl;
+		}
+	}
+
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+struct userStruct {
+	char [20] nombre;
+	char [100] pass;
+	char tipo;
+};
+
+struct permisosStruct {
+	char [20] nombre;
+	char [150] url;
+};
+
+class Usuario {
+private:
+	char [20] nombre;
+	char [100] pass;
+	char tipo;
+public:
+	virtual bool tienePermisos(char* url) = 0;
+	virtual int getCantidadPermisos () = 0;
+}
+
+
+class UsuarioAdmin : public Usuario {
+private:
+	vector<Permiso> urlPermitidas;
+public:
+	bool tienePermisos(char* url) override {
+		return true;
+	}
+	int getCantidadPermisos() {
+		return acummulate(urlPermitidas.begin(), urlPermitidas.end(), 0);
+	}
+}
+
+class UsuarioNormal : public UsuarioGral {
+private:
+	vector<Permiso> urlPermitidas;
+public:
+	bool tienePermisos(char* url) override {
+		//Más fácil: find() de STL.
+		for (auto uP : urlPermitidas){
+			if(strcmp(uP, url) == 0){
+				return true;
+			}
+		}
+		return false;
+	}
+}
+
+class Permiso {
+private:
+	string url;
+}
+
+class UserFactory{
+public:
+	Usuario* crearUsuario (char* tipo){
+		switch (tipo){
+			case 'A': return new UsuarioAdmin();
+			default: return new UsuarioNormal();
+		}
+	}
+}
+
+class Gestora {
+private:
+	vector<Usuario*> users;
+public:
+	void top1URL(){
+		map<string, int> contador;
+		for (auto u : user){
+			for(auto p : u->getPermisos()){
+				string url;
+				strcpy(url, u->getUrl());
+				contador[url++];
+			}
+		}
+	
+		auto max = *max_element(contador.begin(), contador.end(), [](pair<string, int> a, pair<string, int> b){
+				return a.second > b.second});
+	}
+	
+	void top5Users (){
+		sort(users.begin(), users.end(), [] (Usuario* u1, Usuario* u2){
+				return u1->getCantidadPermisos() > u2->getCantidadPermisos()});
+				
+		for(auto u = user.begin(), u != (users.begin() + 5), ++u){
+			cout << *u;
+		}
+	}
+	
+	void escribirTxt(){
+		ofstream archivo("salida.txt", ios::app);
+		if(!archivo.is_open()) return;
+		
+		// getPermisos() devuelve un vector de permisos
+		
+		for(auto u : users){
+			for (auto p : u->getPermisos()){
+				archivo << u->getNombre() << " -> " << p->getUrl();
+			}
+		}		
+	}
+	void leerPermisosBin{
+		permisosStruct p;
+		ifstream permisosBin("permisos.dat", ios::binary);
+		if(!permisosBin.is_open()) return;
+		
+		while(permisosBin.read((char*)&p, sizeof(permisosStruct))){
+			Permiso nuevoPermiso = new Permiso(p.url);
+			
+			auto res = find_if(users.begin(), users.end(), [p.nombre](Usuario* u){
+				return (strcmp(u->getNombre(), p.nombre) == 0; });)
+			});
+			
+			if(res == users.end()) return;
+			res->setUrlPermitida(p.url);
+	
+		}
+		
+		permisosBin.close();
+	}
+	
+	void leerUsersBin{
+		userStruct u;
+		ifstream userBin("usuario.dat", ios::binary);
+		if(!userBin.is_open()) return;
+		
+		while(userBin.read((char*)&u, sizeof(userStruct))){
+			Usuario* nuevoUser = UserFactory::crearUsuario(u.tipo);
+			nuevoUser->setNombre(u.nombre);
+			nuevoUser->setPass(u.pass);
+			
+			users.push_back(nuevoUser);
+		}
+		
+		userBin.close();
+	}
+	
+	bool permisos(char* usuario, char* pass, char* url){
+		auto res = find_if(users.begin(), users.end(), [usuario] (Usuario* u){
+			return strcmp(u->getNombre(), usuario) == 0; });
+		if(res == users.end()) return false;
+		if(res->tienePermisos(url)){
+			return true;
+		}
+		return false;
+	}
+	
+	
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+struct viajeStruct {
+	char [200] nombre;
+	char tipo; //A, C, D
+	float demora;
+	double precio;
+};
+
+class Viaje {
+private:
+	char [200] nombre;
+	char tipo; //A, C, D
+	float demora;
+	double precio;
+public:
+	virtual double getPrecio() = 0;
+}
+
+class Avion : public Viaje {
+private:
+	double extraPrecio = 0.2;
+	double extraHoras = 2;
+
+public:
+	double getPrecio() override {
+		return precio + (precio * extraPrecio);
+	}
+}
+
+class Colectivo : public Viaje {
+private:
+	float distancia;
+	int costoKm = 8;
+public:
+	double getPrecio() {
+		return distancia * costoKm;
+	}
+
+}
+
+class Dual : public Viaje {
+private:
+	Avion* avion;
+	Colectivo* cole;
+public:
+	double getPrecio () override {
+		return (avion->getPrecio) + (cole->getPrecio);
+	}
+	
+}
+
+class ViajeFactory {
+public:
+	Viaje* agregarViaje(char* tipo){
+		switch(tipo){
+			case 'A': return new Avion();
+			case 'C': return new Colectivo();
+			case 'D': return new Dual();
+			default: return nullptr;
+		}
+	}
+}
+
+class Gestora {
+private:
+	vector<Viaje*> viajes;
+	
+public:
+	//Cargar datos desde un bin
+	void cargarDatos(){
+		viajeStruct nuevoViaje;
+		ifstream entrada("viajes.bin", ios::binary);
+		if(!entrada.is_open()) return;
+		
+		//Precio y demora son base, sin los agregados
+		while(entrada.read((char*)&nuevoViaje, sizeof(viajeSTruct)){
+			Viaje nuevoViajeObj = new ViajeFactory::argregarViaje(nuevoViaje.tipo);
+			nuevoViajeObj->setNombre(nuevoViaje.nombre);
+			nuevoViajeObj->setCosto(nuevoViaje.costo);
+			nuevoViajeObj->setdemora(nuevoViaje.demora);
+			nuevoViajeObj->setPrecio(nuevoViaje.precio);
+			
+			viajes.push_back(nuevoViajeObj);
+		}
+		
+		entrada.close();
+	}
+	
+	double getPrecioViaje(){
+		
+	}
+}

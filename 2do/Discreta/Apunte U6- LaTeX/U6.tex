@@ -1,0 +1,135 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{tcolorbox}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Unidad 6: Anillos y aritmética modular}
+\author{Matemática Discreta - UADER 2025}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Estructura de un anillo}
+
+\begin{tcolorbox}[title=Definición de anillo]
+Sea \( R \) un conjunto no vacío con dos operaciones binarias, comúnmente denotadas por \( + \) y \( \cdot \), que pueden ser diferentes de las operaciones usuales. El conjunto \( (R, +, \cdot) \) es un \textbf{anillo} si para todos \( a, b, c \in R \) se cumplen las siguientes condiciones:
+\begin{itemize}
+    \item \( a + b = b + a \) (\textbf{conmutativa} de la suma)
+    \item \( a + (b + c) = (a + b) + c \) (\textbf{asociativa} de la suma)
+    \item Existe un elemento \( 0 \in R \) tal que \( a + 0 = 0 + a = a \) (\textbf{identidad aditiva})
+    \item Para cada \( a \in R \), existe \( -a \in R \) tal que \( a + (-a) = (-a) + a = 0 \) (\textbf{inverso aditivo})
+    \item La multiplicación es \textbf{asociativa}: \( a \cdot (b \cdot c) = (a \cdot b) \cdot c \)
+    \item La multiplicación distributiva respecto a la suma:
+    \[
+    a \cdot (b + c) = a \cdot b + a \cdot c, \quad (a + b) \cdot c = a \cdot c + b \cdot c
+    \]
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!15, title=Notas y aclaraciones]
+\begin{itemize}
+    \item Cuando se trabaja con la segunda operación, es común denotar el producto como \( ab \).
+    \item Por inducción matemática, estas propiedades se extienden para cualquier número finito de elementos.
+    \item \textbf{Nota personal:} Es fundamental verificar la cerradura bajo ambas operaciones, especialmente en subconjuntos propuestos como subanillos o ideales.
+\end{itemize}
+\end{tcolorbox}
+
+\section*{Propiedades adicionales}
+
+\begin{tcolorbox}[title=Propiedades importantes]
+En cualquier anillo \( (R, +, \cdot) \):
+\begin{itemize}
+    \item La identidad aditiva, si existe, es única.
+    \item El inverso aditivo de cada elemento también es único.
+    \item La identidad multiplicativa, si existe, es única.
+    \item En un anillo con unidad, un elemento \( u \) es \textbf{unidad} o \textbf{invertible} si existen \( a \in R \) tal que \( au = ua = 1 \).
+    \item Un \textbf{dominio de integridad} es un anillo conmutativo, con unidad, y sin divisores propios de cero.
+    \item Un \textbf{cuerpo} (o campo) es un anillo con unidad en el que todo elemento diferente de cero tiene inverso multiplicativo.
+\end{itemize}
+\end{tcolorbox}
+
+\section*{Subanillos e ideales}
+
+\begin{tcolorbox}[title=Subanillo]
+Sea \( (R, +, \cdot) \) un anillo. Un subconjunto no vacío \( S \subseteq R \) es un \textbf{subanillo} si:
+\begin{itemize}
+    \item \( S \) es cerrado respecto a la suma: \( a + b \in S \) para \( a, b \in S \).
+    \item \( S \) es cerrado respecto a la multiplicación: \( a b \in S \) para \( a, b \in S \).
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Ideales]
+Un subconjunto no vacío \( I \subseteq R \) es un \textbf{ideal} si:
+\begin{itemize}
+    \item \( a - b \in I \) para \( a, b \in I \).
+    \item Para todo \( r \in R \), se verifica que \( r a \in I \) y \( a r \in I \).
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!15, title=Nota personal]
+\textbf{Importante:} Todo ideal es un subanillo, pero no todos los subanillos son ideales. La diferencia radica en la cerradura multiplicativa del lado del elemento externo \( r \).
+\end{tcolorbox}
+
+\section*{Los enteros módulo \( n \)}
+
+\begin{tcolorbox}[title=Congruencia modular]
+Sea \( n \in \mathbb{N} \), \( n > 1 \). Para \( a, b \in \mathbb{Z} \), decimos que
+\[
+a \equiv b \pmod{n}
+\]
+si \( n \mid (a - b) \), es decir, si \( a - b = kn \) para algún \( k \in \mathbb{Z} \). 
+\textbf{Nota:} esta relación de equivalencia divide a \( \mathbb{Z} \) en \( n \) clases de equivalencia, conocidas como residuos o restos módulo \( n \).
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!15, title=Nota personal]
+En el estudio de los residuos módulo \( n \), se trabaja con los representantes en \( \{0, 1, ..., n-1\} \). Es crucial recordar que las operaciones están bien definidas en estas clases de equivalencia, formando un anillo \( \mathbb{Z}_n \).
+\end{tcolorbox}
+
+\section*{Operaciones en \( \mathbb{Z}_n \)}
+
+\begin{align*}
+[a]_n + [b]_n &= [a + b]_n \\
+[a]_n \cdot [b]_n &= [a b]_n
+\end{align*}
+
+Estas definiciones hacen que \( \mathbb{Z}_n \) sea un anillo con \( n \) elementos. Además:
+\begin{itemize}
+    \item \( \mathbb{Z}_p \) es un cuerpo si y solo si \( p \) es primo.
+    \item Los elementos \( a \in \mathbb{Z}_n \) que son coprimos con \( n \) son unidades.
+    \item El número total de unidades en \( \mathbb{Z}_n \) es \( \varphi(n) \), donde \( \varphi \) es la función de Euler.
+\end{itemize}
+
+\begin{tcolorbox}[title=Notas y aplicaciones]
+La aritmética modular es fundamental en criptografía, teoría de códigos, y en la resolución de problemas en álgebra abstracta. Es esencial manejar con precisión las congruencias y su relación con los ideales en anillos cocientes.
+\end{tcolorbox}
+
+\section*{Homomorfismos e isomorfismos}
+
+\begin{tcolorbox}[title=Definición]
+Sean \( (R, +, \cdot) \) y \( (S, \oplus, \otimes) \) anillos. Una función \( f: R \to S \) es un \textbf{homomorfismo de anillos} si:
+\[
+f(a + b) = f(a) \oplus f(b), \quad f(a b) = f(a) \otimes f(b)
+\]
+Si \( f \) es biyectiva, entonces es un \textbf{isomorfismo}.
+\end{tcolorbox}
+
+\section*{El Teorema del Resto Chino}
+
+\begin{tcolorbox}[title=Teorema]
+Sea \( n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k} \) la factorización en primos de \( n \). Entonces:
+\[
+\mathbb{Z}_n \cong \mathbb{Z}_{p_1^{e_1}} \times \mathbb{Z}_{p_2^{e_2}} \times \cdots \times \mathbb{Z}_{p_k^{e_k}}
+\]
+y las operaciones se definen componente a componente. Además, los anillos \( \mathbb{Z}_{n} \) y los productos anteriores son ísomorfos.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!15, title=Notas y aplicaciones]
+Este resultado permite descomponer problemas en módulos primos y analizar su comportamiento en estructuras más simples. Es muy útil en criptografía y algebra computacional.
+\end{tcolorbox}
+
+\end{document}
