@@ -17,87 +17,137 @@
 \section*{Estructura de un anillo}
 
 \begin{tcolorbox}[title=Definición de anillo]
-Sea \( R \) un conjunto no vacío con dos operaciones binarias, comúnmente denotadas por \( + \) y \( \cdot \), que pueden ser diferentes de las operaciones usuales. El conjunto \( (R, +, \cdot) \) es un \textbf{anillo} si para todos \( a, b, c \in R \) se cumplen las siguientes condiciones:
-\begin{itemize}
-    \item \( a + b = b + a \) (\textbf{conmutativa} de la suma)
-    \item \( a + (b + c) = (a + b) + c \) (\textbf{asociativa} de la suma)
-    \item Existe un elemento \( 0 \in R \) tal que \( a + 0 = 0 + a = a \) (\textbf{identidad aditiva})
-    \item Para cada \( a \in R \), existe \( -a \in R \) tal que \( a + (-a) = (-a) + a = 0 \) (\textbf{inverso aditivo})
-    \item La multiplicación es \textbf{asociativa}: \( a \cdot (b \cdot c) = (a \cdot b) \cdot c \)
-    \item La multiplicación distributiva respecto a la suma:
-    \[
-    a \cdot (b + c) = a \cdot b + a \cdot c, \quad (a + b) \cdot c = a \cdot c + b \cdot c
-    \]
-\end{itemize}
+Sea \( R \) un conjunto no vacío con dos operaciones binarias cerradas, denotadas por \( + \) y \( \cdot \), que pueden ser diferentes de las operaciones usuales. El conjunto \( (R, +, \cdot) \) es un \textbf{anillo} si para todos \( a, b, c \in R \) se cumplen las siguientes condiciones:
+\begin{enumerate}
+    \item \( R \neq \emptyset \) (\textbf{conjunto no vacío})
+    \item \( a + b \in R \) (\textbf{cerradura} de la adición)
+    \item \( a \cdot b \in R \) (\textbf{cerradura} de la multiplicación)
+    \item \( a + b = b + a \) (\textbf{conmutativa} de la adición)
+    \item \( a + (b + c) = (a + b) + c \) (\textbf{asociativa} de la adición)
+    \item \( a \cdot (b \cdot c) = (a \cdot b) \cdot c \) (\textbf{asociativa} de la multiplicación)
+    \item \( \exists z \in R : a + z = z + a = a \) (\textbf{identidad aditiva o neutro}, o de la adición)
+    \item \( \forall a \in R, \exists (-a) \in R : a + (-a) = (-a) + a = z \) (\textbf{inverso aditivo}, o de la adición)
+    \item \( w \cdot (x + y) = w \cdot x + w \cdot y \) (\textbf{distributiva} de la multiplicación respecto a suma a la izquierda)
+    \item \( (x + y) \cdot w = x \cdot w + y \cdot w \) (\textbf{distributiva} de la multiplicación respecto a suma a la derecha)
+\end{enumerate}
 \end{tcolorbox}
 
-\begin{tcolorbox}[colback=yellow!15, title=Notas y aclaraciones]
-\begin{itemize}
-    \item Cuando se trabaja con la segunda operación, es común denotar el producto como \( ab \).
-    \item Por inducción matemática, estas propiedades se extienden para cualquier número finito de elementos.
-    \item \textbf{Nota personal:} Es fundamental verificar la cerradura bajo ambas operaciones, especialmente en subconjuntos propuestos como subanillos o ideales.
-\end{itemize}
+\begin{tcolorbox}[colback=yellow!15, title=Aclaración]
+\textbf Se hace la aclaración ``a la izquierda'' y ``a la derecha'' porque en las matrices la multiplicación no es conmutativa.
 \end{tcolorbox}
+
 
 \section*{Propiedades adicionales}
 
 \begin{tcolorbox}[title=Propiedades importantes]
 En cualquier anillo \( (R, +, \cdot) \):
 \begin{itemize}
-    \item La identidad aditiva, si existe, es única.
-    \item El inverso aditivo de cada elemento también es único.
-    \item La identidad multiplicativa, si existe, es única.
-    \item En un anillo con unidad, un elemento \( u \) es \textbf{unidad} o \textbf{invertible} si existen \( a \in R \) tal que \( au = ua = 1 \).
-    \item Un \textbf{dominio de integridad} es un anillo conmutativo, con unidad, y sin divisores propios de cero.
-    \item Un \textbf{cuerpo} (o campo) es un anillo con unidad en el que todo elemento diferente de cero tiene inverso multiplicativo.
+    \item Si \( ab = ba, \forall a, b \in R \), el anillo es \textbf{conmutativo}.
+    \item El anillo tiene \textbf{divisores propios de cero} si \( \exists a, b \in R, a \neq z, b \neq z : ab = z \).
+    \item Si \( \exists u \in R : u \cdot a = a \cdot u = a, \forall a \in R \), \(\boldsymbol{u}\) es el elemento \textbf{unidad} o identidad para la multiplicación.
+    \item Si el anillo tiene elemento unidad, un elemento \( a \in R \) es una \textbf{unidad} si \( \exists b \in R : ab = ba = u \). En este caso, \( b \) es el \textbf{inverso multiplicativo} de \( a \).
+    \item Un \textbf{dominio de integridad} es un anillo conmutativo, con elemento unidad, y \textbf{sin divisores propios de cero}.
+    \item Un \textbf{cuerpo} es un anillo conmutativo y con elemento unidad en el que todo elemento diferente de cero tiene \textbf{inverso multiplicativo}. Si un anillo es un cuerpo, entonces es un dominio de integridad (por ende no posee divisores propios de cero).
 \end{itemize}
 \end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!15, title=Nota]
+\begin{itemize}
+    \item El \textbf{neutro}, el \textbf{inverso aditivo} de cada elemento y el elemento \(\boldsymbol{u}\), si existen, son únicos. 
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Leyes de cancelación para la suma y absorción]
+\begin{itemize}
+    \item  \( a + b = b + c = b + a = c + a \Rightarrow b = c \) (\textbf{cancelación para la suma})
+    \item \( a \in R : za = az = z \) (\textbf{absorción})
+\end{itemize}
+\end{tcolorbox}
+
+\newpage
 
 \section*{Subanillos e ideales}
 
 \begin{tcolorbox}[title=Subanillo]
-Sea \( (R, +, \cdot) \) un anillo. Un subconjunto no vacío \( S \subseteq R \) es un \textbf{subanillo} si:
+Sea \( (R, +, \cdot) \) un anillo y \( \emptyset \neq S \subseteq R \). Decimos que S es un \textbf{subanillo} de R si cumple:
 \begin{itemize}
-    \item \( S \) es cerrado respecto a la suma: \( a + b \in S \) para \( a, b \in S \).
-    \item \( S \) es cerrado respecto a la multiplicación: \( a b \in S \) para \( a, b \in S \).
+    \item En anillos \textbf{infinitos}: \( \forall a,b \in S, \boldsymbol{a - b} \in S \land ab \in S \)
+    \item En anillos \textbf{finitos}: \( \forall a,b \in S, \boldsymbol{a + b} \in S \land ab \in S \)
 \end{itemize}
 \end{tcolorbox}
 
 \begin{tcolorbox}[title=Ideales]
 Un subconjunto no vacío \( I \subseteq R \) es un \textbf{ideal} si:
 \begin{itemize}
-    \item \( a - b \in I \) para \( a, b \in I \).
-    \item Para todo \( r \in R \), se verifica que \( r a \in I \) y \( a r \in I \).
+    \item \( \forall a, b \in I, a - b \in I \).
+    \item \( \forall r \in R, ra \land ar \in I \).
 \end{itemize}
 \end{tcolorbox}
 
-\begin{tcolorbox}[colback=yellow!15, title=Nota personal]
-\textbf{Importante:} Todo ideal es un subanillo, pero no todos los subanillos son ideales. La diferencia radica en la cerradura multiplicativa del lado del elemento externo \( r \).
+\begin{tcolorbox}[colback=yellow!15, title=Importante]
+Todo ideal es un subanillo, pero \textbf{no todos los subanillos son ideales}. La diferencia radica en la cerradura multiplicativa del lado del elemento externo \( r \).
 \end{tcolorbox}
+
+\newpage
 
 \section*{Los enteros módulo \( n \)}
 
 \begin{tcolorbox}[title=Congruencia modular]
-Sea \( n \in \mathbb{N} \), \( n > 1 \). Para \( a, b \in \mathbb{Z} \), decimos que
+Sea \( n \in \mathbb{Z}^+, n > 1 \). Para \( a, b \in \mathbb{Z} \), decimos que
 \[
 a \equiv b \pmod{n}
 \]
-si \( n \mid (a - b) \), es decir, si \( a - b = kn \) para algún \( k \in \mathbb{Z} \). 
-\textbf{Nota:} esta relación de equivalencia divide a \( \mathbb{Z} \) en \( n \) clases de equivalencia, conocidas como residuos o restos módulo \( n \).
+si \( n \mid (a - b) \), es decir, si \( a - b = kn \) para algún \( k \in \mathbb{Z} \).
+
+\bigskip
+
+\textbf{Nota:} esta relación de equivalencia divide a \( \mathbb{Z} \) en \( n \) clases de equivalencia..
 \end{tcolorbox}
 
-\begin{tcolorbox}[colback=yellow!15, title=Nota personal]
-En el estudio de los residuos módulo \( n \), se trabaja con los representantes en \( \{0, 1, ..., n-1\} \). Es crucial recordar que las operaciones están bien definidas en estas clases de equivalencia, formando un anillo \( \mathbb{Z}_n \).
+\begin{tcolorbox}[title=Relación de equivalencia]
+\begin{itemize}
+    \item \textbf{Reflexiva:} \( a \equiv a \pmod{n} \)
+    \item \textbf{Simétrica:} Si \( a \equiv b \pmod{n} \Rightarrow b \equiv a \pmod{n} \)
+    \item \textbf{Transitiva:} Si \( a \equiv b \pmod{n} \land b \equiv c \pmod{n} \Rightarrow a \equiv c \pmod{n} \)
+\end{itemize}
 \end{tcolorbox}
 
-\section*{Operaciones en \( \mathbb{Z}_n \)}
+\begin{tcolorbox}[title=Anillo de enteros \( \pmod{n} \)]
+Para \( n \in \mathbb{Z}^+, n > 1 \), \( \mathbb{Z}_n \) es un anillo finito y conmutativo, con elemento unidad igual a [1] en las operaciones binarias:
 
+\bigskip
+
+En términos de clases: \( \forall [a], [b] \in \mathbb{Z} \)
 \begin{align*}
-[a]_n + [b]_n &= [a + b]_n \\
-[a]_n \cdot [b]_n &= [a b]_n
+    [a]_n + [b]_n &= [a + b]_n \\
+    [a]_n \cdot [b]_n &= [a b]_n
 \end{align*}
+y en términos de módulo: si \( a \equiv b \pmod{n} \) y \( c \equiv d \pmod{n} \), entonces:
+\begin{align*}
+    a + c &\equiv b + d \pmod{n} \\
+    ac &\equiv bd \pmod{n}   
+\end{align*}
+\end{tcolorbox}
 
-Estas definiciones hacen que \( \mathbb{Z}_n \) sea un anillo con \( n \) elementos. Además:
+\begin{tcolorbox}[colback=yellow!15, title=Nota]
+
+Si \( a \equiv b \pmod{n} \), entonces sus clases de equivalencia son iguales: \( [a] = [b] \).
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Ejemplo de clases de equivalencia]
+En \( \mathbb{Z}_6 \), la clase del 1, denotada \( [1] \), es el conjunto de todos los enteros que son congruentes con 1 módulo 6.
+\[ [1] = \{ \dots, -11, -5, 1, 7, 13, \dots \} \]
+Como 7 y 13 están en este conjunto, podemos decir que \( 7 \equiv 1 \pmod{6} \) y \( 13 \equiv 1 \pmod{6} \).
+
+\bigskip
+
+Esto significa que las clases \( [1] \), \( [7] \) y \( [13] \) son exactamente el mismo conjunto, por lo que podemos escribir:
+\[ [1] = [7] = [13] \]
+\end{tcolorbox}
+
+\bigskip
+
+Estas definiciones hacen que \( (\mathbb{Z}_n, +, \cdot) \) sea un anillo conmutativo con \( n \) elementos. Además:
 \begin{itemize}
     \item \( \mathbb{Z}_p \) es un cuerpo si y solo si \( p \) es primo.
     \item Los elementos \( a \in \mathbb{Z}_n \) que son coprimos con \( n \) son unidades.
