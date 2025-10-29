@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1761695551.02695 "c:/Users/Bel/source/repos/sistemas/2do/Discreta/Apunte U6- LaTeX/U6.tex" "U6.pdf" "U6" 1761695551.88838 0
+["pdflatex"] 1761749240.0195 "c:/Users/Bel/source/repos/sistemas/2do/Discreta/Apunte U5 y U6 - LaTeX/U5 y U6.tex" "U5 y U6.pdf" "U5 y U6" 1761749240.9306 0
   "C:/Users/Bel/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1756422283 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/Bel/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1756412004 13256327 8b6d135c88089bcdf77e6ce40a63d675 ""
   "C:/Users/Bel/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1233951848 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -28,8 +28,10 @@
   "C:/Users/Bel/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmsy10.tfm" 1136765053 1124 6c73e740cf17375f03eec0ee63599741 ""
   "C:/Users/Bel/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmsy6.tfm" 1136765053 1116 933a60c408fc0a863a92debe84b2d294 ""
   "C:/Users/Bel/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmsy8.tfm" 1136765053 1120 8b7d695260f3cff42e636090a8002094 ""
+  "C:/Users/Bel/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmti12.tfm" 1136765053 1484 ed72f8f5cf654cda15ecc8e32bfcbee5 ""
   "C:/Users/Bel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbsy10.pfb" 1247596666 34793 ae7a3e2775dc0ce90475eeabcb46f9f1 ""
   "C:/Users/Bel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1247596666 32080 340ef9bf63678554ee606688e7b5339d ""
+  "C:/Users/Bel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1247596667 30251 6afa5cb1d0204815a708a080681d4674 ""
   "C:/Users/Bel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1247596667 36741 0ee9e374ec3e30da87cdfb0ea3575226 ""
   "C:/Users/Bel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb" 1247596666 37166 8ab3487cbe3ab49ebce74c29ea2418db ""
   "C:/Users/Bel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1247596666 35469 dcf3a5f2fc1862f5952e3ee5eb1d98c4 ""
@@ -39,6 +41,8 @@
   "C:/Users/Bel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1247596667 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "C:/Users/Bel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1247596667 32726 39f0f9e62e84beb801509898a605dbd5 ""
   "C:/Users/Bel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "C:/Users/Bel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1247596667 32626 5abc8bb2f28aa647d4c70f8ea38cc0d3 ""
+  "C:/Users/Bel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb" 1247596667 36118 fad905eba93cff5bce1e185fe980a177 ""
   "C:/Users/Bel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1247596673 34694 870c211f62cb72718a00e353f14f254d ""
   "C:/Users/Bel/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Users/Bel/AppData/Local/Programs/MiKTeX/tex/generic/babel/babel.sty" 1754220793 146665 9149bce97203d4030d7cbe4f4e85dfc4 ""
@@ -143,11 +147,13 @@
   "C:/Users/Bel/AppData/Local/Programs/MiKTeX/tex/latex/tools/verbatim.sty" 1749468414 7532 26d26e9d8f2ca784270d5da8ec7d102b ""
   "C:/Users/Bel/AppData/Local/Programs/MiKTeX/tex/latex/trimspaces/trimspaces.sty" 1253169183 1380 971a51b00a14503ddf754cab24c3f209 ""
   "C:/Users/Bel/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "U6.aux" 1761695551 232 03d047d440f873e5b5be3571cf2d4144 "pdflatex"
-  "U6.tex" 1761695550 8613 204820fd0a8548e63de2d631c19db24d ""
-  "c:/Users/Bel/source/repos/sistemas/2do/Discreta/Apunte U6- LaTeX/U6.tex" 1761695550 8613 204820fd0a8548e63de2d631c19db24d ""
+  "U5 y U6.aux" 1761749240 482 c50639a5ec27200dd56f945047aae138 "pdflatex"
+  "U5 y U6.tex" 1761749239 12282 121ff1609c91d3a6ab992ef66a29ab09 ""
+  "U5 y U6.toc" 1761749240 198 2fb03a1e6311c07950f0bdb9b04f4caa "pdflatex"
+  "c:/Users/Bel/source/repos/sistemas/2do/Discreta/Apunte U5 y U6 - LaTeX/U5 y U6.tex" 1761749239 12282 121ff1609c91d3a6ab992ef66a29ab09 ""
   (generated)
-  "U6.aux"
-  "U6.log"
-  "U6.pdf"
+  "U5 y U6.aux"
+  "U5 y U6.log"
+  "U5 y U6.pdf"
+  "U5 y U6.toc"
   (rewritten before read)

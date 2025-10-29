@@ -6,15 +6,64 @@
 \usepackage{geometry}
 \geometry{margin=2.5cm}
 
-\title{Unidad 6: Anillos y aritmética modular}
+\title{Matemática Discreta \\[0.5em]
+\large El sistema de los enteros y Anillos y aritmética modular}
 \author{Matemática Discreta - UADER 2025}
 \date{}
 
 \begin{document}
-
 \maketitle
+\tableofcontents
+\bigskip
+\newpage
 
-\section*{Estructura de un anillo}
+
+\section{Unidad 5: El sistema de los enteros}
+
+\subsection*{Algoritmo de la división: números primos}
+
+\begin{tcolorbox}[title=Algoritmo de la división]
+    \begin{itemize}
+        \item Sean \( a, b \in \mathbb{Z} \Rightarrow \exists ! q, r \in \mathbb{Z} : \)
+            \[ a = qb + r, \quad 0 \leq r < b \] 
+            Donde: \( a \) es el \textbf{dividendo}, \( b \) es el \textbf{divisor}, \( q \) es el \textbf{cociente} y \( r \) es el \textbf{resto}. Si \( r = 0 \), entonces \( a \mid b \).
+        \item Si \( a, b \in \mathbb{Z} \) y \( b \neq 0 \), entonces \( b \mid a \) si y solo si \( \exists n \in \mathbb{Z} \) tal que \( a = bn \).
+        %Agregar nota: se dice que "b divida a a", "b es un divisor de a" o "a es múltiplo de b"
+    \end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Propiedades de la relacion de divisibilidad]
+\begin{enumerate}
+    \item \( 1 \mid a \) (1 es el \textit{divisor universal})
+    \item \( a \mid 0 \)
+    \item \( (a \mid b \land b \mid a) \Rightarrow a = \pm b \)
+    \item \( (a \mid b \land b \mid c) \Rightarrow a \mid c \)
+    \item \( a \mid b \Rightarrow a \mid bx \)
+    \item Si \( x = y + z \land a \text{ divide a dos de } x, y, z \Rightarrow a \text{ divide al restante} \) 
+    \item \( (a \mid b \land a \mid c) \Rightarrow a \mid (bx + cy) \)
+    %Agregar nota de que se combinan las propiedades 5 y 6
+\end{enumerate}
+\end{tcolorbox}
+
+%Agregar nota de definicionnde numero primo y compuesto
+
+\begin{tcolorbox}[title=Número primos y compuestos]
+    Si \( n \) es compuesto, \( \Rightarrow \exists ! \text{ un primo } p : p \mid n \land p \leq \sqrt{n} \)
+\end{tcolorbox}
+% Agregar el contrarrecíproco
+
+\subsection*{Máximo común divisor}
+
+\begin{tcolorbox}[title=Algoritmo de la división]
+
+\end{tcolorbox}
+
+%------------------------
+\newpage
+
+\section{Unidad 6: Anillos y aritmética modular}
+
+\subsection*{Estructura de un anillo}
 
 \begin{tcolorbox}[title=Definición de anillo]
 Sea \( R \) un conjunto no vacío con dos operaciones binarias cerradas, denotadas por \( + \) y \( \cdot \), que pueden ser diferentes de las operaciones usuales. El conjunto \( (R, +, \cdot) \) es un \textbf{anillo} si para todos \( a, b, c \in R \) se cumplen las siguientes condiciones:
@@ -37,7 +86,7 @@ Sea \( R \) un conjunto no vacío con dos operaciones binarias cerradas, denotad
 \end{tcolorbox}
 
 
-\section*{Propiedades adicionales}
+\subsection*{Propiedades adicionales}
 
 \begin{tcolorbox}[title=Propiedades importantes]
 En cualquier anillo \( (R, +, \cdot) \):
@@ -66,7 +115,7 @@ En cualquier anillo \( (R, +, \cdot) \):
 
 \newpage
 
-\section*{Subanillos e ideales}
+\subsection*{Subanillos e ideales}
 
 \begin{tcolorbox}[title=Subanillo]
 Sea \( (R, +, \cdot) \) un anillo y \( \emptyset \neq S \subseteq R \). Decimos que S es un \textbf{subanillo} de R si cumple:
@@ -90,7 +139,7 @@ Todo ideal es un subanillo, pero \textbf{no todos los subanillos son ideales}. L
 
 \newpage
 
-\section*{Los enteros módulo \( n \)}
+\subsection*{Los enteros módulo \( n \)}
 
 \begin{tcolorbox}[title=Congruencia modular]
 Sea \( n \in \mathbb{Z}^+, n > 1 \). Para \( a, b \in \mathbb{Z} \), decimos que
@@ -101,7 +150,7 @@ si \( n \mid (a - b) \), es decir, si \( a - b = kn \) para algún \( k \in \mat
 
 \bigskip
 
-\textbf{Nota:} esta relación de equivalencia divide a \( \mathbb{Z} \) en \( n \) clases de equivalencia..
+\textbf{Nota:} esta relación de equivalencia divide a \( \mathbb{Z} \) en \( n \) clases de equivalencia.
 \end{tcolorbox}
 
 \begin{tcolorbox}[title=Relación de equivalencia]
@@ -131,7 +180,7 @@ y en términos de módulo: si \( a \equiv b \pmod{n} \) y \( c \equiv d \pmod{n}
 
 \begin{tcolorbox}[colback=yellow!15, title=Nota]
 
-Si \( a \equiv b \pmod{n} \), entonces sus clases de equivalencia son iguales: \( [a] = [b] \).
+Si \( a \equiv b \pmod{n} \), entonces sus clases de equivalencia son iguales: \( [a] = [b] \) en \( \mathbb{Z}_n \).
 \end{tcolorbox}
 
 \begin{tcolorbox}[title=Ejemplo de clases de equivalencia]
@@ -147,39 +196,87 @@ Esto significa que las clases \( [1] \), \( [7] \) y \( [13] \) son exactamente 
 
 \bigskip
 
-Estas definiciones hacen que \( (\mathbb{Z}_n, +, \cdot) \) sea un anillo conmutativo con \( n \) elementos. Además:
+\begin{tcolorbox}[title=Propiedades del anillo \( \mathbb{Z}_n \)]
 \begin{itemize}
-    \item \( \mathbb{Z}_p \) es un cuerpo si y solo si \( p \) es primo.
-    \item Los elementos \( a \in \mathbb{Z}_n \) que son coprimos con \( n \) son unidades.
-    \item El número total de unidades en \( \mathbb{Z}_n \) es \( \varphi(n) \), donde \( \varphi \) es la función de Euler.
+    \item \( \mathbb{Z}_n \) es un \textbf{cuerpo} \( \boldsymbol{\Leftrightarrow n} \)\textbf{es primo}.
+    \item Si \( \exists [a] \in \mathbb{Z}_n : \text{mcd}(a, n) = 1 \rightarrow [a] \) es una \textbf{unidad} (por ende, tiene inverso multiplicativo).
+    \item Hay \( \varphi(n) \) \textbf{unidades} y \( n - 1 - \varphi(n) \) \textbf{divisores propios de cero}.
 \end{itemize}
-
-\begin{tcolorbox}[title=Notas y aplicaciones]
-La aritmética modular es fundamental en criptografía, teoría de códigos, y en la resolución de problemas en álgebra abstracta. Es esencial manejar con precisión las congruencias y su relación con los ideales en anillos cocientes.
 \end{tcolorbox}
 
-\section*{Homomorfismos e isomorfismos}
+\begin{tcolorbox}[title=Ecuación lineal de congruencia]
+La ecuación lineal de congruencia \( ax \equiv b \pmod{n} \) tiene solución \( \Leftrightarrow \text{mcd}(a, n) \mid b \).
+Si \( d = \text{mcd}(a, n) \rightarrow\) hay \( d \) soluciones \( \neq \text{en} \pmod{n} \)
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Notas]
+\begin{itemize}
+    \item En \( \mathbb{Z}_n, [1] \equiv 1 \) y \( [n - 1] \equiv -1 \equiv (n - 1) \), y ambos son \textbf{siempre unidades}. 
+    % Agregar nota del -1
+    \item Sea \( n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k} \) la factorización en primos de \( n \), ningún número que contenga alguno de los \( p_i \) como factor es una unidad en \( \mathbb{Z}_n \).
+\end{itemize}
+\end{tcolorbox}
+
+\newpage
+
+\subsection*{Homomorfismo e isomorfismo}
 
 \begin{tcolorbox}[title=Definición]
-Sean \( (R, +, \cdot) \) y \( (S, \oplus, \otimes) \) anillos. Una función \( f: R \to S \) es un \textbf{homomorfismo de anillos} si:
-\[
-f(a + b) = f(a) \oplus f(b), \quad f(a b) = f(a) \otimes f(b)
-\]
-Si \( f \) es biyectiva, entonces es un \textbf{isomorfismo}.
+Sean \( (R, +, \cdot) \) y \( (S, \odot, \otimes) \) anillos. Una función \( f: R \to S \) es un \textbf{homomorfismo de anillos} si:
+\begin{align*}
+    f(a + b) &= f(a) \oplus f(b) \\
+    f(a b) &= f(a) \odot f(b)
+\end{align*}
+Si además \( f \) es biyectiva, entonces es un \textbf{isomorfismo}.
+Para ser biyectiva debe ser \textit{inyectiva y sobreyectiva}.
 \end{tcolorbox}
 
-\section*{El Teorema del Resto Chino}
-
-\begin{tcolorbox}[title=Teorema]
-Sea \( n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k} \) la factorización en primos de \( n \). Entonces:
-\[
-\mathbb{Z}_n \cong \mathbb{Z}_{p_1^{e_1}} \times \mathbb{Z}_{p_2^{e_2}} \times \cdots \times \mathbb{Z}_{p_k^{e_k}}
-\]
-y las operaciones se definen componente a componente. Además, los anillos \( \mathbb{Z}_{n} \) y los productos anteriores son ísomorfos.
+\begin{tcolorbox}[colback=yellow!15, title=Nota]
+    Al relacionar un conjunto infinito con uno finito, no hay isomorfismo, pues no es \textbf{inyectiva}.
 \end{tcolorbox}
 
-\begin{tcolorbox}[colback=yellow!15, title=Notas y aplicaciones]
-Este resultado permite descomponer problemas en módulos primos y analizar su comportamiento en estructuras más simples. Es muy útil en criptografía y algebra computacional.
+\newpage
+
+\subsection*{El Teorema Chino del Resto}
+
+\begin{tcolorbox}[title=Isomorfismo]
+Sea \( n = p_1^{e_1} \cdots p_k^{e_k} \) la factorización en primos de \( n \) y \( m_1 = p_1^{e_1}, \dots, m_k = p_k^{e_k} \). Entonces:
+\[
+\mathbb{Z}_n \cong \mathbb{Z}_{m_1} \times \mathbb{Z}_{m_2} \times \cdots \times \mathbb{Z}_{m_k}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Teorema Chino del Resto]
+Sean \(m_1, \dots, m_r \in \mathbb{N}\) \textbf{mutuamente primos} y sea \(M\) su producto.
+\( \forall a_1, \dots, a_r \in \mathbb{Z} \), \( \exists ! x \in \mathbb{Z}, \pmod{M} : x \equiv a_i \pmod{m_i}, \forall i = 1, \dots, r \).
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=yellow!15, title=Nota]
+\begin{align*}
+    M = \prod_{i=1}^r m_i && M_i = \frac{M}{m_i} && v_i \text{ es el inverso de } M_i \pmod{m_i}
+\end{align*}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Teorema de Fermat]    
+Si \( p \) es un número primo y \( a \in \mathbb{Z} : p \nmid a \), entonces:
+\[
+a^{p-1} \equiv 1 \pmod{p}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[title= Indicador de Euler]    
+Si \( m \in \mathbb{N} \), el indicador de Euler \( \varphi(m) \) :
+\[ \varphi(m) = |\{k \in \mathbb{N} \mid 1 \le k \le m \land \text{mcd}(k, m) = 1\}| \]
+\[
+    \varphi(m) = m \cdot \frac{p_1 - 1}{p_1} \cdot \frac{p_2 - 1}{p_2} \cdots \frac{p_r - 1}{p_r}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}[title= Teorema de Fermat-Euler]    
+Sea \( m \in \mathbb{N} \) y \( a \in \mathbb{Z} : \text{mcd}(a, m) = 1\), entonces:
+\[
+a^{\varphi(m)} \equiv 1 \pmod{m}
+\]
 \end{tcolorbox}
 
 \end{document}
