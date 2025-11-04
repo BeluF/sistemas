@@ -4,6 +4,8 @@
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{tcolorbox}
 \usepackage{geometry}
+\usepackage{xlop}
+\usepackage[T1]{fontenc}
 \geometry{margin=2.5cm}
 
 \title{Matemática Discreta \\[0.5em]
@@ -52,12 +54,83 @@
 \end{tcolorbox}
 % Agregar el contrarrecíproco
 
+\newpage
+
 \subsection*{Máximo común divisor}
 
 \begin{tcolorbox}[title=Algoritmo de la división]
-
+Sean \( a, b \in \mathbb{Z}, b > 0 \). El \textbf{máximo común divisor} de \( a \) y \( b \), denotado como \( \text{mcd}(a, b) \), es el mayor entero positivo que divide a ambos números y es \textbf{único}.
+Si \( \text{mcd}(a, b) = 1 \), entonces \( a \) y \( b \) son \textbf{coprimos}.
 \end{tcolorbox}
 
+\begin{tcolorbox}[colback=yellow!15, title=Propiedades]
+\begin{itemize}
+    \item Para \( a \neq 0, \text{mcd}(a, 0) = |a| \)
+    \item \( \text{mcd}(a, b) = \text{mcd}(b,a) = \text{mcd}(|a|, |b|) = \text{mcd}(-a, b) = \text{mcd}(a, -b) = \text{mcd}(-a, -b)\)
+    \item \( \text{mcd}(0, 0) \) no está definido
+    \item \( \textbf{\text{mcd}(a, b) = \text{mcd}(b, a - b)}\)
+\end{itemize}
+\end{tcolorbox}
+
+\newpage
+
+\subsection*{Algoritmo de Euclides y la identidad de Bézout}
+
+\begin{tcolorbox}[title=Identidad de Bézout]
+Para \( a, b \in \mathbb{Z}, \exists x, y \in \mathbb{Z} : \text{mcd}(a, b) = ax + by \), donde \( \text{mcd}(a, b) \) es la menor combinación lineal positiva.
+Los enteros \( x \) y \( y \) pueden encontrarse mediante el \textbf{algoritmo de Euclides extendido}.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Propiedad fundamental del algoritmo de Euclides]
+    Sean \( a, b \in \mathbb{Z}, a \neq 0 \). Si \( a = qb + r \), entonces \( \text{mcd}(a, b) = \text{mcd}(b, r) \).
+    El mcd es el último resto no nulo obtenido al aplicar el algoritmo de Euclides.
+\end{tcolorbox}
+
+\subsection*{Ecuaciones diofánticas}
+
+\begin{tcolorbox}[title=Ecuación diofántica lineal con dos incógnitas]
+La ecuación diofántica lineal es de la forma \( ax + by = c \), donde \( a, b, c \in \mathbb{Z} \) son dados y \( x, y \in \mathbb{Z} \) son las incógnitas.
+\end{tcolorbox}
+
+\newpage
+
+\subsection*{Mínimo común múltiplo}
+
+\begin{tcolorbox}[title=Mínimo común múltiplo]
+Sea \( a, b \in \mathbb{Z}, a, b \neq 0 \). El \textbf{mínimo común múltiplo} de \( a \) y \( b \), denotado como \( \text{mcm}(a, b) \), es el menor entero positivo que es múltiplo de ambos números y es \textbf{único}.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Relación entre mcd y mcm]
+Para \( a, b \in \mathbb{Z}^+\):
+\[ \text{mcm}(a, b) \cdot \text{mcd}(a, b) = |ab| \]
+\end{tcolorbox}
+
+\newpage
+
+\subsection*{Teorema fundamental de la aritmética}
+
+\begin{tcolorbox}[title=Teorema fundamental de la aritmética]
+    Si \( a,b \in \mathbb{Z}^+, \textit{p} \text{ es un primo y } p \mid ab, \rightarrow p \mid a \lor p \mid b  \)
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Teorema fundamental de la aritmética: representación canónica]
+    Todo \( n \in \mathbb{Z}^+, n > 1 \) se factoriza como:
+    \[
+    n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k}
+    \]
+    donde \( p_1, p_2, \dots, p_k \) son los divisores primos de \( n \) 
+    y \( e_1, e_2, \dots, e_k \in \mathbb{N}\)
+\end{tcolorbox}
+
+\begin{tcolorbox}
+    Sean las factorizaciones de \( n,m \in \mathbb{Z}, a,b > 1\):
+        \[ n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k} \qquad
+        m = p_1^{f_1} p_2^{f_2} \cdots p_k^{f_k} \]
+    Si \( m \mid n \rightarrow 0 \leqslant f_i \leqslant e_i \) \( \forall 1 \leqslant i \leqslant k \)
+
+    El número de divisores positivos de \( n \) es:
+    \[ \# D^{+}(n) = (e_1 + 1)(e_2 + 1) \cdots (e_k + 1) \]
+\end{tcolorbox}
 %------------------------
 \newpage
 
