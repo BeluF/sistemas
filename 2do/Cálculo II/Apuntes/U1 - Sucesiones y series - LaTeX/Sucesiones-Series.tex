@@ -1,0 +1,133 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+
+\geometry{top=2.5cm, bottom=2.5cm, left=3cm, right=3cm}
+
+% Configuración de encabezado
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Licenciatura en Sistemas de la Información}
+\rhead{Unidad 1: Sucesiones}
+\cfoot{\thepage}
+
+\title{\textbf{Resumen Unidad 1: Sucesiones Numéricas y Series de Funciones}}
+\author{Ecuaciones Diferenciales y Cálculo Multivariado}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Sucesiones Numéricas}
+
+\subsection{Definición}
+Una sucesión numérica se define de dos formas equivalentes:
+\begin{enumerate}
+    \item Como un \textbf{conjunto ordenado de números} afectados por un índice natural que indica su posición: $\{a_1, a_2, a_3, ..., a_n, ...\}$.
+    \item Como una \textbf{función} cuyo dominio son los números naturales ($\mathbb{N}$) y su rango los números reales ($\mathbb{R}$):
+    $$ f: \mathbb{N} \rightarrow \mathbb{R} \quad / \quad \forall n \in \mathbb{N}: a_n = f(n) $$
+\end{enumerate}
+
+\subsection{Formas de Representación}
+\begin{itemize}
+    \item \textbf{Término n-ésimo ($a_n$):} Fórmula explícita. Ej: $a_n = \frac{n}{n^2+1}$.
+    \item \textbf{Coloquial:} Descripción verbal. Ej: "1 si es par, 0 si es impar".
+    \item \textbf{Regla de Recurrencia:} El término depende de los anteriores. 
+    Ej: $a_n = 3a_{n-1} - a_{n-2}$, dados $a_1$ y $a_2$.
+    \item \textbf{Geométrica:} Puntos en el plano cartesiano $(n, a_n)$ o sobre la recta real.
+\end{itemize}
+
+\section{Sucesiones Especiales}
+
+\subsection{Sucesión Aritmética}
+Cada término se obtiene sumando al anterior una constante $s$ (diferencia).
+$$ a_n = a + (n-1)s $$
+\textit{Ejemplo:} $a_n = 2 + (n-1)\frac{1}{3}$.
+
+\subsection{Sucesión Geométrica}
+Cada término se obtiene multiplicando al anterior por una constante $q$ (razón).
+$$ a_n = a \cdot q^{n-1} $$
+\textit{Ejemplo:} $a_n = 2\left(\frac{1}{2}\right)^{n-1}$.
+
+\subsection{Otras}
+\begin{itemize}
+    \item \textbf{Aritmética-Geométrica:} $a_n = [a + (n-1)s] \cdot q^{n-1}$.
+    \item \textbf{Armónica:} $a_n = \frac{1}{n}$.
+\end{itemize}
+
+\section{Monotonía y Acotación}
+
+\subsection{Sucesiones Monótonas}
+Una sucesión es \textbf{monótona} si mantiene una tendencia constante:
+\begin{itemize}
+    \item \textbf{Creciente:} $\forall n, a_n < a_{n+1}$.
+    \item \textbf{Decreciente:} $\forall n, a_n > a_{n+1}$.
+    \item \textbf{No decreciente:} $a_n \le a_{n+1}$.
+    \item \textbf{No creciente:} $a_n \ge a_{n+1}$.
+\end{itemize}
+
+\subsection{Sucesiones Acotadas}
+Una sucesión $\{a_n\}$ está acotada si existen números reales $m$ (cota inferior) y $M$ (cota superior) tales que:
+$$ m \le a_n \le M \quad \forall n \in \mathbb{N} $$
+
+\section{Límite y Convergencia}
+
+\subsection{Definición de Límite}
+Una sucesión tiene límite $L$ (es convergente) si para todo $\epsilon > 0$, existe un $N > 0$ tal que para todo $n > N$, la distancia entre $a_n$ y $L$ es menor que $\epsilon$:
+$$ \lim_{n \to \infty} a_n = L \iff \forall \epsilon > 0, \exists N > 0 \ / \ \forall n > N \implies |a_n - L| < \epsilon $$
+
+\subsection{Clasificación según el límite}
+\begin{itemize}
+    \item \textbf{Convergente:} Tiene límite finito único.
+    \item \textbf{Divergente:} No tiene límite finito (puede tender a $\infty$ o oscilar indefinidamente).
+\end{itemize}
+
+\subsection{Teoremas de Convergencia}
+\begin{enumerate}
+    \item \textbf{Monotonía y Acotación:}
+    \begin{itemize}
+        \item Si es monótona creciente y tiene cota superior $\rightarrow$ \textbf{Converge}.
+        \item Si es monótona decreciente y tiene cota inferior $\rightarrow$ \textbf{Converge}.
+        \item \textit{Resumen:} Toda sucesión monótona y acotada es convergente.
+    \end{itemize}
+    \item \textbf{Condición Necesaria (pero no suficiente):}
+    \begin{itemize}
+        \item Si $\{a_n\}$ converge $\implies$ $\{a_n\}$ está acotada.
+        \item \textbf{Contrarrecíproco:} Si no está acotada $\implies$ es Divergente.
+        \item \textit{Nota:} La acotación por sí sola no garantiza convergencia (ej: $(-1)^n$ es acotada pero oscila).
+    \end{itemize}
+\end{enumerate}
+
+\section{Infinitésimos y Sucesiones Infinitas}
+
+\subsection{Sucesiones Infinitésimas}
+Son aquellas cuyo límite es 0.
+$$ \lim_{n \to \infty} a_n = 0 $$
+\textbf{Propiedad fundamental:} Un número $L$ es límite de $a_n$ si y solo si $a_n$ puede escribirse como $L + \alpha_n$, donde $\alpha_n$ es un infinitésimo.
+
+\subsection{Propiedades de Infinitésimos}
+\begin{itemize}
+    \item Suma de infinitésimos = Infinitésimo.
+    \item Producto de infinitésimo $\times$ Acotada = Infinitésimo.
+\end{itemize}
+
+\subsection{Sucesiones Infinitas}
+Aquellas donde $\lim_{n \to \infty} a_n = \infty$. Si $a_n$ es infinita ($a_n \neq 0$), entonces $\{1/a_n\}$ es infinitésimo.
+
+\section{Álgebra de Límites}
+Si $\{a_n\} \to A$ y $\{b_n\} \to B$:
+\begin{align*}
+    \lim_{n \to \infty} (a_n \pm b_n) &= A \pm B \\
+    \lim_{n \to \infty} (C \cdot a_n) &= C \cdot A \\
+    \lim_{n \to \infty} (a_n \cdot b_n) &= A \cdot B \\
+    \lim_{n \to \infty} \left(\frac{a_n}{b_n}\right) &= \frac{A}{B} \quad (si \ B \neq 0) \\
+    \lim_{n \to \infty} (a_n)^r &= A^r
+\end{align*}
+
+\end{document}
