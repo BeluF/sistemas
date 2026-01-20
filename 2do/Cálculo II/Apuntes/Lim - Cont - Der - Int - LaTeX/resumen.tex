@@ -1,0 +1,248 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{titlesec}
+
+% Configuración de márgenes
+\geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+% Personalización de títulos
+\titleformat{\section}{\large\bfseries\uppercase}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\bfseries}{}{0em}{}
+
+% Definición de entornos
+\theoremstyle{definition}
+\newtheorem*{definicion}{Definición}
+\newtheorem*{teorema}{Teorema}
+
+\title{\textbf{Resumen de repaso: Cálculo de Trascendentes Tempranas}\\ \large Límites, Continuidad, Derivadas e Integrales}
+\author{Basado en J. Stewart, 8va Edición}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{1. Límites}
+
+Permite analizar el comportamiento de una función cuando se acerca a un punto, sin necesidad de alcanzarlo.
+
+\subsection{Definiciones Formales e Intuitivas}
+
+\begin{itemize}
+    \item \textbf{Intuitiva:} El límite de $f(x)$ cuando $x$ tiende a $a$ es $L$ si podemos hacer que los valores de $f(x)$ estén arbitrariamente cerca de $L$ tomando $x$ suficientemente cerca de $a$ (pero $x \neq a$).
+    \item \textbf{Formal (Definición $\epsilon-\delta$):}
+    Para cualquier $\epsilon > 0$, existe un $\delta > 0$ tal que:
+    \[
+    0 < |x - a| < \delta \implies |f(x) - L| < \epsilon
+    \]
+\end{itemize}
+
+\subsection{Límites laterales}
+\begin{itemize}
+    \item \textbf{Límite por la izquierda:} $\lim_{x \to a^-} f(x) = L$ si $f(x)$ se acerca a $L$ cuando $x$ se acerca a $a$ desde valores menores.
+    \item \textbf{Límite por la derecha:} $\lim_{x \to a^+} f(x) = L$ si $f(x)$ se acerca a $L$ cuando $x$ se acerca a $a$ desde valores mayores.
+\end{itemize}
+
+\subsection{Límites infinitos}
+\begin{itemize}
+    \item \textbf{Límite infinito:} $\lim_{x \to a} f(x) = \infty$ o $\lim_{x \to a} f(x) = -\infty$ significa que los valores de $f(x)$ pueden volverse muy grandes (positivos o negativos) cuando $x$ se acerca a $a$.
+    \item \textbf{Límite al infinito:} Sea la función $f$ definida en el intervalo $(a, \infty)$ o $(-\infty, b)$, entonces
+    \begin{itemize}
+        \item \textbf{Límite superior:} $\lim_{x \to \infty} f(x) = L$ significa que los valores de $f(x)$ se acercan a $L$ cuando $x$ toma un valor muy grande positivo.
+        \item \textbf{Límite inferior: } $\lim_{x \to -\infty} f(x) = L$ significa que los valores de $f(x)$ se acercan a $L$ cuando $x$ toma un valor muy grande negativo.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Asíntota vertical y horizontal}
+\begin{itemize}
+    \item \textbf{Asíntota vertical:} La línea $x = a$ es una \textbf{asíntota vertical} de la curva $y = f(x)$ si $\lim_{x \to a^-} f(x) = \pm \infty$ o $\lim_{x \to a^+} f(x) = \pm \infty$.
+    \item \textbf{Asíntota horizontal:} La línea $y = L$ es una \textbf{asíntota horizontal} de de la curva $y = f(x)$ si $\lim_{x \to \infty} f(x) = L$ o $\lim_{x \to -\infty} f(x) = L$.
+\end{itemize}
+
+\subsection{Leyes de los Límites}
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{l l l}
+        \toprule
+        \textbf{Ley} & \textbf{Fórmula Matemática} & \textbf{Condición} \\
+        \midrule
+        Suma/Resta & $\lim_{x \to a} [f(x) \pm g(x)] = \lim_{x \to a} f(x) \pm \lim_{x \to a} g(x)$ & Existencia de límites \\
+        Múltiplo constante & $\lim_{x \to a} [c \cdot f(x)] = c \cdot \lim_{x \to a} f(x)$ & Existencia de límite \\
+        Producto & $\lim_{x \to a} [f(x) \cdot g(x)] = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)$ & Existencia de límites \\
+        Cociente & $\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)}$ & $\lim g(x) \neq 0$ \\
+        Potencia & $\lim_{x \to a} [f(x)]^n = [\lim_{x \to a} f(x)]^n$ & Existencia de límite, $n$ entero \\
+        Limites especiales & $\lim_{x \to a} c = c$ y $\lim_{x \to a} x = a$ \\
+        Potencia & $\lim_{x \to a} x^n = a^n$ & $n$ entero positivo\\
+        Raíz & $\lim_{x \to a} \sqrt[n]{x} = \sqrt[n]{a}$ & $n$ entero positivo \\
+        Raíz & $\lim_{x \to a} \sqrt[n]{f(x)} = \sqrt[n]{\lim_{x \to a} f(x)}$ & Existencia de límite, $n$ entero positivo \\
+        % Exponencial/Logaritmo & $\lim_{x \to a} e^{f(x)} = e^{\lim_{x \to a} f(x)}$ & Existencia de límite \\
+        % Límite Especial & $\lim_{\theta \to 0} \frac{\sin \theta}{\theta} = 1$ & $\theta$ en radianes \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Estrategias de Resolución}
+\begin{enumerate}
+    \item \textbf{Sustitución Directa:} Si $f$ es continua (polinomios, racionales en su dominio), evaluar $f(a)$: $\lim_{x \to a} f(x) = f(a)$.
+    \item \textbf{Forma Indeterminada $\frac{0}{0}$:}
+    \begin{itemize}
+        \item \textit{Factorización:} Simplificar términos comunes.
+        \item \textit{Racionalización:} Multiplicar por el conjugado si hay raíces.
+    \end{itemize}
+    \item \textbf{Límites al Infinito:} Dividir numerador y denominador por la mayor potencia de $x$ del denominador.
+\end{enumerate}
+
+\subsection{Teoremas Fundamentales}
+\begin{enumerate}
+    \item \textbf{Existencia del límite:} $\lim_{x \to a} f(x) = L \leftrightarrow \lim_{x \to a^-} f(x) = \lim_{x \to a^+} f(x) = L$.
+    \item \textbf{Desigualdad de límites:} Si $f(x) \leqslant g(x)$ cuando $x \to a$, entonces $\lim_{x \to a} f(x) \leqslant \lim_{x \to a} g(x)$.
+    \item \textbf{Teorema de la Compresión (Sándwich):} Si $f(x) \leqslant g(x) \leqslant h(x)$ cuando $x \to a$ y $\lim_{x\to a} f(x) = \lim_{x\to a} h(x) = L$, entonces $\lim_{x\to a} g(x) = L$.
+    \item \textbf{Racionales: } Si $r > 0$ es racional, entonces:
+    \[\lim_{x \to \infty} \frac{1}{x^r} = 0 \quad \text{y si $x^r$ está definida $\forall x$} \Rightarrow \quad \lim_{x \to -\infty} \frac{1}{x^r} = 0\]
+\end{enumerate}
+
+\subsection{Límites infinitos al infinito}
+\[ \lim_{x \to \pm \infty} f(x) = \pm \infty \] significa que los valores de $f(x)$ pueden volverse arbitrariamente grandes cuando $x$ toma valores muy grandes.
+
+\newpage
+
+\section{2. Continuidad}
+
+\subsection{Definiciones Formales e Intuitivas}
+\begin{itemize}
+    \item \textbf{Continuidad en un punto:} Una función $f$ es continua en $a$ si cumple tres condiciones estrictas:
+    \begin{enumerate}
+        \item $f(a)$ está definida.
+        \item $\lim_{x \to a} f(x)$ existe.
+        \item $\lim_{x \to a} f(x) = f(a)$.
+    \end{enumerate}
+    \item \textbf{Continuidad por los laterales:}
+        \begin{itemize}
+            \item $\lim_{x \to a^-} f(x) = f(a)$ (continua por la izquierda).
+            \item $\lim_{x \to a^+} f(x) = f(a)$ (continua por la derecha).
+        \end{itemize}
+    \item \textbf{Tipos de Discontinuidad:} Removible (límite existe pero no coincide), De Salto (límites laterales distintos), Infinita (asíntota vertical).
+\end{itemize}
+
+\subsection{Continuidad en Intervalos}
+Una función $f$ es continua en un intervalo $I$ si es continua en cada punto de $I$.
+
+\subsection{Teoremas Fundamentales}
+\begin{itemize}
+    \item \textbf{Operaciones con funciones continuas:} Si $f$ y $g$ son continuas en $a$, y existe una constante $c$, entonces $f+g$, $f-g$, $fg$, $cf$ y $\frac{f}{g}$ (si $g(a) \neq 0$) son continuas en $a$.
+    \item \textbf{Teorema del Valor Intermedio (TVI):} Si $f$ es continua en el intervalo cerrado $[a, b]$ y sea $N$ cualquier número entre $f(a)$ y $f(b)$, donde $f(a) \leqslant f(b) \Rightarrow \exists c \in (a, b) : f(c) = N$. Base para hallar raíces.
+\end{itemize}
+
+\subsection{Propiedades de Continuidad}
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{l l}
+        \toprule
+        \textbf{Tipo de Función} & \textbf{Regla} \\
+        \midrule
+        Polinomios & Continuos en todo $\mathbb{R}$ \\
+        Racionales & Continuas en su dominio (denominador $\neq 0$) \\
+        Trigonométricas & Continuas en su dominio \\
+        Composición & $\lim_{x \to a} f(g(x)) = f(\lim_{x \to a} g(x))$ \\
+        Composición & Si $g$ cont. en $a$ y $f$ cont. en $g(a) \implies (f \circ g) = f(g(x))$ cont. en $a$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Estrategias de Resolución}
+\begin{itemize}
+    \item Verificar las 3 condiciones de la definición para puntos sospechosos.
+    \item Para funciones a trozos, asegurar que los límites laterales coincidan en los puntos de cambio.
+\end{itemize}
+
+\newpage
+
+\section{3. Derivadas}
+
+\subsection{Definiciones Formales e Intuitivas}
+\begin{itemize}
+    \item \textbf{Definición Formal:} Límite del cociente incremental:
+    \[ f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h} \]
+    \item \textbf{Interpretación:} Pendiente de la recta tangente y razón de cambio instantánea.
+\end{itemize}
+
+\subsection{Teoremas Fundamentales}
+\begin{enumerate}
+    \item \textbf{Teorema del Valor Medio (TVM):} Si $f$ es continua en $[a,b]$ y derivable en $(a,b)$, existe $c$ tal que $f'(c) = \frac{f(b)-f(a)}{b-a}$.
+    \item \textbf{Regla de L'Hôpital:} Para $\frac{0}{0}$ o $\frac{\infty}{\infty}$, $\lim \frac{f(x)}{g(x)} = \lim \frac{f'(x)}{g'(x)}$.
+\end{enumerate}
+
+\subsection{Reglas de Derivación}
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{l l}
+        \toprule
+        \textbf{Regla} & \textbf{Expresión Matemática} \\
+        \midrule
+        Producto & $(fg)' = f g' + g f'$ \\
+        Cociente & $\left(\frac{f}{g}\right)' = \frac{g f' - f g'}{g^2}$ \\
+        Cadena & $\frac{d}{dx}[f(g(x))] = f'(g(x)) \cdot g'(x)$ \\
+        Exponencial/Log & $(e^x)' = e^x$, \quad $(\ln x)' = \frac{1}{x}$ \\
+        Trigonométricas & $(\sin x)' = \cos x, \quad (\cos x)' = -\sin x$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Estrategias de Resolución}
+\begin{itemize}
+    \item \textbf{Derivación Implícita:} Para ecuaciones $F(x,y)=0$, derivar ambos lados respecto a $x$.
+    \item \textbf{Optimización:} Hallar puntos críticos ($f'=0$), evaluar en extremos del intervalo o usar criterio de $2^{da}$ derivada.
+\end{itemize}
+
+\newpage
+
+\section{4. Integrales}
+
+\subsection{Definiciones Formales e Intuitivas}
+\begin{itemize}
+    \item \textbf{Integral Definida (Riemann):} Límite de sumas de rectángulos. Representa área neta.
+    \[ \int_{a}^{b} f(x) \, dx = \lim_{n \to \infty} \sum_{i=1}^{n} f(x_i^*) \Delta x \]
+    \item \textbf{Integral Indefinida:} Familia de antiderivadas $\int f(x) dx = F(x) + C$.
+\end{itemize}
+
+\subsection{Teoremas Fundamentales}
+\begin{itemize}
+    \item \textbf{Teorema Fundamental del Cálculo (TFC):}
+    \begin{itemize}
+        \item Parte 1: $\frac{d}{dx} \int_{a}^{x} f(t) dt = f(x)$.
+        \item Parte 2: $\int_{a}^{b} f(x) \, dx = F(b) - F(a)$, donde $F' = f$.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Integrales Inmediatas}
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{l l | l l}
+        \toprule
+        \textbf{Función} & \textbf{Integral} & \textbf{Función} & \textbf{Integral} \\
+        \midrule
+        $x^n \; (n \neq -1)$ & $\frac{x^{n+1}}{n+1} + C$ & $\sin x$ & $-\cos x + C$ \\
+        $1/x$ & $\ln|x| + C$ & $\cos x$ & $\sin x + C$ \\
+        $e^x$ & $e^x + C$ & $1/(1+x^2)$ & $\arctan x + C$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Estrategias de Resolución}
+\begin{enumerate}
+    \item \textbf{Sustitución ($u$):} Identificar composición $f(g(x))g'(x)$. Hacer $u=g(x)$.
+    \item \textbf{Por Partes:} $\int u \, dv = uv - \int v \, du$. Para productos (ej. $x e^x$).
+    \item \textbf{Simetría:} En $[-a, a]$, si $f$ es impar la integral es 0; si es par, es $2\int_0^a$.
+\end{enumerate}
+
+\end{document}
