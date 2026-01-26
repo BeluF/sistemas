@@ -7,6 +7,8 @@
 \usepackage{array}
 \usepackage{enumitem}
 \usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{multicol}
 
 % Configuración de márgenes
 \geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
@@ -174,11 +176,16 @@ Una función $f$ es continua en un intervalo $I$ si es continua en cada punto de
     \item \textbf{Interpretación:} Pendiente de la recta tangente y razón de cambio instantánea.
 \end{itemize}
 
-\subsection{Teoremas Fundamentales}
-\begin{enumerate}
-    \item \textbf{Teorema del Valor Medio (TVM):} Si $f$ es continua en $[a,b]$ y derivable en $(a,b)$, existe $c$ tal que $f'(c) = \frac{f(b)-f(a)}{b-a}$.
-    \item \textbf{Regla de L'Hôpital:} Para $\frac{0}{0}$ o $\frac{\infty}{\infty}$, $\lim \frac{f(x)}{g(x)} = \lim \frac{f'(x)}{g'(x)}$.
-\end{enumerate}
+\subsection{Derivabilidad}
+\begin{itemize}
+    \item \textbf{Derivabilidad en un punto:} $f$ es derivable en $a$ si $f'(a)$ existe.
+    \item \textbf{Derivabilidad en un intervalo:} $f$ es derivable en $I$ si es derivable en cada punto de $I$.
+    \item \textbf{Relación con la continuidad:} Si $f$ es derivable en $a$, entonces es continua en $a$. La recíproca no siempre es cierta.
+\end{itemize}
+
+\begin{tcolorbox}[title=No Derivabilidad]
+    Si la función tiene un una esquina, una discontinuidad o una tangente vertical en $x=a$, entonces no es derivable en $a$.
+\end{tcolorbox}
 
 \subsection{Reglas de Derivación}
 \begin{table}[h!]
@@ -192,57 +199,164 @@ Una función $f$ es continua en un intervalo $I$ si es continua en cada punto de
         Cociente & $\left(\frac{f}{g}\right)' = \frac{g f' - f g'}{g^2}$ \\
         Cadena & $\frac{d}{dx}[f(g(x))] = f'(g(x)) \cdot g'(x)$ \\
         Exponencial/Log & $(e^x)' = e^x$, \quad $(\ln x)' = \frac{1}{x}$ \\
-        Trigonométricas & $(\sin x)' = \cos x, \quad (\cos x)' = -\sin x$ \\
+        Potencia + Cadena & $\frac{d}{dx}[u(x)]^n = n[u(x)]^{n-1} \cdot u'(x)$ \\
         \bottomrule
     \end{tabular}
 \end{table}
 
+\begin{tcolorbox}[title=Derivadas Trigonométricas]
+    En funciones trigonométricas, los signos menos van con las derivadas de las "cofunciones" (coseno, cosecante, cotangente).
+\end{tcolorbox}
+
+\subsection{TVM}
+\textbf{Teorema del Valor Medio:} Si $f$ es continua en $[a,b]$ y derivable en $(a,b)$, existe $c$ tal que $f'(c) = \frac{f(b)-f(a)}{b-a}$. Si $f'(x) = 0$ en $(a,b)$, entonces $f$ es constante en $(a,b)$.
+
 \subsection{Estrategias de Resolución}
 \begin{itemize}
-    \item \textbf{Derivación Implícita:} Para ecuaciones $F(x,y)=0$, derivar ambos lados respecto a $x$.
+    \item \textbf{Derivación Implícita:} Para ecuaciones $F(x,y)=0$, derivar ambos lados respecto a $x$ y luego resolver la ecuación restante para $y'$.
     \item \textbf{Optimización:} Hallar puntos críticos ($f'=0$), evaluar en extremos del intervalo o usar criterio de $2^{da}$ derivada.
 \end{itemize}
+
+\subsection{Derivadas y gráficas}
+\begin{itemize}
+    \item \textbf{Crecimiento}: Si $f'(x) > 0$ en un intervalo, $f$ es \textbf{creciente} en ese intervalo.
+    \item \textbf{Decrecimiento}: Si $f'(x) < 0$ en un intervalo, $f$ es \textbf{decreciente} en ese intervalo.
+\end{itemize}
+
+\begin{tcolorbox}[title=Prueba de la primera y segunda derivada]
+    Las pruebas de la primera y segunda derivada son herramientas para determinar la naturaleza de los puntos críticos de una función. \newline
+    \textbf{Primera derivada:}
+\begin{itemize}
+    \item Si $f'(x)$ cambia de positivo a negativo en $c$, entonces $f$ tiene un \textbf{máximo local} en $c$.
+    \item Si $f'(x)$ cambia de negativo a positivo en $c$, entonces $f$ tiene un \textbf{mínimo local} en $c$.
+\end{itemize}
+    \textbf{Segunda derivada:}
+    \begin{itemize}
+    \item Si $f''(c) > 0$, entonces $f$ tiene un \textbf{mínimo local} en $c$.
+    \item Si $f''(c) < 0$, entonces $f$ tiene un \textbf{máximo local} en $c$.
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Concavidad y Puntos de Inflexión}
+\begin{itemize}
+    \item Si $f''(x) > 0$ en un intervalo, $f$ es \textbf{cóncava hacia arriba} en ese intervalo (la gráfica de $f$ está arriba de sus tangentes).
+    \item Si $f''(x) < 0$ en un intervalo, $f$ es \textbf{cóncava hacia abajo} en ese intervalo (la gráfica de $f$ está abajo de sus tangentes).
+\end{itemize}
+
+\begin{tcolorbox}
+Si $f''$ cambia de signo (concavidad) en $c$, entonces la gráfica de $f$ tiene un \textbf{punto de inflexión} en $c$.
+\end{tcolorbox}
+
+\subsection{L'Hôpital}
+\textbf{Regla de L'Hôpital:} Si $\lim_{x \to a} f(x) = 0$ y $\lim_{x \to a} g(x) = 0$ o ambos límites son $\pm \infty$, entonces:
+\[ \lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)} \]
+si el límite del lado derecho existe o es $\pm \infty$.
+
+\subsubsection{Formas Indeterminadas}
+En cualquiera de los siguientes casos (salvo los iniciales), debe llevarse la indeterminación a $\frac{0}{0}$ o $\frac{\infty}{\infty}$ para poder aplicar la regla de L'Hôpital:
+\begin{multicols}{3}
+\begin{itemize}
+    \item $\frac{0}{0}$
+    \item $\frac{\infty}{\infty}$
+    \item $0 \cdot \infty$
+    \item $\infty - \infty$
+    \item $0^0$
+    \item $1^\infty$
+    \item $\infty^0$
+\end{itemize}
+\end{multicols}
+%Agregar a mano las transformaciones necesarias para cada caso.
+
+\subsection{Antiderivadas}
+%Definición de antiderivada
+Una función $F$ es una \textbf{antiderivada} de $f$ en un intervalo $I$ si $F'(x) = f(x)$ para todo $x$ en $I$. La \textbf{familia de antiderivadas} de $f$ se expresa como $F(x) + C$, donde $C$ es una constante arbitraria.
+
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.6} % Un poco más de aire para las fracciones
+    \setlength{\tabcolsep}{10pt}      % Espacio horizontal entre columnas
+    \caption{Tabla de Antiderivadas Inmediatas}
+    \begin{tabular}{l l | l l}
+        \toprule
+        \textbf{Función} $f(x)$ & \textbf{Antiderivada} $F(x)$ & \textbf{Función} $f(x)$ & \textbf{Antiderivada} $F(x)$ \\
+        \midrule
+        $c f(x)$ & $c F(x)$ & $\sin x$ & $-\cos x$ \\
+        $f(x) + g(x)$ & $F(x) + G(x)$ & $\cos x$ & $\sin x$ \\
+        $x^n \; (n \neq -1)$ & $\frac{x^{n+1}}{n+1}$ & $\sec^2 x$ & $\tan x$ \\
+        $1/x$ & $\ln|x|$ & $\sec x \tan x$ & $\sec x$ \\
+        $e^x$ & $e^x$ & $\frac{1}{1+x^2}$ & $\arctan x$ \\
+        $b^x$ & $\frac{b^x}{\ln b}$ & $\frac{1}{\sqrt{1-x^2}}$ & $\arcsin x$ \\
+        $\tan x$ & $\ln|\sec x|$ & $\cosh x$ & $\sinh x$ \\
+        & & $\sinh x$ & $\cosh x$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 \newpage
 
 \section{4. Integrales}
 
-\subsection{Definiciones Formales e Intuitivas}
-\begin{itemize}
-    \item \textbf{Integral Definida (Riemann):} Límite de sumas de rectángulos. Representa área neta.
-    \[ \int_{a}^{b} f(x) \, dx = \lim_{n \to \infty} \sum_{i=1}^{n} f(x_i^*) \Delta x \]
-    \item \textbf{Integral Indefinida:} Familia de antiderivadas $\int f(x) dx = F(x) + C$.
-\end{itemize}
+\subsection{Definición formal}
+Una \textbf{integral definida} es el límite de sumas de rectángulos. Representa área neta.
+    \[ \int_{a}^{b} f(x) \, dx = \lim_{n \to \infty} \sum_{i=1}^{n} f(x_i^*) \Delta x \] para $a < b$.
+    \[ \int_{a}^{b} f(x) \, dx = - \int_{b}^{a} f(x) \, dx \] para $a > b$.
+    \[ \int_{a}^{b} f(x) \, dx = \int_{b}^{a} f(x) \, dx = 0 \] para $a = b$.
 
-\subsection{Teoremas Fundamentales}
-\begin{itemize}
-    \item \textbf{Teorema Fundamental del Cálculo (TFC):}
+\subsection{Integrabilidad}
+\textbf{Criterio de Integrabilidad de Riemann:} Si $f$ es continua en $[a,b]$ o si $f$ tiene un número finito de discontinuidades en $[a,b]$, $f$ es integrable.
+\newline Si $f$ es integrable en $[a,b]$, entonces 
+\[ \int_{a}^{b} f(x) \, dx = \lim_{n \to \infty} \sum_{i=1}^{n} f(x_i^*) \Delta x \] 
+%Agregar deltax y xi*
+
+\subsection{Propiedades de la Integral Definida}
+\begin{tcolorbox}[title=Propiedades de la Integral Definida]
     \begin{itemize}
-        \item Parte 1: $\frac{d}{dx} \int_{a}^{x} f(t) dt = f(x)$.
-        \item Parte 2: $\int_{a}^{b} f(x) \, dx = F(b) - F(a)$, donde $F' = f$.
+        \item $\int_{a}^{b} c f(x) \, dx = c \int_{a}^{b} f(x) \, dx$
+        \item $\int_{a}^{b} [f(x) + g(x)] \, dx = \int_{a}^{b} f(x) \, dx + \int_{a}^{b} g(x) \, dx$
+        \item $\int_{a}^{b} c f(x) \, dx = c \int_{a}^{b} f(x) \, dx$
+        \item $\int_{a}^{b} [f(x) - g(x)] \, dx = \int_{a}^{b} f(x) \, dx - \int_{a}^{b} g(x) \, dx$
+        \item $\int_{a}^{c} f(x) \, dx + \int_{c}^{b} f(x) \, dx = \int_{a}^{b} f(x) \, dx$
     \end{itemize}
+\end{tcolorbox}
+
+\subsubsection{Propiedades de comparación integral}
+\begin{itemize}
+    \item Si $f(x) \geqslant 0$ para $a \leqslant x \leqslant b$, entonces $\int_{a}^{b} f(x) \, dx \geqslant 0$.
+    \item Si $f(x) \geqslant g(x)$ para $a \leqslant x \leqslant b$, entonces $\int_{a}^{b} f(x) \, dx \geqslant \int_{a}^{b} g(x) \, dx$.
+    \item Si $m \leqslant f(x) \leqslant M$ para $a \leqslant x \leqslant b$, entonces \[ m(b-a) \leqslant \int_{a}^{b} f(x) \, dx \leqslant M(b-a) \]
 \end{itemize}
 
-\subsection{Integrales Inmediatas}
-\begin{table}[h!]
-    \centering
-    \renewcommand{\arraystretch}{1.5}
-    \begin{tabular}{l l | l l}
-        \toprule
-        \textbf{Función} & \textbf{Integral} & \textbf{Función} & \textbf{Integral} \\
-        \midrule
-        $x^n \; (n \neq -1)$ & $\frac{x^{n+1}}{n+1} + C$ & $\sin x$ & $-\cos x + C$ \\
-        $1/x$ & $\ln|x| + C$ & $\cos x$ & $\sin x + C$ \\
-        $e^x$ & $e^x + C$ & $1/(1+x^2)$ & $\arctan x + C$ \\
-        \bottomrule
-    \end{tabular}
-\end{table}
+\subsection{Teorema Fundamental del Cálculo}
+Sea $f$ continua en $[a,b]$.
+    \begin{itemize}
+        \item Si $g(x) = \int_{a}^{x} f(t) \, dt$, entonces $g'(x) = f(x)$.
+        \item $\int_{a}^{b} f(x) \, dx = F(b) - F(a)$, donde $F$ es cualquier antiderivada de $f$ ($F' = f$).
+    \end{itemize}
+
+\subsection{Definición formal}
+Una \textbf{integral indefinida} es la colección de todas las antiderivadas de una función $f$. Se denota como:
+    \[ \int f(x) \, dx = F(x) + C \]
+
+
+%IMPRIMIR TABLA DE INTEGRALES INDEFINIDAS (ETIQUETA AMARILLA)
+
+\begin{tcolorbox}[title=Teorema del cambio neto]
+    La integral de una razón de cambio es el cambio neto:
+    \[ \int_a^b F'(x) \, dx = F(b) - F(a) \]
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=TVM en integrales]
+    Si $f$ es continua en $[a,b]$, entonces existe $c \in [a,b]$ tal que:
+    \[ \int_{a}^{b} f(x) \, dx = f(c)(b-a) \]
+\end{tcolorbox}
+
+%IMPRIMIR TABLAS DE INTEGRACIÓN (ETIQUETA AZUL)
 
 \subsection{Estrategias de Resolución}
 \begin{enumerate}
-    \item \textbf{Sustitución ($u$):} Identificar composición $f(g(x))g'(x)$. Hacer $u=g(x)$.
+    \item \textbf{Sustitución ($u$):} Para integrales indefinidas: $\int f(g(x))g'(x) \, dx = \int f(u) \, du$. Para integrales definidas: $\int_a^b f(g(x))g'(x) \, dx = \int_{g(a)}^{g(b)} f(u) \, du$
     \item \textbf{Por Partes:} $\int u \, dv = uv - \int v \, du$. Para productos (ej. $x e^x$).
-    \item \textbf{Simetría:} En $[-a, a]$, si $f$ es impar la integral es 0; si es par, es $2\int_0^a$.
+    \item \textbf{Simetría:} En $[-a, a]$, si $f$ es impar la integral $\int_{-a}^a f(x) \, dx = 0$; si es par, es $2\int_0^a f(x) \, dx$.
 \end{enumerate}
 
 \end{document}
