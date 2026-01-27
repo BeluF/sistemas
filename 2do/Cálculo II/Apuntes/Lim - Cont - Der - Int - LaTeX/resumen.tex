@@ -14,8 +14,12 @@
 \geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
 
 % Personalización de títulos
-\titleformat{\section}{\large\bfseries\uppercase}{}{0em}{}[\titlerule]
-\titleformat{\subsection}{\bfseries}{}{0em}{}
+% \thesection inserta el número de sección. El punto "." es decorativo. 
+% 1em es el espacio entre el número y el título.
+\titleformat{\section}{\large\bfseries\uppercase}{\thesection.}{1em}{}[\titlerule]
+
+% \thesubsection inserta el número de subsección (ej. 1.1)
+\titleformat{\subsection}{\bfseries}{\thesubsection}{1em}{}
 
 % Definición de entornos
 \theoremstyle{definition}
@@ -30,7 +34,7 @@
 
 \maketitle
 
-\section{1. Límites}
+\section{Límites}
 
 Permite analizar el comportamiento de una función cuando se acerca a un punto, sin necesidad de alcanzarlo.
 
@@ -115,7 +119,7 @@ Permite analizar el comportamiento de una función cuando se acerca a un punto, 
 
 \newpage
 
-\section{2. Continuidad}
+\section{Continuidad}
 
 \subsection{Definiciones Formales e Intuitivas}
 \begin{itemize}
@@ -167,7 +171,7 @@ Una función $f$ es continua en un intervalo $I$ si es continua en cada punto de
 
 \newpage
 
-\section{3. Derivadas}
+\section{Derivadas}
 
 \subsection{Definiciones Formales e Intuitivas}
 \begin{itemize}
@@ -294,7 +298,7 @@ Una función $F$ es una \textbf{antiderivada} de $f$ en un intervalo $I$ si $F'(
 
 \newpage
 
-\section{4. Integrales}
+\section{Integrales}
 
 \subsection{Definición formal}
 Una \textbf{integral definida} es el límite de sumas de rectángulos. Representa área neta.
@@ -379,6 +383,31 @@ Las integrales impropias son aquellas en las que \textbf{el intervalo es infinit
     \item Si $\int_{-\infty}^{\infty} f(x) \, dx$ existe, entonces
     \[ \int_{-\infty}^{\infty} f(x) \, dx = \int_{-\infty}^{a} f(x) \, dx + \int_{a}^{\infty} f(x) \, dx \]
     para algún número real $a$.
+\end{itemize}
+
+\subsubsection{Integrales impropias de tipo 2: \textbf{discontinuidades infinitas}}
+\begin{itemize}
+    \item Si $f$ es continua en $[a,b)$ pero tiene una discontinuidad infinita en $x=b$, entonces
+    \[ \int_{a}^{b} f(x) \, dx = \lim_{t \to b^-} \int_{a}^{t} f(x) \, dx \]
+    siempre que el límite exista.
+
+    \item Si $f$ es continua en $(a,b]$ pero tiene una discontinuidad infinita en $x=a$, entonces
+    \[ \int_{a}^{b} f(x) \, dx = \lim_{t \to a^+} \int_{t}^{b} f(x) \,dx \]
+    siempre que el límite exista.
+
+    \begin{tcolorbox}
+        La integral impropia $\int_{a}^{b} f(x) \, dx$ \textbf{converge} si el límite existe (es finito); \textbf{diverge} si el límite no existe (es infinito o no definido).
+    \end{tcolorbox}
+
+    \item Si $f$ tiene una discontinuidad infinita en $x=c$, donde $a < c < b$ y ambas $\int_{a}^{c} f(x) \, dx$ y $\int_{c}^{b} f(x) \, dx$ son \textbf{convergentes}, entonces
+    \[ \int_{a}^{b} f(x) \, dx = \int_{a}^{c} f(x) \, dx + \int_{c}^{b} f(x) \, dx \]
+\end{itemize}
+
+\subsubsection{Comparación para las integrales impropias}
+Si $f$ y $g$ son funciones continuas en $[a, \infty)$ y $f(x) \geqslant g(x) \geqslant 0$ para todo $x \geqslant a$, entonces:
+\begin{itemize}
+    \item Si $\int_{a}^{\infty} f(x) \,dx$ \textbf{converge}, entonces $\int_{a}^{\infty} g(x) \, dx$ \textbf{converge}.
+    \item Si $\int_{a}^{\infty} g(x) \, dx$ \textbf{diverge}, entonces $\int_{a}^{\infty} f(x) \, dx$ \textbf{diverge}.
 \end{itemize}
 
 \end{document}
