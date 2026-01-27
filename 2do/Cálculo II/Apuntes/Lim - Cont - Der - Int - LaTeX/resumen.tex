@@ -359,4 +359,26 @@ Una \textbf{integral indefinida} es la colección de todas las antiderivadas de 
     \item \textbf{Simetría:} En $[-a, a]$, si $f$ es impar la integral $\int_{-a}^a f(x) \, dx = 0$; si es par, es $2\int_0^a f(x) \, dx$.
 \end{enumerate}
 
+\subsection{Integrales impropias}
+Las integrales impropias son aquellas en las que \textbf{el intervalo es infinito} o \textbf{$f$ tiene una discontinuidad infinita}.
+
+\subsubsection{Integrales impropias de tipo 1: \textbf{intervalos infinitos}}
+\begin{itemize}
+    \item Si $\int_{a}^{t} f(x) \, dx$ existe para todo número $t \geqslant a$, entonces
+    \[ \int_{a}^{\infty} f(x) \, dx = \lim_{t \to \infty} \int_{a}^{t} f(x) \, dx \]
+    siempre que el límite exista.
+
+    \item Si $\int_{t}^{b} f(x) \, dx$ existe para todo número $t \leqslant b$, entonces
+    \[ \int_{-\infty}^{b} f(x) \, dx = \lim_{t \to -\infty} \int_{t}^{b} f(x) \, dx \]
+    siempre que el límite exista.
+
+    \begin{tcolorbox}
+        Las integrales impropias $\int_{a}^{\infty} f(x) \, dx$ y $\int_{-\infty}^{b} f(x) \, dx$ \textbf{convergen} si los límites existen (son finitos); \textbf{divergen} si los límites no existen (son infinitos o no definidos).
+    \end{tcolorbox}
+
+    \item Si $\int_{-\infty}^{\infty} f(x) \, dx$ existe, entonces
+    \[ \int_{-\infty}^{\infty} f(x) \, dx = \int_{-\infty}^{a} f(x) \, dx + \int_{a}^{\infty} f(x) \, dx \]
+    para algún número real $a$.
+\end{itemize}
+
 \end{document}
