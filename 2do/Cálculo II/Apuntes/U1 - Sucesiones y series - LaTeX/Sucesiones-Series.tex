@@ -6,6 +6,7 @@
 \usepackage{amsthm}
 \usepackage{geometry}
 \usepackage{fancyhdr}
+\usepackage{tcolorbox}
 
 \geometry{top=2.5cm, bottom=2.5cm, left=3cm, right=3cm}
 
@@ -59,13 +60,26 @@ $$ a_n = a \cdot q^{n-1} $$
 \subsection{Otras}
 \begin{itemize}
     \item \textbf{Aritmética-Geométrica:} $a_n = [a + (n-1)s] \cdot q^{n-1}$.
-    \item \textbf{Armónica:} $a_n = \frac{1}{n}$.
+    \item \textbf{Armónica o recíproca:} $a_n = \frac{1}{n}$.
 \end{itemize}
+
+\subsection{Operaciones con sucesiones}
+Dadas dos sucesiones numéricas $\{a_n\}$ y $\{b_n\}$, $\alpha, \beta$ dos constantes aribitrarias:
+\begin{itemize}
+    \item El \textbf{producto} $\{a_n \cdot b_n\}$ es también una sucesión. ${(ab)_n}$
+    \item La \textbf{combinación lineal} de ${\alpha a_n + \beta b_n}$ es también una sucesión. ${(\alpha a_n + \beta b_n)}$
+    \item ${b_n} \neq 0, \forall n \in \mathbb{N} \Rightarrow \left\{\frac{1}{b_n}\right\}$ es también una sucesión. $\left\{(\frac{1}{b})_n\right\}$
+    \item Si ${b_n} \neq 0, \forall n \in \mathbb{N} \Rightarrow \left\{\frac{a_n}{b_n}\right\}$ es también una sucesión. $\left\{(\frac{a}{b})_n\right\}$
+\end{itemize}
+
+\begin{tcolorbox}[title=Igualdad de Sucesiones,colback=blue!5!white,colframe=blue!75!black]
+    $${a_n} = {b_n} \Leftrightarrow a_j = b_j, \forall j \in \mathbb{N}$$
+\end{tcolorbox}
 
 \section{Monotonía y Acotación}
 
 \subsection{Sucesiones Monótonas}
-Una sucesión es \textbf{monótona} si mantiene una tendencia constante:
+Una sucesión es \textbf{monótona} si cumple con alguna de las siguientes condiciones:
 \begin{itemize}
     \item \textbf{Creciente:} $\forall n, a_n < a_{n+1}$.
     \item \textbf{Decreciente:} $\forall n, a_n > a_{n+1}$.
@@ -74,19 +88,22 @@ Una sucesión es \textbf{monótona} si mantiene una tendencia constante:
 \end{itemize}
 
 \subsection{Sucesiones Acotadas}
-Una sucesión $\{a_n\}$ está acotada si existen números reales $m$ (cota inferior) y $M$ (cota superior) tales que:
-$$ m \le a_n \le M \quad \forall n \in \mathbb{N} $$
+Una sucesión $\{a_n\}$ está \textbf{acotada por arriba} si existe un $M \in \mathbb{R}$ tal que:
+$$ \forall n \in \mathbb{N}, a_n \leqslant M $$
+y \textbf{acotada por abajo} si existe un $m \in \mathbb{R}$ tal que:
+$$ \forall n \in \mathbb{N}, a_n \geqslant m $$
+Si una sucesión está acotada por arriba y por abajo, se dice que está \textbf{acotada}.
 
 \section{Límite y Convergencia}
 
 \subsection{Definición de Límite}
-Una sucesión tiene límite $L$ (es convergente) si para todo $\epsilon > 0$, existe un $N > 0$ tal que para todo $n > N$, la distancia entre $a_n$ y $L$ es menor que $\epsilon$:
+Una sucesión tiene límite $L$ (es convergente) si:
 $$ \lim_{n \to \infty} a_n = L \iff \forall \epsilon > 0, \exists N > 0 \ / \ \forall n > N \implies |a_n - L| < \epsilon $$
 
 \subsection{Clasificación según el límite}
 \begin{itemize}
     \item \textbf{Convergente:} Tiene límite finito único.
-    \item \textbf{Divergente:} No tiene límite finito (puede tender a $\infty$ o oscilar indefinidamente).
+    \item \textbf{Divergente:} No tiene límite finito (puede tender a $\infty$ u oscilar indefinidamente).
 \end{itemize}
 
 \subsection{Teoremas de Convergencia}
@@ -95,15 +112,31 @@ $$ \lim_{n \to \infty} a_n = L \iff \forall \epsilon > 0, \exists N > 0 \ / \ \f
     \begin{itemize}
         \item Si es monótona creciente y tiene cota superior $\rightarrow$ \textbf{Converge}.
         \item Si es monótona decreciente y tiene cota inferior $\rightarrow$ \textbf{Converge}.
-        \item \textit{Resumen:} Toda sucesión monótona y acotada es convergente.
     \end{itemize}
+    \textbf{\textit{Toda sucesión monótona y acotada es convergente.}}
+
     \item \textbf{Condición Necesaria (pero no suficiente):}
     \begin{itemize}
         \item Si $\{a_n\}$ converge $\implies$ $\{a_n\}$ está acotada.
-        \item \textbf{Contrarrecíproco:} Si no está acotada $\implies$ es Divergente.
+        \item \textbf{Contrarrecíproco:} Si no está acotada $\implies$ es \textbf{divergente}.
         \item \textit{Nota:} La acotación por sí sola no garantiza convergencia (ej: $(-1)^n$ es acotada pero oscila).
     \end{itemize}
 \end{enumerate}
+
+\subsection{Leyes de los límites para sucesiones}
+\begin{enumerate}
+    \item $\lim_{n \to \infty} (a_n + b_n) = \lim_{n \to \infty} a_n + \lim_{n \to \infty} b_n$
+    \item $\lim_{n \to \infty} (a_n - b_n) = \lim_{n \to \infty} a_n - \lim_{n \to \infty} b_n$
+    \item $\lim_{n \to \infty} (C \cdot a_n) = C \cdot \lim_{n \to \infty} a_n$, para cualquier constante $C$
+    \item $\lim_{n \to \infty} (a_n \cdot b_n) = \lim_{n \to \infty} a_n \cdot \lim_{n \to \infty} b_n$
+    \item $\lim_{n \to \infty} \left(\frac{a_n}{b_n}\right) = \frac{\lim_{n \to \infty} a_n}{\lim_{n \to \infty} b_n}$, si $\lim_{n \to \infty} b_n \neq 0$
+    \item $\lim_{n \to \infty} (a_n)^r = \left(\lim_{n \to \infty} a_n\right)^r$, para $r \in \mathbb{R}$ y $p > 0$ y $a_n > 0$
+\end{enumerate}
+
+\subsection{Teorema de compresión para sucesiones}
+Si $a_n \leqslant b_n \leqslant c_n \forall n \geqslant n_0$ y $\lim_{n \to \infty} a_n = \lim_{n \to \infty} c_n = L \Rightarrow \lim_{n \to \infty} b_n = L$.
+
+%Agregar a mano lim del valor absoluto (p698)
 
 \section{Infinitésimos y Sucesiones Infinitas}
 
