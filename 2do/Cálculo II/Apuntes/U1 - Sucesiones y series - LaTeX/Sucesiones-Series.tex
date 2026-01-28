@@ -15,7 +15,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{Licenciatura en Sistemas de la Información}
-\rhead{Unidad 1: Sucesiones}
+\rhead{Unidad 1: Sucesiones Y Series}
 \cfoot{\thepage}
 
 \title{\textbf{Resumen Unidad 1: Sucesiones Numéricas y Series de Funciones}}
@@ -26,9 +26,11 @@
 
 \maketitle
 
-\section{Sucesiones Numéricas}
+\section{Sucesiones}
 
-\subsection{Definición}
+\subsection{Sucesiones Numéricas}
+
+\subsubsection{Definición}
 Una sucesión numérica se define de dos formas equivalentes:
 \begin{enumerate}
     \item Como un \textbf{conjunto ordenado de números} afectados por un índice natural que indica su posición: $\{a_1, a_2, a_3, ..., a_n, ...\}$.
@@ -36,7 +38,7 @@ Una sucesión numérica se define de dos formas equivalentes:
     $$ f: \mathbb{N} \rightarrow \mathbb{R} \quad / \quad \forall n \in \mathbb{N}: a_n = f(n) $$
 \end{enumerate}
 
-\subsection{Formas de Representación}
+\subsubsection{Formas de Representación}
 \begin{itemize}
     \item \textbf{Término n-ésimo ($a_n$):} Fórmula explícita. Ej: $a_n = \frac{n}{n^2+1}$.
     \item \textbf{Coloquial:} Descripción verbal. Ej: "1 si es par, 0 si es impar".
@@ -45,25 +47,25 @@ Una sucesión numérica se define de dos formas equivalentes:
     \item \textbf{Geométrica:} Puntos en el plano cartesiano $(n, a_n)$ o sobre la recta real.
 \end{itemize}
 
-\section{Sucesiones Especiales}
+\subsection{Sucesiones Especiales}
 
-\subsection{Sucesión Aritmética}
+\subsubsection{Sucesión Aritmética}
 Cada término se obtiene sumando al anterior una constante $s$ (diferencia).
 $$ a_n = a + (n-1)s $$
 \textit{Ejemplo:} $a_n = 2 + (n-1)\frac{1}{3}$.
 
-\subsection{Sucesión Geométrica}
+\subsubsection{Sucesión Geométrica}
 Cada término se obtiene multiplicando al anterior por una constante $q$ (razón).
 $$ a_n = a \cdot q^{n-1} $$
 \textit{Ejemplo:} $a_n = 2\left(\frac{1}{2}\right)^{n-1}$.
 
-\subsection{Otras}
+\subsubsection{Otras}
 \begin{itemize}
     \item \textbf{Aritmética-Geométrica:} $a_n = [a + (n-1)s] \cdot q^{n-1}$.
     \item \textbf{Armónica o recíproca:} $a_n = \frac{1}{n}$.
 \end{itemize}
 
-\subsection{Operaciones con sucesiones}
+\subsubsection{Operaciones con sucesiones}
 Dadas dos sucesiones numéricas $\{a_n\}$ y $\{b_n\}$, $\alpha, \beta$ dos constantes aribitrarias:
 \begin{itemize}
     \item El \textbf{producto} $\{a_n \cdot b_n\}$ es también una sucesión. ${(ab)_n}$
@@ -76,9 +78,9 @@ Dadas dos sucesiones numéricas $\{a_n\}$ y $\{b_n\}$, $\alpha, \beta$ dos const
     $${a_n} = {b_n} \Leftrightarrow a_j = b_j, \forall j \in \mathbb{N}$$
 \end{tcolorbox}
 
-\section{Monotonía y Acotación}
+\subsection{Monotonía y Acotación}
 
-\subsection{Sucesiones Monótonas}
+\subsubsection{Sucesiones Monótonas}
 Una sucesión es \textbf{monótona} si cumple con alguna de las siguientes condiciones:
 \begin{itemize}
     \item \textbf{Creciente:} $\forall n, a_n < a_{n+1}$.
@@ -87,26 +89,34 @@ Una sucesión es \textbf{monótona} si cumple con alguna de las siguientes condi
     \item \textbf{No creciente:} $a_n \ge a_{n+1}$.
 \end{itemize}
 
-\subsection{Sucesiones Acotadas}
+\subsubsection{Sucesiones Acotadas}
 Una sucesión $\{a_n\}$ está \textbf{acotada por arriba} si existe un $M \in \mathbb{R}$ tal que:
 $$ \forall n \in \mathbb{N}, a_n \leqslant M $$
 y \textbf{acotada por abajo} si existe un $m \in \mathbb{R}$ tal que:
 $$ \forall n \in \mathbb{N}, a_n \geqslant m $$
 Si una sucesión está acotada por arriba y por abajo, se dice que está \textbf{acotada}.
 
-\section{Límite y Convergencia}
+\subsection{Límite y Convergencia}
 
-\subsection{Definición de Límite}
+\subsubsection{Definición de Límite}
 Una sucesión tiene límite $L$ (es convergente) si:
 $$ \lim_{n \to \infty} a_n = L \iff \forall \epsilon > 0, \exists N > 0 \ / \ \forall n > N \implies |a_n - L| < \epsilon $$
 
-\subsection{Clasificación según el límite}
+\subsubsection{Clasificación según el límite}
 \begin{itemize}
     \item \textbf{Convergente:} Tiene límite finito único.
     \item \textbf{Divergente:} No tiene límite finito (puede tender a $\infty$ u oscilar indefinidamente).
 \end{itemize}
 
-\subsection{Teoremas de Convergencia}
+\subsubsection{Teoremas de Convergencia}
+\begin{enumerate}
+    \item Si $\lim_{n \to \infty} a_n = L$ y la función $f$ es continua en $L$, entonces: 
+    $$ \lim_{n \to \infty} f(a_n) = f(L) $$
+    \item La sucesión ${r^n}$ \textbf{converge} si $-1 < r \leqslant 1$ y \textbf{diverge} para el resto de valores.
+    $$\lim_{n \to \infty} r^n = \begin{cases} 0 & \text{si } -1 < r \leqslant 1 \\ 1 & \text{si } r = 1 \end{cases}$$
+\end{enumerate}
+
+\subsubsection{Teoremas de Convergencia: Monotonía y Acotación}
 \begin{enumerate}
     \item \textbf{Monotonía y Acotación:}
     \begin{itemize}
@@ -123,38 +133,43 @@ $$ \lim_{n \to \infty} a_n = L \iff \forall \epsilon > 0, \exists N > 0 \ / \ \f
     \end{itemize}
 \end{enumerate}
 
-\subsection{Leyes de los límites para sucesiones}
+\subsubsection{Leyes de los límites para sucesiones}
 \begin{enumerate}
     \item $\lim_{n \to \infty} (a_n + b_n) = \lim_{n \to \infty} a_n + \lim_{n \to \infty} b_n$
     \item $\lim_{n \to \infty} (a_n - b_n) = \lim_{n \to \infty} a_n - \lim_{n \to \infty} b_n$
     \item $\lim_{n \to \infty} (C \cdot a_n) = C \cdot \lim_{n \to \infty} a_n$, para cualquier constante $C$
     \item $\lim_{n \to \infty} (a_n \cdot b_n) = \lim_{n \to \infty} a_n \cdot \lim_{n \to \infty} b_n$
     \item $\lim_{n \to \infty} \left(\frac{a_n}{b_n}\right) = \frac{\lim_{n \to \infty} a_n}{\lim_{n \to \infty} b_n}$, si $\lim_{n \to \infty} b_n \neq 0$
-    \item $\lim_{n \to \infty} (a_n)^r = \left(\lim_{n \to \infty} a_n\right)^r$, para $r \in \mathbb{R}$ y $p > 0$ y $a_n > 0$
+    \item $\lim_{n \to \infty} (a_n)^r = \left(\lim_{n \to \infty} a_n\right)^r = \lim_{n \to \infty} r^{a_n} = r^{\lim_{n \to \infty} a_n}$, para $r \in \mathbb{R}$ y $r > 0$ y $a_n > 0$
 \end{enumerate}
 
-\subsection{Teorema de compresión para sucesiones}
-Si $a_n \leqslant b_n \leqslant c_n \forall n \geqslant n_0$ y $\lim_{n \to \infty} a_n = \lim_{n \to \infty} c_n = L \Rightarrow \lim_{n \to \infty} b_n = L$.
-
+\begin{tcolorbox}[title=Teorema de compresión,colback=blue!5!white,colframe=blue!75!black]
+    Si $a_n \leqslant b_n \leqslant c_n \forall n \geqslant n_0$ y $\lim_{n \to \infty} a_n = \lim_{n \to \infty} c_n = L \Rightarrow \lim_{n \to \infty} b_n = L$.
+\end{tcolorbox}
 %Agregar a mano lim del valor absoluto (p698)
 
-\section{Infinitésimos y Sucesiones Infinitas}
+\begin{tcolorbox}[title=Teorema de compresión,colback=blue!5!white,colframe=blue!75!black]
+    Al hallar una indeterminación en el límite de una sucesión, no puede usarse L'Hôpital. Sin embargo, se puede aplicar a la función relacionada:
+    $$ \lim_{n \to \infty} \frac{\ln n}{n} = \lim_{x \to \infty} \frac{\ln x}{x} = \lim_{x \to \infty} \frac{1/x}{1} = 0 $$
+\end{tcolorbox}
 
-\subsection{Sucesiones Infinitésimas}
+\subsection{Infinitésimos y Sucesiones Infinitas}
+
+\subsubsection{Sucesiones Infinitésimas}
 Son aquellas cuyo límite es 0.
 $$ \lim_{n \to \infty} a_n = 0 $$
-\textbf{Propiedad fundamental:} Un número $L$ es límite de $a_n$ si y solo si $a_n$ puede escribirse como $L + \alpha_n$, donde $\alpha_n$ es un infinitésimo.
+\textbf{Propiedad fundamental:} Un número $L$ es límite de $a_n \Leftrightarrow a_n = L + \alpha_n$, donde $\{\alpha_n\}$ es una sucesión infinitésima y $\alpha_n$ su enésimo elemento.
 
-\subsection{Propiedades de Infinitésimos}
+\subsubsection{Propiedades de Infinitésimos}
 \begin{itemize}
     \item Suma de infinitésimos = Infinitésimo.
     \item Producto de infinitésimo $\times$ Acotada = Infinitésimo.
 \end{itemize}
 
-\subsection{Sucesiones Infinitas}
-Aquellas donde $\lim_{n \to \infty} a_n = \infty$. Si $a_n$ es infinita ($a_n \neq 0$), entonces $\{1/a_n\}$ es infinitésimo.
+\subsubsection{Sucesiones Infinitas}
+Aquellas donde $\lim_{n \to \infty} a_n = \infty$. Si $a_n$ es infinita ($a_n \neq 0$), entonces $\{\frac{1}{a_n}\}$ es infinitésimo.
 
-\section{Álgebra de Límites}
+\subsection{Álgebra de Límites}
 Si $\{a_n\} \to A$ y $\{b_n\} \to B$:
 \begin{align*}
     \lim_{n \to \infty} (a_n \pm b_n) &= A \pm B \\
@@ -163,5 +178,103 @@ Si $\{a_n\} \to A$ y $\{b_n\} \to B$:
     \lim_{n \to \infty} \left(\frac{a_n}{b_n}\right) &= \frac{A}{B} \quad (si \ B \neq 0) \\
     \lim_{n \to \infty} (a_n)^r &= A^r
 \end{align*}
+
+\section{Series Infinitas}
+
+\subsection{Definiciones Fundamentales}
+
+\subsubsection{Definición de Serie}
+Una serie infinita es la suma de los términos de una sucesión infinita $\{a_n\}_{n=1}^{\infty}$ y se denota como:
+$$\sum_{n=1}^{\infty} a_n = a_1 + a_2 + a_3 + \dots + a_n + \dots$$
+
+\subsubsection{Sumas Parciales y Convergencia}
+Para determinar si una serie tiene una suma finita, se analiza la \textbf{sucesión de sumas parciales} $\{s_n\}$:
+\begin{itemize}
+    \item $s_1 = a_1$
+    \item $s_2 = a_1 + a_2$
+    \item $s_n = \sum_{i=1}^{n} a_i$
+\end{itemize}
+
+\begin{tcolorbox}[title=Definición de Convergencia,colback=blue!5!white,colframe=blue!75!black]
+Si la sucesión $\{s_n\}$ es convergente y $\lim_{n \to \infty} s_n = s$ (donde $s$ es un número real), la serie $\sum a_n$ es \textbf{convergente} y su suma es $s$. Si el límite no existe, la serie es \textbf{divergente}.
+\end{tcolorbox}
+
+\subsection{Series Especiales}
+
+\subsubsection{Serie Geométrica}
+Se define como $\sum_{n=1}^{\infty} ar^{n-1}$. 
+\begin{itemize}
+    \item \textbf{Converge} si $|r| < 1$, su suma es $s = \frac{a}{1-r}$.
+    \item \textbf{Diverge} si $|r| \geq 1$.
+\end{itemize}
+
+\subsubsection{Serie p}
+Se define como $\sum_{n=1}^{\infty} \frac{1}{n^p}$.
+\begin{itemize}
+    \item \textbf{Converge} si $p > 1$.
+    \item \textbf{Diverge} si $p \leq 1$.
+\end{itemize}
+
+\subsubsection{Serie Armónica}
+Es el caso especial de la serie $p$ donde $p=1$: $\sum_{n=1}^{\infty} \frac{1}{n}$.
+\textbf{Siempre es divergente.}
+
+\subsection{Pruebas de Convergencia}
+
+\subsubsection{Prueba de la Divergencia (Término n-ésimo)}
+Si $\lim_{n \to \infty} a_n$ no existe o si $\lim_{n \to \infty} a_n \neq 0$, entonces la serie $\sum a_n$ es \textbf{divergente}.
+\textit{Ejemplo:} $\sum \frac{n^2}{5n^2+4}$. Como $\lim_{n \to \infty} a_n = 1/5 \neq 0$, la serie diverge.
+
+\subsubsection{Prueba de la Integral}
+Se aplica si $a_n = f(n)$, donde $f$ es continua, positiva y decreciente en $[1, \infty)$. La serie $\sum a_n$ converge si y solo si la integral impropia $\int_{1}^{\infty} f(x) dx$ converge.
+\textit{Ejemplo:} $\sum \frac{1}{n^2+1}$. La integral $\int_{1}^{\infty} \frac{1}{x^2+1} dx = \pi/4$, por lo que la serie converge.
+
+\subsubsection{Pruebas de Comparación}
+\begin{enumerate}
+    \item \textbf{Comparación Directa:} Si $0 \leq a_n \leq b_n$ y $\sum b_n$ converge $\implies \sum a_n$ converge. Si $a_n \geq b_n \geq 0$ y $\sum b_n$ diverge $\implies \sum a_n$ diverge.
+    \item \textbf{Comparación del Límite:} Si $\lim_{n \to \infty} \frac{a_n}{b_n} = c$ (donde $c > 0$ y es finito), ambas series tienen el mismo comportamiento.
+\end{enumerate}
+
+\subsubsection{Prueba de la Serie Alternante}
+Para series de la forma $\sum (-1)^{n-1} b_n$ con $b_n > 0$. Converge si:
+\begin{itemize}
+    \item $b_{n+1} \leq b_n$ para toda $n$.
+    \item $\lim_{n \to \infty} b_n = 0$.
+\end{itemize}
+
+\subsubsection{Prueba de la Razón (D'Alembert)}
+Sea $L = \lim_{n \to \infty} | \frac{a_{n+1}}{a_n} |$:
+\begin{itemize}
+    \item Si $L < 1$, es \textbf{absolutamente convergente}.
+    \item Si $L > 1$, es \textbf{divergente}.
+    \item Si $L = 1$, la prueba no concluye.
+\end{itemize}
+
+\subsubsection{Prueba de la Raíz (Cauchy)}
+Sea $L = \lim_{n \to \infty} \sqrt[n]{|a_n|}$:
+\begin{itemize}
+    \item Si $L < 1$, converge absolutamente; si $L > 1$, diverge.
+\end{itemize}
+
+\subsection{Convergencia Absoluta y Condicional}
+\begin{itemize}
+    \item \textbf{Convergencia Absoluta:} $\sum a_n$ es absolutamente convergente si $\sum |a_n|$ es convergente.
+    \item \textbf{Convergencia Condicional:} Una serie es condicionalmente convergente si es convergente pero $\sum |a_n|$ diverge.
+\end{itemize}
+
+\subsection{Series de Potencias}
+Es una serie de la forma $\sum_{n=0}^{\infty} c_n (x - a)^n$.
+\begin{itemize}
+    \item \textbf{Radio de convergencia ($R$):} Distancia desde el centro $a$ donde la serie converge.
+    \item \textbf{Intervalo de convergencia:} Conjunto de valores de $x$ para los cuales la serie converge.
+\end{itemize}
+
+\subsection{Series de Taylor y Maclaurin}
+Si $f$ tiene representación en serie de potencias centrada en $a$:
+$$ f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x-a)^n $$
+\textbf{Serie de Maclaurin:} Caso donde $a = 0$.
+
+\subsubsection{Resto de Taylor}
+Se define como $R_n(x) = f(x) - T_n(x)$. Si $\lim_{n \to \infty} R_n(x) = 0$, entonces la serie converge a la función $f(x)$.
 
 \end{document}
