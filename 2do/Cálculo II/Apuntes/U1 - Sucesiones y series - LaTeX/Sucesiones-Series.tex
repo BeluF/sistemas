@@ -7,6 +7,8 @@
 \usepackage{geometry}
 \usepackage{fancyhdr}
 \usepackage{tcolorbox}
+\usepackage{booktabs}
+\usepackage{multicol}
 \usepackage{float}
 
 \geometry{top=2.5cm, bottom=2.5cm, left=3cm, right=3cm}
@@ -96,6 +98,9 @@ $$ \forall n \in \mathbb{N}, a_n \leqslant M $$
 y \textbf{acotada por abajo} si existe un $m \in \mathbb{R}$ tal que:
 $$ \forall n \in \mathbb{N}, a_n \geqslant m $$
 Si una sucesión está acotada por arriba y por abajo, se dice que está \textbf{acotada}.
+
+\subsection{Teorema de Bolzano}
+Toda sucesión monótona acotada tiene un límite finito.
 
 \section{Límite y Convergencia}
 
@@ -199,8 +204,20 @@ Para determinar si una serie tiene una suma finita, se analiza la \textbf{sucesi
 \end{itemize}
 
 \begin{tcolorbox}[title=Definición de Convergencia,colback=blue!5!white,colframe=blue!75!black]
-Si la sucesión $\{s_n\}$ es convergente y $\lim_{n \to \infty} s_n = s$ (donde $s$ es un número real), la serie $\sum a_n$ es \textbf{convergente} y su suma es $s$. Si el límite no existe, la serie es \textbf{divergente}.
+Si la sucesión $\{s_n\}$ es convergente y $\lim_{n \to \infty} s_n = s$ (donde $s$ es un número real), la serie $\sum a_n$ es \textbf{convergente} y su suma es $s$. Si el límite no existe o es infinito, la serie es \textbf{divergente}.
 \end{tcolorbox}
+
+\section{Propiedades}
+\begin{itemize}
+    \item La convergencia o divergencia de una serie no es afectada:
+    \begin{itemize}
+        \item al cambiar un número finito de términos.
+        \item al multiplicar todos los términos por una constante: $\sum_{n=1}^{\infty} a_n  C = C \sum_{n=1}^{\infty} a_n$
+    \end{itemize} 
+    \item Dos series convergentes pueden sumar o restarse término a término y la serie resultante también converge y su suma $s$ es obtenida sumando o restando las sumas de las series dadas:
+    $$\sum_{n=1}^{\infty} a_n \pm \sum_{n=1}^{\infty} b_n = \sum_{n=1}^{\infty} (a_n \pm b_n)$$
+    \item Si se suma una serie convergente y una divergente, la serie resultante es divergente.
+\end{itemize}
 
 \section{Series Especiales}
 
@@ -208,42 +225,78 @@ Si la sucesión $\{s_n\}$ es convergente y $\lim_{n \to \infty} s_n = s$ (donde 
 Se define como $\sum_{n=1}^{\infty} ar^{n-1}$. 
 \begin{itemize}
     \item \textbf{Converge} si $|r| < 1$, su suma es $s = \frac{a}{1-r}$.
-    \item \textbf{Diverge} si $|r| \geq 1$.
+    \item \textbf{Diverge} si $|r| \geqslant 1$.
 \end{itemize}
+\textit{Resumen:} la suma de una serie geométrica convergente es: $\frac{\text{primer término}}{1 - \text{razón común}}$
 
 \subsection{Serie p}
 Se define como $\sum_{n=1}^{\infty} \frac{1}{n^p}$.
 \begin{itemize}
     \item \textbf{Converge} si $p > 1$.
-    \item \textbf{Diverge} si $p \leq 1$.
+    \item \textbf{Diverge} si $p \leqslant 1$.
 \end{itemize}
 
 \subsection{Serie Armónica}
 Es el caso especial de la serie $p$ donde $p=1$: $\sum_{n=1}^{\infty} \frac{1}{n}$.
 \textbf{Siempre es divergente.}
 
+\section{Convergencia Absoluta y Condicional}
+\begin{itemize}
+    \item \textbf{Convergencia Absoluta:} $\sum a_n$ es absolutamente convergente si $\sum |a_n|$ es convergente. En este caso, $\sum a_n$ es convergente.
+    \item \textbf{Convergencia Condicional:} Una serie es condicionalmente convergente si es convergente pero $\sum |a_n|$ diverge.
+\end{itemize}
+
 \section{Pruebas de Convergencia}
 
 \subsection{Prueba de la Divergencia (Término n-ésimo)}
 Si $\lim_{n \to \infty} a_n$ no existe o si $\lim_{n \to \infty} a_n \neq 0$, entonces la serie $\sum a_n$ es \textbf{divergente}.
-\textit{Ejemplo:} $\sum \frac{n^2}{5n^2+4}$. Como $\lim_{n \to \infty} a_n = 1/5 \neq 0$, la serie diverge.
+\begin{tcolorbox}
+    Si $\sum_{n=1}^{\infty} a_n$ es \textbf{convergente}, entonces $\lim_{n \to \infty} a_n = 0$, \textit{\textbf{pero el recíproco no es necesariamente cierto}}.
+\end{tcolorbox}
 
 \subsection{Prueba de la Integral}
-Se aplica si $a_n = f(n)$, donde $f$ es continua, positiva y decreciente en $[1, \infty)$. La serie $\sum a_n$ converge si y solo si la integral impropia $\int_{1}^{\infty} f(x) dx$ converge.
-\textit{Ejemplo:} $\sum \frac{1}{n^2+1}$. La integral $\int_{1}^{\infty} \frac{1}{x^2+1} dx = \pi/4$, por lo que la serie converge.
+\begin{tcolorbox}
+    La serie $\sum a_n$ \textbf{ converge } $\Leftrightarrow$ \textbf{ la integral impropia } $\int_{1}^{\infty} f(x) dx$ converge.
+\end{tcolorbox}
+Se aplica si $a_n = f(n)$, donde $f$ es continua, positiva y decreciente en $[1, \infty)$.
+
+\subsubsection{Estimación del residuo para la prueba de la ingtegral}
+Sea $R_n = s - s_n$ el residuo (error) al usar la suma parcial $s_n$ para aproximar la suma de la serie. Entonces:
+$$ \int_{n+1}^{\infty} f(x) dx \leqslant R_n \leqslant \int_{n}^{\infty} f(x) dx $$
 
 \subsection{Pruebas de Comparación}
 \begin{enumerate}
-    \item \textbf{Comparación Directa:} Si $0 \leq a_n \leq b_n$ y $\sum b_n$ converge $\implies \sum a_n$ converge. Si $a_n \geq b_n \geq 0$ y $\sum b_n$ diverge $\implies \sum a_n$ diverge.
-    \item \textbf{Comparación del Límite:} Si $\lim_{n \to \infty} \frac{a_n}{b_n} = c$ (donde $c > 0$ y es finito), ambas series tienen el mismo comportamiento.
+    \item \textbf{Comparación Directa:} 
+        \begin{itemize}
+            \item Si $0 \leqslant a_n \leqslant b_n$ y $\sum b_n$ converge $\implies \sum a_n$ converge.
+            \item Si $a_n \geqslant b_n \geqslant 0$ y $\sum b_n$ diverge $\implies \sum a_n$ diverge.
+        \end{itemize}
+    \item \textbf{Comparación del Límite:} Si $\lim_{n \to \infty} \frac{a_n}{b_n} = c$:
+        \begin{itemize}
+            \item Si $0 < c < \infty$, entonces $\sum a_n$ y $\sum b_n$ \textbf{convergen o divergen juntas}.
+            \item Si $c = 0$ y $\sum b_n$ converge $\implies \sum a_n$ converge.
+            \item Si $c = \infty$ y $\sum b_n$ diverge $\implies \sum a_n$ diverge.
+        \end{itemize}
 \end{enumerate}
 
-\subsection{Prueba de la Serie Alternante}
+\subsubsection{Estimación del residuo para la prueba de comparación}
+Sea $R_n = s - s_n$ el residuo de $\sum a_n$ y $T_n = t - t_n$ el residuo de $\sum b_n$. Si $a_n \leqslant b_n$ para $n \geqslant N$, entonces $R_n \leqslant T_n$ para $n \geqslant N$.
+
+\subsection{Prueba de la Serie Alternante - Criterio de Leibniz}
 Para series de la forma $\sum (-1)^{n-1} b_n$ con $b_n > 0$. Converge si:
 \begin{itemize}
-    \item $b_{n+1} \leq b_n$ para toda $n$.
+    \item $b_{n+1} \leqslant b_n$ para toda $n$.
     \item $\lim_{n \to \infty} b_n = 0$.
 \end{itemize}
+
+\begin{tcolorbox}
+    Si en una serie alternante $a_n > a_{n+1}$ pero $\lim_{n \to \infty} a_n \neq 0$, entonces la serie es  oscilante, por lo que no converge.\newline
+    Si $\lim_{n \to \infty} a_n = 0$ pero $a_n$ no es decreciente, la serie diverge.
+\end{tcolorbox}
+
+\subsubsection{Estimación del residuo para la prueba de la serie alternante}
+Sea $s$ la suma de la serie alternante y $s_n$ la suma parcial de los primeros $n$ términos. Entonces el residuo $R_n = s - s_n$ satisface:
+$$ |R_n| \leqslant b_{n+1} $$
 
 \subsection{Prueba de la Razón (D'Alembert)}
 Sea $L = \lim_{n \to \infty} | \frac{a_{n+1}}{a_n} |$:
@@ -256,28 +309,188 @@ Sea $L = \lim_{n \to \infty} | \frac{a_{n+1}}{a_n} |$:
 \subsection{Prueba de la Raíz (Cauchy)}
 Sea $L = \lim_{n \to \infty} \sqrt[n]{|a_n|}$:
 \begin{itemize}
-    \item Si $L < 1$, converge absolutamente; si $L > 1$, diverge.
+    \item Si $L < 1$, es \textbf{absolutamente convergente}.
+    \item Si $L > 1$, es \textbf{divergente}.
+    \item Si $L = 1$, la prueba no concluye.
 \end{itemize}
 
-\section{Convergencia Absoluta y Condicional}
+\subsection{Criterio de Raabe}
+Sea $a_n > 0$ y $L = \lim_{n \to \infty} n \left( \frac{a_n}{a_{n+1}} - 1 \right)$:
 \begin{itemize}
-    \item \textbf{Convergencia Absoluta:} $\sum a_n$ es absolutamente convergente si $\sum |a_n|$ es convergente.
-    \item \textbf{Convergencia Condicional:} Una serie es condicionalmente convergente si es convergente pero $\sum |a_n|$ diverge.
+    \item Si $L > 1$, la serie $\sum a_n$ es \textbf{absolutamente convergente}.
+    \item Si $L < 1$, la serie $\sum a_n$ es \textbf{divergente}.
+    \item Si $L = 1$, la prueba no concluye.
 \end{itemize}
+
+%%---------------------------------------------------------------------------------------------
+
+\section{Estrategia para probar series}
+\begin{enumerate}
+    \item \textbf{Serie p }($\sum \frac{1}{n^p}$): converge si $p > 1$ y diverge si $p \leqslant 1$.
+    \item \textbf{Serie Geométrica }($\sum ar^{n-1}$ o $\sum ar^n$): converge si $|r| < 1$ y diverge si $|r| \geqslant 1$.
+    \item Si la serie tiene forma similar a una serie p o geométrica, usar la \textbf{Prueba de Comparación} o la \textbf{Prueba del Límite de Comparación}. Si la serie tiene términos negativos, evaluar $\sum |a_n|$.
+    \item Si es fácil ver que $\lim_{n \to \infty} a_n \neq 0$, aplicar la \textbf{Prueba de la Divergencia}.
+    \item Si la serie es de forma $\sum (-1)^{n-1} b_n$ o $\sum (-1)^n b_n$, usar la \textbf{Prueba de la Serie Alternante}.
+    \item Para las series con factoriales u otros productos, utilizar la \textbf{Prueba de la Razón}. Es útil pensar que $|\frac{a_{n+1}}{a_n}| \to 1$ cuando $n \to \infty$ para todas las series p y funciones racionales o algebraicas de $n$.
+    \item Para la forma $a_n = (b_n)^n$, usar la \textbf{Prueba de la Raíz}.
+    \item Si $a_n = f(n)$, donde $\int_{1}^{\infty} f(x)$ es fácilmente evaluable, usar la \textbf{Prueba de la Integral}.
+\end{enumerate}
+
+\section{Series de funciones}
+Una serie de funciones es una suma infinita de funciones de la forma:
+$$ \sum_{n=1}^{\infty} f_n(x) = f_1(x) + f_2(x) + f_3(x) + \dots $$
+donde cada $f_n(x)$ es una función definida en un conjunto $A \subseteq \mathbb{R}$. \newline
+
+Para cada valor de $x$ en $\sum_{n=1}^{\infty} f_n(x)$, se obtiene una serie numérica que puede diverger o converger.
+
+\subsection{Suma parcial de una serie de funciones}
+\begin{itemize}
+    \item La $n$-ésima suma parcial de la serie de funciones $\sum_{n=1}^{\infty} f_n(x)$ está dada por:
+    $$ S_n(x) = \sum_{i=1}^{n} f_i(x) = f_1(x) + f_2(x) + \dots + f_n(x) $$
+    \item La suma de los infinitos términos de la serie es $S(x)$:
+    $$S(x) = S_n(x) + R_n(x)$$
+    donde $R_n(x)$ es el \textbf{residuo} o \textbf{error} al aproximar la suma de la serie por la suma parcial $S_n(x)$.
+    \item El residuo $R_n(x)$ está dado por:
+    $$ R_n(x) = \sum_{i=n+1}^{\infty} f_i(x) $$
+    \item La sucesión de sumas parciales $\{S_n(x)\}$ define una función $S(x)$ llamada \textbf{suma de la serie de funciones} si el límite:
+    $$ S(x) = \lim_{n \to \infty} S_n(x) $$
+    existe para cada $x$ en el dominio.
+\end{itemize}
+
+\begin{tcolorbox}
+    Esto implica que:
+$$\lim_{n \to \infty} R_n(x) = 0$$
+para todos los valores de $x$ para los que la serie \textbf{converge}. \newline
+
+El conjunto de valores numéricos de $x$ para los cuales la serie de funciones converge se llama \textbf{dominio de convergencia}.
+\end{tcolorbox}
+
+\subsection{Convergencia de series de funciones}
+\begin{itemize}
+    \item \textbf{Convergencia puntual:} La serie $\sum_{n=1}^{\infty} f_n(x)$ converge puntualmente en un conjunto $A$ si para cada $x$ en $A$, la serie numérica $\sum_{n=1}^{\infty} f_n(x)$ converge.
+    \item \textbf{Convergencia uniforme:} Si se considera una serie numérica convergente de términos positivos $\sum_{n=1}^{\infty} a_n$ tal que:
+    $$ |f_n(x)| \leqslant a_n, \quad \forall n \in \mathbb{N}, \forall x \in A $$
+    la serie $\sum_{n=1}^{\infty} f_n(x)$ converge uniformemente en cierto dominio $[x_1; x_2]$.
+\end{itemize}
+
+\subsection{Continuidad en series de funciones}
+Si $\sum_{n=1}^{\infty} f_n(x)$ es una serie con funciones continuas de $x$ y la serie converge en un intervalo $[a; b]$, entonces la suma de un número finito de funciones continuas es otra función continua. \newline
+No siempre la suma de un número infinito de funciones continuas es continua.
+
+\subsection{Derivación e integración término a término}
+Si la serie de potencias $\sum c_n (x - a)^n$ tiene radio de convergencia $R > 0$, entonces la función $f$ definida por
+$$ f(x) = \sum_{n=0}^{\infty} c_n (x - a)^n $$
+es \textbf{derivable} (y, por lo tanto, continua) en el intervalo $(a-R, a+R)$, y
+\begin{itemize}
+    \item $$f'(x) = \sum_{n=1}^{\infty} n c_n (x - a)^{n-1} $$
+    \item $$\int f(x) dx = C + \sum_{n=0}^{\infty} c_n \frac{(x - a)^{n+1}}{n+1} $$
+\end{itemize}
+
+% Agregar a mano p6 y 7 PPT series parte b
 
 \section{Series de Potencias}
-Es una serie de la forma $\sum_{n=0}^{\infty} c_n (x - a)^n$.
+
+\subsection{Series de potencias centradas en 0}
+La forma $\sum_{n=0}^{\infty} a_nx^n$ es una serie de potencias centrada en 0. 
+
+\subsubsection{Calculo del radio de convergencia - Cauchy-Hadamard}
+Para toda serie de potencias existe un radio de convergencia $R$ de la serie de potencias $\sum_{n=0}^{\infty} a_nx^n$, siendo $0 \leqslant R \leqslant \infty$, tal que:
 \begin{itemize}
-    \item \textbf{Radio de convergencia ($R$):} Distancia desde el centro $a$ donde la serie converge.
-    \item \textbf{Intervalo de convergencia:} Conjunto de valores de $x$ para los cuales la serie converge.
+    \item La serie converge absolutamente para $|x| < R$.
+    \item La serie diverge para $|x| > R$.
+    \item Para $|x| = R$, la serie puede converger o divergir. Cada extremo debe ser evaluado por separado.
 \end{itemize}
 
-\section{Series de Taylor y Maclaurin}
-Si $f$ tiene representación en serie de potencias centrada en $a$:
-$$ f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x-a)^n $$
-\textbf{Serie de Maclaurin:} Caso donde $a = 0$.
+El radio de convergencia $R$ deambas series de potencias está dado por:
+$$ R = \frac{1}{\lim_{n \to \infty} \sqrt[n]{|a_n|}} $$
+o, alternativamente, si el límite existe,
+$$ R = \frac{1}{\lim_{n \to \infty} \sqrt[n]{|a_n|}} $$
 
-\subsection{Resto de Taylor}
-Se define como $R_n(x) = f(x) - T_n(x)$. Si $\lim_{n \to \infty} R_n(x) = 0$, entonces la serie converge a la función $f(x)$.
+\begin{tcolorbox}
+    Si el límite del denominador es 0, entonces $R = \infty$ (la serie converge $\forall x$). Si el límite es infinito, entonces $R = 0$ (la serie solo converge en $x = 0$).
+\end{tcolorbox}
+
+\subsubsection{Propiedades de las series de potencias}
+\begin{itemize}
+    \item Si la serie de potencias $\sum_{n=0}^{\infty} a_n x^n$ es convergente para $x = x_1 (x_1 \neq 0)$, entonces es absolutamente convergente para todo $\frac{x}{|x|} < |x_1|$.
+    \item Si la serie de potencias $\sum_{n=0}^{\infty} a_n x^n$ es divergente para $x = x_2 (x_2 \neq 0)$, entonces es divergente para todo $|x| > |x_2|$.
+\end{itemize}
+
+\begin{tcolorbox}
+    La serie de potencias será \textbf{absolutamente convergente} en el intervalo $(-R, R)$ y \textbf{divergente} fuera de este intervalo.
+\end{tcolorbox}
+
+\subsection{Series de potencias centras en a}
+
+Es una serie de la forma $\sum_{n=0}^{\infty} c_n (x - a)^n$, donde:
+\begin{enumerate}
+    \item La serie \textbf{converge} solo en $x = a$. $R = 0$ y el intervalo consta de un solo punto $\{a\}$.
+    \item La serie \textbf{converge} para todos los valores de $x$. $R = \infty$ y el intervalo es $(-\infty, \infty)$.
+    \item La serie \textbf{converge} para $|x - a| < R$ y \textbf{diverge} para $|x - a| > R$, donde $R$ es el \textbf{radio de convergencia}. La convergencia en los extremos del intervalo debe ser verificada por separado. Los intervaos pueden ser: 
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item $(a-R, a+R)$
+            \item $(a-R, a+R]$
+            \item $[a-R, a+R)$
+            \item $[a-R, a+R]$
+        \end{itemize}
+    \end{multicols}
+\end{enumerate}
+
+\begin{tcolorbox}
+    \textbf{Radio de convergencia ($R$):} Distancia desde el centro $a$ donde la serie converge.
+    \textbf{Intervalo de convergencia:} Conjunto de valores de $x$ para los cuales la serie converge.
+\end{tcolorbox}
+
+\section{Series de Taylor y Maclaurin}
+Si una función $f$ puede representarse mediante una serie de potencias centrada en $a$, es decir:
+$$ f(x) = \sum_{n=0}^{\infty}c_n (x-a)^n $$
+entonces sus coeficientes están determinados unívocamente por las derivadas sucesivas de la función evaluadas en el centro: $c_n = \frac{f^{(n)}(a)}{n!}$. La serie resultante:
+$$ f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x-a)^n = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \dots $$
+se llama \textbf{serie de Taylor} de $f$ centrada en $a$. Esta serie converge a $f(x)$ siempre que el resto tienda a cero dentro de su radio de convergencia $R$.
+
+Para el caso especial en que el centro es el origen ($a = 0$), la serie se denomina \textbf{serie de Maclaurin}:
+$$ f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!} x^n = f(0) + f'(0)x + \frac{f''(0)}{2!}x^2 + \dots $$
+
+\subsection{Resto de Taylor y Convergencia}
+Se define el resto (o error de aproximación) como $R_n(x) = f(x) - T_n(x)$, donde $T_n(x)$ es el polinomio de Taylor de grado $n$. La igualdad $f(x) = \sum \frac{f^{(n)}(a)}{n!}(x-a)^n$ es válida si y solo si:
+$$\lim_{n \to \infty} R_n(x) = 0 $$
+para $|x-a| < R$.
+
+\subsection{Desigualdad de Taylor}
+Para estimar la precisión de la aproximación, si se puede garantizar que la derivada $(n+1)$-ésima está acotada, es decir, $|f^{(n+1)}(x)| \leqslant M$ para $x$ en un intervalo que contiene a $a$ y $d$, entonces el resto de Taylor satisface:
+$$ |R_n(x)| \leqslant \frac{M}{(n+1)!} |x-a|^{n+1} $$
+
+\begin{tcolorbox}[colback=blue!5,colframe=blue!75!black]
+    \begin{itemize}
+        \item $\lim_{n \to \infty} \frac{x^n}{n!} = 0$ para todo $x \in \mathbb{R}$.
+        \item $e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!}$ para todo $x$. En particular, si $x=1$, $e = \sum_{n=0}^{\infty} \frac{1}{n!}$.
+    \end{itemize}
+\end{tcolorbox}
+
+\subsection{Serie binomial}
+Si $k \in \mathbb{R}$ y $|x| < 1$, entonces
+$$(1+x)^k = \sum_{n=0}^{\infty} \frac{k!}{n!(k-n)!} x^n$$
+
+\subsection{Series importantes de Maclaurin y sus radios de convergencia}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lll}
+        \toprule
+        Función & Serie de Maclaurin & Radio de Convergencia \\
+        \midrule
+        $e^x$ & $\sum_{n=0}^{\infty} \frac{x^n}{n!}$ & $\infty$ \\
+        $\sin x$ & $\sum_{n=0}^{\infty} (-1)^n \frac{x^{2n+1}}{(2n+1)!}$ & $\infty$ \\
+        $\cos x$ & $\sum_{n=0}^{\infty} (-1)^n \frac{x^{2n}}{(2n)!}$ & $\infty$ \\
+        $\arctan x$ & $\sum_{n=0}^{\infty} (-1)^n \frac{x^{2n+1}}{2n+1}$ & $1$ \\
+        $\frac{1}{1-x}$ & $\sum_{n=0}^{\infty} x^n$ & $1$ \\
+        $\ln(1+x)$ & $\sum_{n=1}^{\infty} (-1)^{n-1} \frac{x^n}{n}$ & $1$ \\
+        $(1+x)^k$ & $\sum_{n=0}^{\infty} \frac{k(k-1)\cdots(k-n+1)}{n!} x^n$ & $1$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+%%---------------------------------------------------------------------------------------------
+
 
 \end{document}
