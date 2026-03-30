@@ -16,4 +16,4 @@ Material de la carrera de Lic. en Sistemas - FCyT - UADER.
 - [Cálculo II](2do/C%C3%A1lculo%20II/): Apuntes y material de Cálculo II.
 
 ### 3er año
-- [AyED](3ero/BD/): Bases de Datos
+- [BD](3ero/BD/): Bases de Datos
