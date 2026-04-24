@@ -1,0 +1,112 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\geometry{top=2.5cm, bottom=2.5cm, left=3cm, right=3cm}
+
+% Configuración de encabezado
+\setlength{\headheight}{14.49998pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Licenciatura en Sistemas de Información}
+\rhead{Unidad 3 y 4: ED y Laplace}
+\cfoot{\thepage}
+
+\title{\textbf{Resumen: Ecuaciones Diferenciales y Transformada de Laplace}}
+\author{Ecuaciones Diferenciales y Cálculo Multivariado}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\part{Ecuaciones Diferenciales de Primer Orden}
+
+\section{Conceptos Fundamentales}
+Una \textbf{ecuación diferencial} es una ecuación que relaciona una variable independiente $x$, una función desconocida $y(x)$ y sus derivadas.
+
+\begin{itemize}
+    \item \textbf{Orden:} Determinado por la derivada de mayor orden presente en la ecuación.
+    \item \textbf{Grado:} El exponente de la derivada de mayor orden (siempre que la ED esté en forma polinómica respecto a las derivadas).
+    \item \textbf{Linealidad:} Una ED es lineal si $y$ y sus derivadas tienen grado 1 y sus coeficientes dependen solo de $x$.
+\end{itemize}
+
+\section{Métodos de Resolución}
+
+\subsection{Variables Separables}
+Se aplica cuando la ED puede escribirse como $y' = g(x)h(y)$. La solución se obtiene integrando ambos miembros:
+$$ \int \frac{dy}{h(y)} = \int g(x) dx + C $$
+
+\subsection{Ecuaciones Exactas}
+Una ecuación de la forma $M(x,y)dx + N(x,y)dy = 0$ es exacta si existe una función potencial $u(x,y)$ tal que $du = 0$.
+\begin{tcolorbox}[colback=blue!5,colframe=blue!75,title=Condición Necesaria y Suficiente]
+    La ecuación es exacta si y solo si se cumple la conmutabilidad de las derivadas parciales:
+    $$ \frac{\partial M}{\partial y} = \frac{\partial N}{\partial x} $$
+\end{tcolorbox}
+
+\subsection{Ecuaciones Lineales de Primer Orden}
+Tienen la forma $y' + P(x)y = Q(x)$. Se resuelven mediante el \textbf{Factor Integrante} $\mu(x) = e^{\int P(x) dx}$:
+$$ y(x) = \frac{1}{\mu(x)} \left[ \int \mu(x)Q(x)dx + C \right] $$
+
+\newpage
+
+\part{ED de Orden Superior y Sistemas}
+
+\section{ED Lineales Homogéneas con Coeficientes Constantes}
+Para ecuaciones del tipo $ay'' + by' + cy = 0$, se propone la solución $y = e^{kx}$, derivando en la \textbf{ecuación característica}:
+$$ ak^2 + bk + c = 0 $$
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Raíces de la característica} & \textbf{Solución General ($y_h$)} \\ \midrule
+Reales y distintas ($k_1 \neq k_2$) & $y = C_1 e^{k_1x} + C_2 e^{k_2x}$ \\
+Reales e iguales ($k_1 = k_2$) & $y = C_1 e^{k_1x} + C_2 x e^{k_1x}$ \\
+Complejas ($\alpha \pm \beta i$) & $y = e^{\alpha x} (C_1 \cos \beta x + C_2 \sin \beta x)$ \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\section{Sistemas de Ecuaciones Diferenciales}
+Se presentan como un conjunto de ED que deben satisfacerse simultáneamente. Para un sistema lineal homogéneo:
+$$ \begin{cases} x' = ax + by \\ y' = cx + dy \end{cases} $$
+El \textbf{Método de Euler} busca soluciones de la forma $x = \lambda e^{kt}$ y $y = \mu e^{kt}$. Los valores de $k$ son los autovalores de la matriz de coeficientes.
+
+\newpage
+
+\part{Transformada de Laplace}
+
+\section{Definición}
+Sea $f(t)$ una función definida para $t \ge 0$, la transformada de Laplace se define como:
+$$ \mathcal{L}\{f(t)\} = F(s) = \int_{0}^{\infty} e^{-st} f(t) dt $$
+
+\section{Propiedades Principales}
+\begin{itemize}
+    \item \textbf{Linealidad:} $\mathcal{L}\{af(t) + bg(t)\} = aF(s) + bG(s)$.
+    \item \textbf{Primer Teorema de Traslación:} $\mathcal{L}\{e^{at}f(t)\} = F(s-a)$.
+    \item \textbf{Transformada de la Derivada:} 
+    $$ \mathcal{L}\{f'(t)\} = sF(s) - f(0) $$
+    $$ \mathcal{L}\{f''(t)\} = s^2F(s) - sf(0) - f'(0) $$
+\end{itemize}
+
+\section{Resolución de ED mediante Laplace}
+Este método transforma una ED con valores iniciales en una ecuación algebraica en el dominio de $s$:
+\begin{enumerate}
+    \item Aplicar $\mathcal{L}$ a ambos miembros de la ED.
+    \item Sustituir las condiciones iniciales.
+    \item Despejar $Y(s)$.
+    \item Aplicar la \textbf{Transformada Inversa} $\mathcal{L}^{-1}\{Y(s)\}$ para hallar $y(t)$, generalmente mediante fracciones simples.
+\end{enumerate}
+
+\end{document}
