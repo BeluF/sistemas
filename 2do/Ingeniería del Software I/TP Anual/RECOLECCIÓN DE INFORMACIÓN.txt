@@ -1,0 +1,17 @@
+RECOLECCIÓN DE INFORMACIÓN
+1. Teniendo en cuenta la existencia del software UFED para extracción y análisis forense, el cual marca todos los movimientos realizados sobre una computadora, celular, etc., y con el cual puede conocerse si el elemento fue manipulado ¿deben tenerse en cuenta este tipos de casos? ¿deberíamos plantear una conexión con un almacenamiento externo (ej. la nube) para traer datos relevantes de los elementos y el estado de ellos a través de la pericia?
+
+1. Reestr.: Considerando la diversidad de pericias, ¿el sistema debe contemplar campos dinámicos o un módulo de cadena de custodia específico según el tipo de pericia (ej. condiciones de llegada de evidencia digital, muestras biológicas, etc.) y permitir integración vía API con software forense externo (como el UFED)?
+
+2. ¿Debe informarse con antelación la fecha prevista de inicio de realización de la pericia? (según art. 216, párr. 2 del Código Procesal Penal de la Provincia de Entre Ríos y art. 465, inc. 3, párr. último del Código Procesal Civil y Comercial de la Provincia de Entre Ríos). En caso afirmativo, ¿cuál será el medio designado? ¿con qué antelación se deberá informar?
+3. ¿Debe incluirse una gestión digital del depósito de elementos para conocer estado de cada uno, pericia a la que corresponden, perito a cargo del elementos, fecha de ingreso, retiro por el perito y egreso, entre otros?
+4. ¿Deben tenerse en cuenta las condiciones de llegada? (modo avión, cadena de custodia, bolsa de Faraday, etc.).
+?5. Evaluando la posibilidad de que un perito inicie una pericia y la culmine otro, ¿deberá permitirse el movimiento de la causa entre peritos?
+6. ¿Deberán incluirse modelos de informe, carátula, entre otros?
+7. ¿Sería útil contar con una conexión vía, por ejemplo, correo electrónico con la fiscalía, abogados involucrados, etc. desde el propio sistema para enviar de manera más rápida la información relevante a la causa?
+8. En la sección de historial de pericia, además de filtrar por perito y su rol, ¿deberá incluirse un filtro por fecha, perito, tipo de pericia, etc.?
+9. ¿Debe tenerse en cuenta la posibilidad de contar con personal idóneo en caso de no existir perito oficial, de parte Ode oficio? (art. 450 Código Procesal Civil y Comercial de la Provincia de Entre Ríos Y ART. 216 Código Procesal Penal de la Provincia de Entre Ríos).
+10. La fecha en que se inicia una pericia, ¿puede ser ingresada con antelación?, en caso afirmativo, ¿cuánta antelación debe tomarse? Ej.: Hoy, 27/04/2026 definí que se iniciará una pericia el 10/05/2026, ¿debe permitirse que antes del 10/05/2026 se ponga en estado "en progreso" o debe esperarse a dicha fecha?
+11. Respecto al cobre de honorarios, ¿quién o qué sector será el responsable de definir y actualizar el arancel básico para cada tipo de pericia? En el caso del pago en cuotas (con recargo), ¿existe un límite máximo de cuotas o un calendario de vencimientos que el sistema deba incluir?
+12. ¿El paso a estado de mora es automático al cumplirse la fecha o requiere validación manual de un operador/supervisor?
+13. ¿Qué datos críticos o transacciones son los que necesitarán autorización expresa de un supervisor?
