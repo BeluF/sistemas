@@ -15,3 +15,5 @@ RECOLECCIÓN DE INFORMACIÓN
 11. Respecto al cobre de honorarios, ¿quién o qué sector será el responsable de definir y actualizar el arancel básico para cada tipo de pericia? En el caso del pago en cuotas (con recargo), ¿existe un límite máximo de cuotas o un calendario de vencimientos que el sistema deba incluir?
 12. ¿El paso a estado de mora es automático al cumplirse la fecha o requiere validación manual de un operador/supervisor?
 13. ¿Qué datos críticos o transacciones son los que necesitarán autorización expresa de un supervisor?
+14. ¿Es posible que se trabaje con el modo de pago efectivo y cuotas? En caso afirmativo, ¿debería respetarse el descuento de efectivo, aplicarse el recargo de cuotas o simplemente no hacer nada?
+15. Si el pago es en efectivo y está vencido, ¿aún se respeta el 20% de descuento?
