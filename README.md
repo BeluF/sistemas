@@ -21,4 +21,4 @@ Material de la carrera de Lic. en Sistemas - FCyT - UADER.
 - [BD](3ero/BD/): Bases de Datos
 
 ### Optativas
-- [OP1 - IntrRedes] (Optativas/OP1%20-%20IntrRedes/): Introducción a las Comunicaciones y Redes.
+- [OP1- IntrRedes](Optativas/OP1%20-%20IntrRedes/): Introducción a las Comunicaciones y Redes.
