@@ -14,8 +14,11 @@ Material de la carrera de Lic. en Sistemas - FCyT - UADER.
 - [Discreta](2do/Discreta/): Matemática Discreta.
 - [POO](2do/POO/): Programación Orientada a Objetos.
 - [Cálculo II](2do/C%C3%A1lculo%20II/): Apuntes y material de Cálculo II.
-- [Ingeniería de Software I](2do/Ingenier%C3%ADa%20del%20Software%20I): Apuntes y material de Ingeniería de Software I.
-- [Arquitectura de Computadoras](2do/Arquitectura%20de%20Computadoras/): Apuntes y material de Arquitectura de Computadoras.
+- [ISI](2do/ISI/): Apuntes y material de Ingeniería de Software I.
+- [ArqComp](2do/ArqComp/): Apuntes y material de Arquitectura de Computadoras.
 
 ### 3er año
 - [BD](3ero/BD/): Bases de Datos
+
+### Optativas
+- [OP1 - IntrRedes] (Optativas/OP1%20-%20IntrRedes/): Introducción a las Comunicaciones y Redes.
