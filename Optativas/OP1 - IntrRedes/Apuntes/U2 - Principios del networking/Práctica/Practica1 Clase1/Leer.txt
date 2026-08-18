@@ -1,0 +1,8 @@
+Orden en que deben hacer la paractica
+
+1- Packet 1.2.4.4 (curso instructor CCNA)
+2- Leer Armado de cable
+3- Leer DHCP en Win7
+4- Protocolos y Puertos por defecto - Resolver
+5- Practica - Packet
+6- Practica2 - Archivo Packet que se encuentra dentro de la carpeta
