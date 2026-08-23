@@ -1,0 +1,128 @@
+//COMANDOS DOS
+
+
+//COMANDOS LINUX
+** Comandos de sistema: shutdown, reboot, logout, exit **
+
+* shutdown: apaga
+* shutdown [opcion]...[tiempo][pared]
+    Opciones:
+        * -r: reboot
+        * now: ahora
+        * el parámetro de tiempo se da en ms
+
+* reboot: reinicia
+* reboot [opcion]
+    Opciones:
+        * -f | --force
+        * -n | --no-sync: no sincroniza con los medios de almacenamiento
+
+* exit: termina el shell
+* exit [n], donde n es el número que indica el estado de salida. Si se omite, por defecto es el último utilizado.
+
+* logout: termina un shell de entrada
+* logout [n], donde n es el número que indica el estado de salida. Si se omite, por defecto es el último utilizado.
+
+** Comandos de ayuda: man, apropos **
+
+* man: manuales de referencia del sistema
+* man [opcion]...[seccion][pagina]
+
+* apropos: busca nombres y descripciones de páginas de manual.
+* apropos [opcion]...[palabraclave]
+    Opciones:
+        * -v escribe mensajes detallados de advertencia
+
+** Comandos: whereis, which, whatis **
+
+* whereis: busca nombres y descripciones de páginas del manual.
+* whereis [opcion]...[comando]
+
+* which: ubicación de un comando.
+* which [opcion]...[comando]
+
+* whatis: breve descripción de un comando.
+* whatis [opcion]...[comando]
+
+** Comandos para el manejo de archivos y directorios **
+
+* pwd: imprime el nombre del directorio actual
+* pwd [opcion] ...
+    Opciones:
+        * -P: evita los enlaces simbólicos.
+        * --help muestra la ayuda del comando.
+
+* ls: lista los archivos de un directorio.
+* ls [opcion]...[archivo]
+    Opciones:
+        * -a | --all incluye archivos ocultos
+        * -l: formato largo, incluye permisos, fecha y tamaños para cada archivo.
+
+* cd: cambia el directorio de trabajo.
+* cd [opcion]...[directorio]
+    Opciones:
+        * -: cambia el directorio actual al anterior.
+        * ..: cambia al directorio padre.
+
+* lsb_release: imprime información específica de la distro GNU/Linux que obtiene de /etc/os-release
+    Opciones:
+        * -a | --all: muestra toda la información, incluyendo descripción, versión y nombre del código.
+        * -i: muestra el ID de distribución.
+
+* uname: imprime información del sistema.
+* uname [opcion]
+    Opciones:
+        * -a | --all: muestra toda la infomación, incluyendo kernel, hardware y plataforma
+        * -v: versión del kernel
+
+* touch: actualiza fecha de acceso y modificación de un archivo a la fecha y hora actuales.
+* touch [opcion]...[archivo]
+    Opciones:
+        * -c | --no-create: no creo ningún archivo
+        * -m cambia solamente la fecha de modificación
+
+* mkdir: crea un directorio
+* mkdir [opcion]...[directorio]
+    Opciones:
+        * -p | --parents: crea directorios padres
+        * -v: muestra un mensaje por cada directorio creado
+
+* rm: borra archivos
+* rm [opcion]...[archivo] (sudo rm -rf /*)
+    Opciones:
+        * -i: pregunta antes de cada borrado.
+        * -r | --recursive:
+        remueve directorios y el contenido de forma recursiva.
+
+* mv: renombra ORIGEN a DESTINO o mueve ORIGEN/ES a DIRECTORIO
+* mv [opcion]...[origen] [destino]
+    Opciones:
+        * -f no pregunta antes de sobreescribir
+        * -i | --interactive: pride confirmación antes de escribir
+
+* cp: copia ORIGEN a DESTINO o copia ORIGEN/ES a DIRECTORIO.
+* cp [opcion]...[origen][destino]
+    Opciones:
+        * -f: no pregunta antes de sobreescribir.
+        * -r | --recursive: copia directorios recursivamente
+
+
+** Comandos para buscar y extraer datos de los archivos **
+
+* cat: concatena archivos e imprime en consola el contenido de un archivo
+* cat [opcion]...[archivo]
+    Opciones:
+        * -n: numera las lineas
+
+* more: hojear el texto de un archivo una pantalla a la vez.
+* more [opcion]...[archivo]
+    Opciones:
+        * -n | --lines number: especifica el número de líneas por página.
+
+* less: lo mismo que more, pero con más funcionalidades
+
+
+
+
+proydesa.org
+bibliografía de stalling

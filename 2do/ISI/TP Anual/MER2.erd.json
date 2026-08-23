@@ -1,0 +1,326 @@
+{
+  "format": "er-diagram",
+  "version": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "entity",
+      "label": "Organismo",
+      "x": 80,
+      "y": 80,
+      "w": 170,
+      "h": 50,
+      "attrs": [
+        { "name": "id_organismo", "pk": true, "mv": false },
+        { "name": "nombre", "pk": false, "mv": false },
+        { "name": "tipo_organismo", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "relation",
+      "label": "Solicita",
+      "x": 300,
+      "y": 80,
+      "w": 120,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 3,
+      "type": "entity",
+      "label": "Pericias",
+      "x": 480,
+      "y": 80,
+      "w": 200,
+      "h": 60,
+      "attrs": [
+        { "name": "id_organismo", "pk": true, "mv": false },
+        { "name": "nro_pericia", "pk": true, "mv": false },
+        { "name": "expediente", "pk": false, "mv": false },
+        { "name": "fecha_solicitud", "pk": false, "mv": false },
+        { "name": "descripcion", "pk": false, "mv": false },
+        { "name": "area_tecnica", "pk": false, "mv": false },
+        { "name": "id_tipo_pericia", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "relation",
+      "label": "Clasificada_En",
+      "x": 730,
+      "y": 80,
+      "w": 140,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 5,
+      "type": "entity",
+      "label": "Tipos_Pericias",
+      "x": 920,
+      "y": 80,
+      "w": 180,
+      "h": 50,
+      "attrs": [
+        { "name": "id_tipo_pericia", "pk": true, "mv": false },
+        { "name": "nombre", "pk": false, "mv": false },
+        { "name": "descripcion", "pk": false, "mv": false },
+        { "name": "area_profesional", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "relation",
+      "label": "Registra_Cambio",
+      "x": 480,
+      "y": 210,
+      "w": 150,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 7,
+      "type": "weak",
+      "label": "Historial_de_Estados",
+      "x": 480,
+      "y": 310,
+      "w": 200,
+      "h": 50,
+      "attrs": [
+        { "name": "id_historial", "pk": true, "mv": false },
+        { "name": "id_organismo", "pk": false, "mv": false },
+        { "name": "nro_pericia", "pk": false, "mv": false },
+        { "name": "estado", "pk": false, "mv": false },
+        { "name": "fecha_cambio", "pk": false, "mv": false },
+        { "name": "id_usuario", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "relation",
+      "label": "Genera_Movimiento",
+      "x": 280,
+      "y": 210,
+      "w": 160,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 9,
+      "type": "weak",
+      "label": "Movimientos",
+      "x": 80,
+      "y": 210,
+      "w": 180,
+      "h": 60,
+      "attrs": [
+        { "name": "id_movimiento", "pk": true, "mv": false },
+        { "name": "id_organismo", "pk": false, "mv": false },
+        { "name": "nro_pericia", "pk": false, "mv": false },
+        { "name": "nro_orden", "pk": false, "mv": false },
+        { "name": "tipo_presentacion", "pk": false, "mv": false },
+        { "name": "tipo_actividad", "pk": false, "mv": false },
+        { "name": "fecha", "pk": false, "mv": false },
+        { "name": "descripcion", "pk": false, "mv": false },
+        { "name": "id_usuario", "pk": false, "mv": false },
+        { "name": "id_actividad", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "relation",
+      "label": "Programa",
+      "x": 480,
+      "y": -50,
+      "w": 120,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 11,
+      "type": "weak",
+      "label": "Actividades_Programadas",
+      "x": 480,
+      "y": -170,
+      "w": 220,
+      "h": 60,
+      "attrs": [
+        { "name": "id_actividad", "pk": true, "mv": false },
+        { "name": "id_organismo", "pk": false, "mv": false },
+        { "name": "nro_pericia", "pk": false, "mv": false },
+        { "name": "fecha_hora", "pk": false, "mv": false },
+        { "name": "lugar", "pk": false, "mv": false },
+        { "name": "estado", "pk": false, "mv": false },
+        { "name": "id_perito_resp", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 12,
+      "type": "relation",
+      "label": "Concreta_En",
+      "x": 100,
+      "y": 0,
+      "w": 130,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 13,
+      "type": "relation",
+      "label": "Liquida",
+      "x": 730,
+      "y": -50,
+      "w": 120,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 14,
+      "type": "entity",
+      "label": "Pagos_y_Cobros",
+      "x": 920,
+      "y": -50,
+      "w": 180,
+      "h": 60,
+      "attrs": [
+        { "name": "id_transaccion", "pk": true, "mv": false },
+        { "name": "id_organismo", "pk": false, "mv": false },
+        { "name": "nro_pericia", "pk": false, "mv": false },
+        { "name": "tipo_movimiento", "pk": false, "mv": false },
+        { "name": "monto", "pk": false, "mv": false },
+        { "name": "fecha", "pk": false, "mv": false },
+        { "name": "id_persona_obligada", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "relation",
+      "label": "Roles_Pericias",
+      "x": 750,
+      "y": 210,
+      "w": 160,
+      "h": 50,
+      "attrs": [
+        { "name": "rol_proceso", "pk": false, "mv": false },
+        { "name": "tipo_perito", "pk": false, "mv": false },
+        { "name": "motivo_evaluacion", "pk": false, "mv": false },
+        { "name": "hallazgos_tecnicos", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 16,
+      "type": "entity",
+      "label": "Personas",
+      "x": 950,
+      "y": 310,
+      "w": 190,
+      "h": 60,
+      "attrs": [
+        { "name": "id_persona", "pk": true, "mv": false },
+        { "name": "tipo_doc", "pk": false, "mv": false },
+        { "name": "nro_doc", "pk": false, "mv": false },
+        { "name": "nombre", "pk": false, "mv": false },
+        { "name": "apellido", "pk": false, "mv": false },
+        { "name": "fecha_nac", "pk": false, "mv": false },
+        { "name": "direccion", "pk": false, "mv": false },
+        { "name": "telefono", "pk": false, "mv": false },
+        { "name": "email", "pk": false, "mv": false },
+        { "name": "nro_matricula", "pk": false, "mv": false },
+        { "name": "organismo_profesional", "pk": false, "mv": false },
+        { "name": "especialidades", "pk": false, "mv": true }
+      ]
+    },
+    {
+      "id": 17,
+      "type": "relation",
+      "label": "Convoca_A",
+      "x": 800,
+      "y": -170,
+      "w": 130,
+      "h": 44,
+      "attrs": [
+        { "name": "asistio", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 18,
+      "type": "entity",
+      "label": "Usuarios",
+      "x": 250,
+      "y": 420,
+      "w": 160,
+      "h": 50,
+      "attrs": [
+        { "name": "id_usuario", "pk": true, "mv": false },
+        { "name": "username", "pk": false, "mv": false },
+        { "name": "password_hash", "pk": false, "mv": false },
+        { "name": "rol_sistema", "pk": false, "mv": false },
+        { "name": "id_persona", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 19,
+      "type": "relation",
+      "label": "Registra_Mov",
+      "x": 100,
+      "y": 350,
+      "w": 130,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 20,
+      "type": "relation",
+      "label": "Registra_Estado",
+      "x": 370,
+      "y": 370,
+      "w": 140,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 21,
+      "type": "relation",
+      "label": "Es_Persona",
+      "x": 700,
+      "y": 420,
+      "w": 120,
+      "h": 44,
+      "attrs": []
+    }
+  ],
+  "connections": [
+    { "id": 101, "src": 1, "tgt": 2, "card1": "(1,1)", "card2": "(0,n)" },
+    { "id": 102, "src": 2, "tgt": 3, "card1": "(1,1)", "card2": "(1,1)" },
+    { "id": 103, "src": 3, "tgt": 4, "card1": "(1,1)", "card2": "(1,1)" },
+    { "id": 104, "src": 4, "tgt": 5, "card1": "(0,n)", "card2": "(1,1)" },
+    { "id": 105, "src": 3, "tgt": 6, "card1": "(1,1)", "card2": "(1,n)" },
+    { "id": 106, "src": 6, "tgt": 7, "card1": "(1,1)", "card2": "(1,1)" },
+    { "id": 107, "src": 3, "tgt": 8, "card1": "(1,1)", "card2": "(0,n)" },
+    { "id": 108, "src": 8, "tgt": 9, "card1": "(1,1)", "card2": "(1,1)" },
+    { "id": 109, "src": 3, "tgt": 10, "card1": "(1,1)", "card2": "(0,n)" },
+    { "id": 110, "src": 10, "tgt": 11, "card1": "(1,1)", "card2": "(1,1)" },
+    { "id": 111, "src": 11, "tgt": 12, "card1": "(0,1)", "card2": "(0,1)" },
+    { "id": 112, "src": 12, "tgt": 9, "card1": "(0,1)", "card2": "(1,1)" },
+    { "id": 113, "src": 3, "tgt": 13, "card1": "(1,1)", "card2": "(0,n)" },
+    { "id": 114, "src": 13, "tgt": 14, "card1": "(1,1)", "card2": "(1,1)" },
+    { "id": 115, "src": 3, "tgt": 15, "card1": "(1,1)", "card2": "(1,n)" },
+    { "id": 116, "src": 15, "tgt": 16, "card1": "(0,n)", "card2": "(1,1)" },
+    { "id": 117, "src": 11, "tgt": 17, "card1": "(1,1)", "card2": "(1,n)" },
+    { "id": 118, "src": 17, "tgt": 16, "card1": "(0,n)", "card2": "(1,1)" },
+    { "id": 119, "src": 18, "tgt": 19, "card1": "(1,1)", "card2": "(0,n)" },
+    { "id": 120, "src": 19, "tgt": 9, "card1": "(1,1)", "card2": "(1,1)" },
+    { "id": 121, "src": 18, "tgt": 20, "card1": "(1,1)", "card2": "(0,n)" },
+    { "id": 122, "src": 20, "tgt": 7, "card1": "(1,1)", "card2": "(1,1)" },
+    { "id": 123, "src": 18, "tgt": 21, "card1": "(0,1)", "card2": "(0,1)" },
+    { "id": 124, "src": 21, "tgt": 16, "card1": "(0,1)", "card2": "(1,1)" }
+  ],
+  "strokes": [],
+  "nextId": 125,
+  "view": {
+    "x": 0,
+    "y": 0,
+    "scale": 1
+  }
+}

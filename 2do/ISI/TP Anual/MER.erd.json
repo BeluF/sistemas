@@ -1,0 +1,397 @@
+{
+  "format": "er-diagram",
+  "version": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "entity",
+      "label": "Organismo",
+      "x": 80,
+      "y": 80,
+      "w": 160,
+      "h": 44,
+      "attrs": [
+        { "name": "Id Organismo", "pk": true, "mv": false },
+        { "name": "Nombre", "pk": false, "mv": false },
+        { "name": "Tipo", "pk": false, "mv": false },
+        { "name": "Contacto", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "relation",
+      "label": "Solicita",
+      "x": 300,
+      "y": 80,
+      "w": 130,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 3,
+      "type": "entity",
+      "label": "Pericia",
+      "x": 490,
+      "y": 80,
+      "w": 180,
+      "h": 44,
+      "attrs": [
+        { "name": "Id Pericia", "pk": true, "mv": false },
+        { "name": "Nro Pericia Organismo", "pk": false, "mv": false },
+        { "name": "Expediente Judicial", "pk": false, "mv": false },
+        { "name": "Área Técnica", "pk": false, "mv": false },
+        { "name": "Fecha Solicitud", "pk": false, "mv": false },
+        { "name": "Descripción Caso", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "relation",
+      "label": "Clasificada En",
+      "x": 490,
+      "y": 230,
+      "w": 140,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 5,
+      "type": "entity",
+      "label": "Tipo Pericia",
+      "x": 490,
+      "y": 380,
+      "w": 160,
+      "h": 44,
+      "attrs": [
+        { "name": "Id Tipo Pericia", "pk": true, "mv": false },
+        { "name": "Nombre", "pk": false, "mv": false },
+        { "name": "Descripción", "pk": false, "mv": false },
+        { "name": "Área Profesional", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "relation",
+      "label": "Tiene Estado",
+      "x": 300,
+      "y": 230,
+      "w": 130,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 7,
+      "type": "entity",
+      "label": "Estado",
+      "x": 80,
+      "y": 230,
+      "w": 150,
+      "h": 44,
+      "attrs": [
+        { "name": "Id Estado", "pk": true, "mv": false },
+        { "name": "Nombre Estado", "pk": false, "mv": false },
+        { "name": "Descripción", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "relation",
+      "label": "Participa En",
+      "x": 730,
+      "y": 80,
+      "w": 140,
+      "h": 44,
+      "attrs": [
+        { "name": "Rol en Pericia", "pk": false, "mv": false },
+        { "name": "Tipo Perito", "pk": false, "mv": false },
+        { "name": "Motivo Evaluación", "pk": false, "mv": false },
+        { "name": "Hallazgos Técnicos", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "entity",
+      "label": "Persona",
+      "x": 930,
+      "y": 80,
+      "w": 170,
+      "h": 44,
+      "attrs": [
+        { "name": "Id Persona", "pk": true, "mv": false },
+        { "name": "Tipo Documento", "pk": false, "mv": false },
+        { "name": "Nro Documento", "pk": false, "mv": false },
+        { "name": "Nombre", "pk": false, "mv": false },
+        { "name": "Apellido", "pk": false, "mv": false },
+        { "name": "Fecha Nacimiento", "pk": false, "mv": false },
+        { "name": "Teléfono", "pk": false, "mv": false },
+        { "name": "Correo Electrónico", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "relation",
+      "label": "Posee",
+      "x": 930,
+      "y": 230,
+      "w": 120,
+      "h": 44,
+      "attrs": [
+        { "name": "Nro Matrícula", "pk": false, "mv": false },
+        { "name": "Organismo Colegiado", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "entity",
+      "label": "Especialidad",
+      "x": 930,
+      "y": 380,
+      "w": 170,
+      "h": 44,
+      "attrs": [
+        { "name": "Id Especialidad", "pk": true, "mv": false },
+        { "name": "Nombre Especialidad", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 12,
+      "type": "relation",
+      "label": "Tiene Cuenta",
+      "x": 1150,
+      "y": 80,
+      "w": 130,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 13,
+      "type": "entity",
+      "label": "Usuario",
+      "x": 1330,
+      "y": 80,
+      "w": 160,
+      "h": 44,
+      "attrs": [
+        { "name": "Id Usuario", "pk": true, "mv": false },
+        { "name": "Nombre Usuario", "pk": false, "mv": false },
+        { "name": "Password Hash", "pk": false, "mv": false },
+        { "name": "Rol Usuario", "pk": false, "mv": false },
+        { "name": "Activo", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 14,
+      "type": "relation",
+      "label": "Registra",
+      "x": 490,
+      "y": -80,
+      "w": 130,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 15,
+      "type": "entity",
+      "label": "Movimiento Pericia",
+      "x": 490,
+      "y": -220,
+      "w": 180,
+      "h": 44,
+      "attrs": [
+        { "name": "Id Movimiento", "pk": true, "mv": false },
+        { "name": "Nro Orden", "pk": false, "mv": false },
+        { "name": "Fecha Registro", "pk": false, "mv": false },
+        { "name": "Descripción Actuación", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 16,
+      "type": "relation",
+      "label": "Tipo De Actuación",
+      "x": 280,
+      "y": -220,
+      "w": 150,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 17,
+      "type": "entity",
+      "label": "Tipo Movimiento",
+      "x": 60,
+      "y": -220,
+      "w": 160,
+      "h": 44,
+      "attrs": [
+        { "name": "Id Tipo Movimiento", "pk": true, "mv": false },
+        { "name": "Nombre", "pk": false, "mv": false },
+        { "name": "Descripción", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 18,
+      "type": "relation",
+      "label": "Cargado Por",
+      "x": 930,
+      "y": -220,
+      "w": 130,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 19,
+      "type": "relation",
+      "label": "Historial Estados",
+      "x": 80,
+      "y": 380,
+      "w": 150,
+      "h": 44,
+      "attrs": [
+        { "name": "Fecha Cambio", "pk": false, "mv": false },
+        { "name": "Observaciones", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 20,
+      "type": "relation",
+      "label": "Planifica",
+      "x": 730,
+      "y": -80,
+      "w": 130,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 21,
+      "type": "entity",
+      "label": "Actividad Programada",
+      "x": 930,
+      "y": -80,
+      "w": 180,
+      "h": 44,
+      "attrs": [
+        { "name": "Id Actividad", "pk": true, "mv": false },
+        { "name": "Fecha", "pk": false, "mv": false },
+        { "name": "Hora", "pk": false, "mv": false },
+        { "name": "Lugar", "pk": false, "mv": false },
+        { "name": "Estado Actividad", "pk": false, "mv": false },
+        { "name": "Descripción", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 22,
+      "type": "relation",
+      "label": "Convoca A",
+      "x": 1150,
+      "y": -80,
+      "w": 130,
+      "h": 44,
+      "attrs": [
+        { "name": "Asistió", "pk": false, "mv": false },
+        { "name": "Observaciones", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 23,
+      "type": "relation",
+      "label": "Genera Cobro",
+      "x": 300,
+      "y": -40,
+      "w": 130,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 24,
+      "type": "entity",
+      "label": "Cobro Organismo",
+      "x": 80,
+      "y": -40,
+      "w": 160,
+      "h": 44,
+      "attrs": [
+        { "name": "Id Cobro", "pk": true, "mv": false },
+        { "name": "Nro Factura", "pk": false, "mv": false },
+        { "name": "Monto Total", "pk": false, "mv": false },
+        { "name": "Fecha Emisión", "pk": false, "mv": false },
+        { "name": "Fecha Cobro", "pk": false, "mv": false },
+        { "name": "Estado Cobro", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 25,
+      "type": "relation",
+      "label": "Genera Liquidación",
+      "x": 730,
+      "y": 230,
+      "w": 150,
+      "h": 44,
+      "attrs": []
+    },
+    {
+      "id": 26,
+      "type": "entity",
+      "label": "Liquidación Pago Perito",
+      "x": 730,
+      "y": 380,
+      "w": 180,
+      "h": 44,
+      "attrs": [
+        { "name": "Id Liquidación", "pk": true, "mv": false },
+        { "name": "Monto Honorarios", "pk": false, "mv": false },
+        { "name": "Fecha Liquidación", "pk": false, "mv": false },
+        { "name": "Fecha Pago", "pk": false, "mv": false },
+        { "name": "Estado Pago", "pk": false, "mv": false }
+      ]
+    },
+    {
+      "id": 27,
+      "type": "relation",
+      "label": "Liquidado A",
+      "x": 840,
+      "y": 310,
+      "w": 120,
+      "h": 44,
+      "attrs": []
+    }
+  ],
+  "connections": [
+    { "id": 101, "src": 1, "tgt": 2, "card1": "(1,n)", "card2": "(1,1)" },
+    { "id": 102, "src": 2, "tgt": 3, "card1": "(1,1)", "card2": "(1,n)" },
+    { "id": 103, "src": 3, "tgt": 4, "card1": "(1,1)", "card2": "(1,n)" },
+    { "id": 104, "src": 4, "tgt": 5, "card1": "(1,n)", "card2": "(1,1)" },
+    { "id": 105, "src": 3, "tgt": 6, "card1": "(1,1)", "card2": "(1,n)" },
+    { "id": 106, "src": 6, "tgt": 7, "card1": "(0,n)", "card2": "(1,1)" },
+    { "id": 107, "src": 3, "tgt": 8, "card1": "(1,n)", "card2": "(0,n)" },
+    { "id": 108, "src": 8, "tgt": 9, "card1": "(0,n)", "card2": "(1,n)" },
+    { "id": 109, "src": 9, "tgt": 10, "card1": "(0,n)", "card2": "(0,n)" },
+    { "id": 110, "src": 10, "tgt": 11, "card1": "(0,n)", "card2": "(0,n)" },
+    { "id": 111, "src": 9, "tgt": 12, "card1": "(0,1)", "card2": "(1,1)" },
+    { "id": 112, "src": 12, "tgt": 13, "card1": "(1,1)", "card2": "(0,1)" },
+    { "id": 113, "src": 3, "tgt": 14, "card1": "(0,n)", "card2": "(1,1)" },
+    { "id": 114, "src": 14, "tgt": 15, "card1": "(1,1)", "card2": "(0,n)" },
+    { "id": 115, "src": 15, "tgt": 16, "card1": "(1,1)", "card2": "(1,n)" },
+    { "id": 116, "src": 16, "tgt": 17, "card1": "(1,n)", "card2": "(1,1)" },
+    { "id": 117, "src": 15, "tgt": 18, "card1": "(1,1)", "card2": "(0,n)" },
+    { "id": 118, "src": 18, "tgt": 13, "card1": "(0,n)", "card2": "(1,1)" },
+    { "id": 119, "src": 3, "tgt": 19, "card1": "(1,n)", "card2": "(0,n)" },
+    { "id": 120, "src": 19, "tgt": 7, "card1": "(0,n)", "card2": "(1,n)" },
+    { "id": 121, "src": 3, "tgt": 20, "card1": "(0,n)", "card2": "(1,1)" },
+    { "id": 122, "src": 20, "tgt": 21, "card1": "(1,1)", "card2": "(0,n)" },
+    { "id": 123, "src": 21, "tgt": 22, "card1": "(0,n)", "card2": "(0,n)" },
+    { "id": 124, "src": 22, "tgt": 9, "card1": "(0,n)", "card2": "(0,n)" },
+    { "id": 125, "src": 3, "tgt": 23, "card1": "(0,n)", "card2": "(1,1)" },
+    { "id": 126, "src": 23, "tgt": 24, "card1": "(1,1)", "card2": "(0,n)" },
+    { "id": 127, "src": 3, "tgt": 25, "card1": "(0,n)", "card2": "(1,1)" },
+    { "id": 128, "src": 25, "tgt": 26, "card1": "(1,1)", "card2": "(0,n)" },
+    { "id": 129, "src": 26, "tgt": 27, "card1": "(1,1)", "card2": "(0,n)" },
+    { "id": 130, "src": 27, "tgt": 9, "card1": "(0,n)", "card2": "(1,1)" }
+  ],
+  "strokes": [],
+  "nextId": 250,
+  "view": {
+    "x": 0,
+    "y": 0,
+    "scale": 1
+  }
+}
