@@ -2,21 +2,21 @@ Ej. zoológico:
 
 # MR:
 
-Empleado(legajo(PK), nombre, direccion, telefono, fechaIngreso)
-Cuidador(legajo(PK)(FK))
-Guia(legajo(PK)(FK))
-Itinerario(codigoItinerario)(PK), duracion, longitud, cantVisitantes
-Zona(codigoZona(PK), nombre, extension)
-Especie(codigoEspecie(PK), nombre, nombreCientifico, descripcion, codigoZona(FK)) R3
+* Empleado(legajo(PK), nombre, direccion, telefono, fechaIngreso)
+* Cuidador(legajo(PK)(FK))
+* Guia(legajo(PK)(FK))
+* Itinerario(codigoItinerario)(PK), duracion, longitud, cantVisitantes
+* Zona(codigoZona(PK), nombre, extension)
+* Especie(codigoEspecie(PK), nombre, nombreCientifico, descripcion, codigoZona(FK)) R3
 
 ## R1: Guías acompañan a los visitantes en un Itinerario
-ItinerarioGuia(codigoItinerario(PK)(FK), legajo(PK)(FK), hora)
+* ItinerarioGuia(codigoItinerario(PK)(FK), legajo(PK)(FK), hora)
 
 ## R2: Cuidador tiene asignada una o más especies.
-CuidadorEspecie(codigoEspecie(PK)(FK), legajo(PK)(FK), fechaDesde)
+* CuidadorEspecie(codigoEspecie(PK)(FK), legajo(PK)(FK), fechaDesde)
 
 ## R4: Zonas que se visitan por itinerario
-ZonasItinerario(codigoZona(PK)(FK), codigoItinerario(PK)(FK))
+* ZonasItinerario(codigoZona(PK)(FK), codigoItinerario(PK)(FK))
 
 # CREAR TABLAS (con CONSTRAINT):
 
@@ -122,6 +122,7 @@ SELECT e.nombre, z.nombre FROM Especie e JOIN Zona z ON e.codigoZona = z.codigoZ
 ```sql
 SELECT em.nombre, em.telefono, es.nombre FROM Empleado em LEFT JOIN CuidadorEspecie ce ON em.legajo = ce.legajo
 	LEFT JOIN Especie es ON es.codigoEspecie = ce.codigoEspecie;
+	---(falta WHERE del codigo especie)
 ```
 
 4. Listado de todos los empleados del parque indicando quienes son guías y quienes cuidadores:
@@ -158,7 +159,7 @@ SELECT z.nombre, z.extension, COUNT(e.codigoEspecie) cantidadEspecies FROM Zona 
 	LEFT JOIN Especie e ON z.codigoZona = e.codigoZona
 	GROUP BY z.codigoZona, z.nombre, z.extension
 	ORDER BY z.nombre;
-    /* z.codigoZona se agrega en el GRUPO BY para que "una" zonas de igual nombre y extensión, si hubiera. */
+    --z.codigoZona se agrega en el GRUPO BY para que "una" zonas de igual nombre y extensión, si hubiera.
 ```
 
 7. Guías que entraron a trabajar en el último mes:
@@ -167,6 +168,14 @@ SELECT e.nombre
 	FROM Empleado e
 	INNER JOIN Guia g ON e.legajo = g.legajo
 	WHERE DATEDIFF(DAY, e.fechaIngreso, GETDATE()) = 30;
+
+	--Otras formas de hacer el WHERE:
+	--WHERE MONTH(fechaIngreso)=MONTH(GETDATE()) AND YEAR(fechaIngerso)=YEAR(GETDATE()); Forma de Germán
+	--WHERE E.FechaIngreso >= DATEADD(MONTH, -1, GETDATE()); Fomra de Barbi 
+	--WHERE GETDATE() <= DATEADD(MONTH, -1, E.FechaIngreso); Forma de Barbi modif por Germán
+	---Germán lo hizo con "< 30" en vez de "= 30":
+	---		WHERE DATEDIFF(DAY, e.fechaIngreso, GETDATE()) = 30;
+
 ```
 
 8. Empleados con más de 10 años de antigüedad:
@@ -175,7 +184,9 @@ SELECT e.nombre
 	FROM Empleado e
 	WHERE fechaIngreso < DATEADD(YEAR, -10, GETDATE());
 
-    /*DATEADD(tipoFecha, cantidad, fecha) suma o resta una cantidad de tiempo a una fecha */
+	---DATEFIFF(YEAR, e.fechaIngreso, GETDATE()) Antiguedad; Forma de Germán
+
+    --DATEADD(tipoFecha, cantidad, fecha) suma o resta una cantidad de tiempo a una fecha
 ```
 
 9. Nombre de la especie y fecha en la que se hizo cargo de la misma cada cuidador:
@@ -184,6 +195,8 @@ SELECT es.nombre, ce.fechaDesde, em.nombre FROM Empleado em
 	INNER JOIN CuidadorEspecie ce ON em.legajo = ce.legajo
 	INNER JOIN Especie es ON es.codigoEspecie = ce.codigoEspecie
 	ORDER BY es.nombre;
+
+	---Ver los JOIN, debería ser RIGH, creo, por si hay alguna especie que no tenga cuidador a cargo
 ```
 
 10. Promedio de duración de todos los itinerarios:
@@ -195,8 +208,13 @@ SELECT AVG (duracion) 'Promedio de duración' FROM Itinerario;
 ```sql
 SELECT nombre, extension FROM Zona WHERE extension = (SELECT MAX(extension) FROM Zona);
 
-/*MAX() se utiliza en consultas, por lo que para utilizarlo en una cláusula WHERE debe haber una subquery dentro*/
+--MAX() se utiliza en consultas, por lo que para utilizarlo en una cláusula WHERE debe haber una subquery dentro
+
+--ALTERNATIVA:
+SELECT TOP 1 nombre, extension FROM Zona
+	ORDER BY extension DESC;
 ```
+
 12. Listado de itinerarios que recorren una zona dada:
 ```sql
 SELECT i.codigoItinerario, z.nombre FROM Itinerario i
@@ -210,11 +228,15 @@ SELECT i.codigoItinerario, z.nombre FROM Itinerario i
 SELECT z.nombre, COUNT(zi.codigoItinerario) CantidadItinerariosPorZona FROM Zona z
 	INNER JOIN ZonasItinerario zi ON z.codigoZona = zi.codigoZona
 	GROUP BY z.nombre;
+
+	---Revisar el JOIN, capaz debería ser LEFT
 ```
 
 14. Indicar por cada itinerario la relación longitud sobre duración, ordenados de mayor a menor siendo los mayores los más exigentes:
 ```sql
 SELECT codigoItinerario, (longitud/duracion) 'Longitud/Duracion' FROM Itinerario ORDER BY 'Longitud/Duracion' DESC;
+
+---Tener en cuenta que si se dividen dos enteros, el resultado será un entero. Hay que multiplicar el divisor por 1.0
 ```
 
 15. Indicar los itinerarios cuya duración esté por encima del promedio:
@@ -235,6 +257,11 @@ SELECT i.codigoItinerario, es.nombre FROM Itinerario i
 	JOIN Zona z ON z.codigoZona = zi.codigoZona
 	JOIN Especie es ON es.codigoZona = zi.codigoZona
     WHERE es.codigoEspecie = 1;
+
+	---Otra opción es que se busque por nombre:
+	WHERE es.nombre LIKE '%Le_n%';
+	---El "%" se reemplaza por cualquier conjunto de caracteres
+	---El "_" se reemplaza por un solo caracter
 ```
 
 17. Listado de empleados que no tengan especies a cargo ni lleven ningún itinerario:
@@ -251,6 +278,8 @@ SELECT em.nombre, em.legajo, COUNT(ce.codigoEspecie) cantEspecies FROM Empleado 
 	INNER JOIN CuidadorEspecie ce ON em.legajo = ce.legajo
 	GROUP BY em.nombre, em.legajo
 	ORDER BY cantEspecies DESC;
+
+	---Revisar el JOIN, según Germán debe haber un LEFT JOIN con la tabla Especie 
 ```
 
 19. Cuidadores con más de 5 especies a cargo:
@@ -260,6 +289,8 @@ SELECT em.nombre, em.legajo, COUNT(ce.codigoEspecie) cantEspecies FROM Empleado 
 	GROUP BY em.nombre, em.legajo
 	HAVING COUNT(ce.codigoEspecie) > 5
 	ORDER BY cantEspecies DESC;
+
+	---HAVING: Filtra después de resolver el GROUP BY
 ```
 
 20. Nombre de la especie con mayor número de cuidadores:
@@ -269,7 +300,7 @@ SELECT TOP (1) WITH TIES es.nombre, COUNT(ce.legajo) cantCuidadores FROM Especie
 	GROUP BY es.nombre
 	ORDER BY cantCuidadores DESC;
 
-/* CON MAX */
+--CON MAX
 SELECT es.nombre, COUNT(ce.legajo) cantCuidadores FROM Especie es 
 	JOIN CuidadorEspecie ce ON es.codigoEspecie = ce.codigoEspecie
 	GROUP BY es.nombre
@@ -278,7 +309,7 @@ SELECT es.nombre, COUNT(ce.legajo) cantCuidadores FROM Especie es
     FROM
     (
         SELECT COUNT(ce2.legajo) AS cantidad
-        FROM CuidadorEspecie AS ce2
+        FROM CuidadorEspecie ce2
         GROUP BY ce2.codigoEspecie
     ) AS cantidades
 )
