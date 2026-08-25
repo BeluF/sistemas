@@ -1,8 +1,57 @@
-//COMANDOS DOS
+## MS-DOS
+* Arquitectura de 16bits.
+* Direcciona memoria hasta 640kB (hasta 64mB con herramientas).
+* Sistema de archivos soportados: FAT12 y FAT16.
+* Monotarea y monousuario.
+* Partición hasta 2GB.
+* Procesadores sosportados: 8086, 8088, 80286, 80386, 80486, Pentium, AMD y Cyrix.
+* Nombre de archivo hasta 8 caracteres, la extensión ocupa 3.
 
+## Proceso de arranque
+1. BIOS.
+2. EL sector de arranque carga IO.SYS.
+3. IO.SYS carga MSDOS.SYS.
+4. Luego se carga COMMAND.COM.
+5. Se ejecutan los archivos de configuración: CONFIG.SYS () y AUTOEXEC.BAT (archivo que da vida al SO).
 
-//COMANDOS LINUX
-** Comandos de sistema: shutdown, reboot, logout, exit **
+### COMANDOS DOS
+* OS.SYS
+
+* MSDOS.SYS: kernel. Manejeja: el sistema de archivos FAT, la ejecución de programas .COM y .EXE, administra memoria, manejo de dispositivos, proporciona servicios mediante interrupciones del sistema.
+
+* COMMAND.COM: intérprete de comandos.
+
+## Comandos internos
+Están dentro de COMMAND.COM.
+BREAK, CALL, CD, CHDIR, CLS, COPY, DEL, ERASE, DIR (ls), MD (mkdir), RD (rm), REM (renombrar).
+
+* CD | CHDIR: cd.
+* CLS: clear.
+* COPY: cp.
+* DEL | ERASE: borrar (que?).
+* DIR: ls.
+* MD: mkdir
+* RM: rm
+* RENAME | ...
+* TYPE: cat.
+
+Archivos batch (.BAT) contienen comandos (en linux es .sh).
+
+## Comandos externos
+Hay que tenerlos como un archivo ejecutable (.COM o .EXE).
+EDIT, MEM, ...
+
+### Comandos DEBUG.EXE
+* A (assembly): ensamblar código.
+* D (dump): ver un área de la RAM.
+* E: introducir datos en la memoria.
+* Q: salir.
+* R: mostrar el contenido de los registros del procesador (es la memoria más rápida de la computadora).
+* T: 
+* U (unassembly): desamblar código: convertirlo a ensamblador.
+
+### COMANDOS LINUX
+## Comandos de sistema: shutdown, reboot, logout, exit
 
 * shutdown: apaga
 * shutdown [opcion]...[tiempo][pared]
@@ -23,7 +72,7 @@
 * logout: termina un shell de entrada
 * logout [n], donde n es el número que indica el estado de salida. Si se omite, por defecto es el último utilizado.
 
-** Comandos de ayuda: man, apropos **
+## Comandos de ayuda: man, apropos
 
 * man: manuales de referencia del sistema
 * man [opcion]...[seccion][pagina]
@@ -33,7 +82,7 @@
     Opciones:
         * -v escribe mensajes detallados de advertencia
 
-** Comandos: whereis, which, whatis **
+## Comandos: whereis, which, whatis
 
 * whereis: busca nombres y descripciones de páginas del manual.
 * whereis [opcion]...[comando]
@@ -44,7 +93,7 @@
 * whatis: breve descripción de un comando.
 * whatis [opcion]...[comando]
 
-** Comandos para el manejo de archivos y directorios **
+## Comandos para el manejo de archivos y directorios
 
 * pwd: imprime el nombre del directorio actual
 * pwd [opcion] ...
@@ -107,7 +156,7 @@
         * -r | --recursive: copia directorios recursivamente
 
 
-** Comandos para buscar y extraer datos de los archivos **
+## Comandos para buscar y extraer datos de los archivos
 
 * cat: concatena archivos e imprime en consola el contenido de un archivo
 * cat [opcion]...[archivo]
@@ -121,8 +170,23 @@
 
 * less: lo mismo que more, pero con más funcionalidades
 
-
-
-
 proydesa.org
 bibliografía de stalling
+
+
+### apt o apt-get
+
+apt es un gestor de paquetes de debian que está basado en dpkg.
+
+* update: actualiza la lista de paquetes.
+* upgrade: actualiza los paquetes del sistema.
+* dist-upgrade: actualiza el sistema (se ejecuta al actualizar la versión)
+* full-update: 
+* install: instala paquetes.
+* remove: elimina paquetes.
+* clean: elimina la caché de paquetes .deb (borra el repo local que tiene los .deb descargados).
+* apt-cache search: busca paquetes por nombre. (pacman -Q --search)
+* apt-cache show: mustra información del paquete pasado por parámetro. (será pacman -Q --info ??)
+* apt-cdrom add: añade un cd-rom como recurso/fuente (para instalar offline).
+
+Para las prácticas instalar yasm, gdb, binutils, build-essential y vim
