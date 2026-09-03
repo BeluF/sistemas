@@ -50,6 +50,8 @@ EDIT, MEM, ...
 * T: 
 * U (unassembly): desamblar código: convertirlo a ensamblador.
 
+################################################# 
+
 ### COMANDOS LINUX
 ## Comandos de sistema: shutdown, reboot, logout, exit
 
